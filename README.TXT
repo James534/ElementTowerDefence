@@ -34,6 +34,7 @@
  * shift clicking
  * improved clicking functionality (selecting multiple towers after one another)
  * fixed various bugs involving target hp
+ * added different runtimes
  * 
  * 
  * 0.15 (May 22, 2013)
