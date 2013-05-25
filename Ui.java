@@ -273,7 +273,7 @@ public class Ui extends Actor
             tempString = "Level " + Integer.toString(tempX);
             //cooldown of weapon
             bg.drawString (tempString, 260, 100);      
-            bg.drawImage (weapons[tempX-1], 450, 160);                  //weapon id
+            bg.drawImage (weapons[tempX-1], 460, 160);                  //weapon id
             if (id == 3){
                 //transparancy of the cd
                 tempX = 255 - Math.round ((float)tower.getCD() / tower.getAttackSpeed() * 255);
