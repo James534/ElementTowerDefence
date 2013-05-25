@@ -8,7 +8,10 @@ import java.awt.Color;
  * Element Tower Defence
  * 
  * @James Lu & Terence Lai
- * @0.16
+ * @0.17
+ * 
+ * Try to get github working
+ *
  */
 public class Map extends World{
     private Tile[][] map;                                 //2d array of tiles

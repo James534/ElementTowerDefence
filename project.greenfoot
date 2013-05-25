@@ -1,7 +1,7 @@
 #Greenfoot project file
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
->>>>>>>=origin/Terence
+>>>>>>>=origin/James
 class.AirMob.superclass=Enemy
 class.AirTower.superclass=Tower
 class.Artillery.superclass=Weapon
@@ -497,17 +497,10 @@ target23.type=ClassTarget
 target23.width=80
 target23.x=160
 target23.y=70
-<<<<<<< HEAD
-target24.editor.height=1056
-target24.editor.width=1936
-target24.editor.x=-455
-target24.editor.y=122
-=======
 target24.editor.height=690
 target24.editor.width=897
 target24.editor.x=454
 target24.editor.y=119
->>>>>>> origin/James
 target24.height=50
 target24.name=Map
 target24.naviview.expanded=true
@@ -756,5 +749,5 @@ target9.type=ClassTarget
 target9.width=80
 target9.x=10
 target9.y=190
-version=2.4.0
+version=2.5.0
 world.lastInstantiated=Map
