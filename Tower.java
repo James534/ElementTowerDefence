@@ -258,7 +258,7 @@ public class Tower extends Actor
                 //addDebuff();
             }
             level++;
-            map.displayMessage("Tower Upgraded"); 
+            map.displayMessage("Tower Upgraded", 2); 
         }
         map.resetUi(); //refreshes the ui after upgrade
     }

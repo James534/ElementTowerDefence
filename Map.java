@@ -282,8 +282,11 @@ public class Map extends World{
                 }
                 else if (selected instanceof Debuff){
                     Debuff d = (Debuff) selected;
-                    d.bought (true);
-                    selectedTower.addDebuff (d.getId());
+                    if (d.isBought() == false){
+                        d.bought (true);
+                        selectedTower.addDebuff (d.getId());
+                        cb.setMessage ("Bought " + d.getName(), 2);
+                    }
                 }
             }
         }
@@ -864,8 +867,8 @@ public class Map extends World{
         return income;
     }
 
-    public void displayMessage(String s)
+    public void displayMessage(String s, int id)
     {
-        cb.setMessage(s,1);
+        cb.setMessage(s,id);
     }
 }
