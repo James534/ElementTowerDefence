@@ -24,7 +24,7 @@ public class ChatBox extends Actor
     private boolean show;
     public ChatBox(){
         map = (Map) getWorld();
-        bg = new GreenfootImage (1000, 50);
+        bg = new GreenfootImage (1000, 75);
 
         font         = new Font ("Verdana", 1, 35);
 
