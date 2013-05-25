@@ -23,6 +23,6 @@ public class EarthTower extends Tower
         
         name = "Earth Tower";
         
-        desc.add ("A description of the Tower");
+        desc.add ("Earth Tower Description");
     }
 }
