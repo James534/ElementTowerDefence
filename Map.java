@@ -9,8 +9,6 @@ import java.awt.Color;
  * 
  * @James Lu & Terence Lai
  * @0.17
- * 
- * Try to get github working
  *
  */
 public class Map extends World{
