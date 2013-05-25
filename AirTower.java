@@ -24,5 +24,6 @@ public class AirTower extends Tower
         name = "Air Tower";
         
         desc.add ("lightweight tower");
+        desc.add ("Average range and power");
     }
 }
