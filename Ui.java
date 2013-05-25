@@ -137,8 +137,8 @@ public class Ui extends Actor
             map.addObject (sellButton   , 850, 675);
             map.addObject (upgradeButton, 850, 730);
 
-            map.addObject (debuffs[0]   , 780, 620);
-            map.addObject (debuffs[tower.getElement()], 820, 620);
+            map.addObject (debuffs[0]   , 800, 620);
+            map.addObject (debuffs[tower.getElement()], 860, 620);
             int[] debuffsBought = tower.getDebuffs();
             for (int n = 0; n < debuffs.length; n++){
                 debuffs[n].bought (false);

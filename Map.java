@@ -194,17 +194,26 @@ public class Map extends World{
      */
     private void trackButtons (MouseInfo m){
         List<Actor> l = getObjectsAt (m.getX(), m.getY(), null);        //list of all the actors the mouse is ontop of
-        for (Actor a: l){
-            if (a instanceof Button){       //if the mouse is ontop of a button, change the pic
-                Button b = (Button) a;
-                if (b == prevButton){
-                    b.hoverOver();
-                }else if (prevButton != null){
-                    prevButton.resetCounter();
+        if (l.size() == 1 && l.get(0) instanceof Ui){ 
+            //if its just the ui, not hovering over a button
+            if (prevButton != null){
+                prevButton.resetCounter();
+            }
+            prevButton = null;
+        }
+        else{
+            for (Actor a: l){
+                if (a instanceof Button){       //if the mouse is ontop of a button, change the pic
+                    Button b = (Button) a;
+                    if (b == prevButton){
+                        b.hoverOver();
+                    }else if (prevButton != null){
+                        prevButton.resetCounter();
+                    }
+                    b.changeImg (true);
+                    prevButton = b;
+                    return;
                 }
-                b.changeImg (true);
-                prevButton = b;
-                return;
             }
         }
         removeObject (hm);

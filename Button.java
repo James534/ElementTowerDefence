@@ -44,11 +44,15 @@ public class Button extends Actor
         int[] coordinates = new int[2];
         int tempX = this.getX();
         int tempY = this.getY();
-        coordinates[0] = tempX + tempX/2;
+        if (tempX < 600){
+            coordinates[0] = tempX + tempX/2;
+        }else{
+            coordinates[0] = tempX - 150;
+        }
         coordinates[1] = tempY - map.hm.getHeight()/2;
         return coordinates;
     }
-    
+
     public void act(){
         if (clicked){
             this.setImage (bg[2]);

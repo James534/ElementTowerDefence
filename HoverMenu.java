@@ -2,24 +2,24 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Font;
 import java.awt.Color;
 /**
- * Write a description of class HoverMenu here.
+ * The menu that pops up after user hovers over certain buttons
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author James Lu
+ * @version 1.0
  */
 public class HoverMenu extends Actor
 {
     private GreenfootImage bg;
     private int width;
     private int height;
-    
+
     private Font titleFont;
     private Font descFont;
-    
+
     private Color bgColor;
     private Color titleColor;
     private Color descColor;
-    
+
     private String[] desc;
     public HoverMenu(){
         width = 300;
@@ -37,16 +37,16 @@ public class HoverMenu extends Actor
         for (int i = 0; i< desc.length; i++){
             desc[i] = "";
         }
-        
+
         refresh();
     }
 
     private void refresh(){
         bg.clear();
-        
+
         bg.setColor (bgColor);
         bg.fill();
-        
+
         bg.setFont (titleFont);
         bg.setColor (titleColor);
         bg.drawString (desc[0], 20, 50);
@@ -59,12 +59,12 @@ public class HoverMenu extends Actor
 
         this.setImage (bg);
     }
-    
+
     public void setData(Actor a){
         if (a instanceof SendCreeps){       //if the actor passed is the button to send mobs
             SendCreeps b = (SendCreeps) a;
             Creep c = b.getCreep();         //make a instance of the creep that the button will send
-            
+
             desc[0] = c.getName();
             desc[1] = "HP: " + Integer.toString (c.getHp());
             desc[2] = "Bounty: " + Integer.toString (c.getMaxHp() / 20);
@@ -72,13 +72,16 @@ public class HoverMenu extends Actor
             desc[4] = "Armor: " + Integer.toString (c.getArmor());
             desc[5] = "Speed: " + Float.toString (c.getSpeed());
         }
+        else if (a instanceof Debuff){
+            Debuff d = (Debuff) a;
+        }
         refresh();
     }
-    
+
     public int getWidth(){
         return width;
     }
-    
+
     public int getHeight(){
         return height;
     }
