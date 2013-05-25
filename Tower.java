@@ -19,12 +19,10 @@ public class Tower extends Actor
     protected int gridX, gridY ;// refrence to what grid it is on
     protected Weapon basicAttack; //change this when upgraded.  
     protected int attackRate;
-    protected int power  ;
+    protected int power;
     protected int range;
     protected int speed;
-    protected int upgradeCounter;
     protected String type; 
-    private ChatBox cb;
     protected int level; 
 
     //added by james
@@ -258,6 +256,7 @@ public class Tower extends Actor
                 //addDebuff();
             }
             level++;
+            counter = 0;
             map.displayMessage("Tower Upgraded", 2); 
         }
         map.resetUi(); //refreshes the ui after upgrade

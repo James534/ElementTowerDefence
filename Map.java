@@ -64,7 +64,6 @@ public class Map extends World{
     public final HoverMenu hm = new HoverMenu();
 
     /**Terrence's variables **/
-    //private Tower t = new Tower(); 
     private ArrayList<Tower> towers = new ArrayList<Tower>(); //put in constructor 
 
     private boolean place =  false; //used to place the tower onto the field
@@ -74,7 +73,7 @@ public class Map extends World{
     //must keep a temporary refrence to the tower since it there are subsequent commands
     private Tower selectedTower;
     private Tower placeHolder;
-    Range r; 
+    private Range r; 
 
     /** 
      * variable initation
@@ -103,7 +102,7 @@ public class Map extends World{
         pf3 = new Pathfind (endX2, endY2, endXf, endYf, this);         //rightmost path
 
         //tower defence stuff
-        money           = 100000;
+        money           = 100;
         income          = 0;
         lives           = 20;
         level           = 1;
