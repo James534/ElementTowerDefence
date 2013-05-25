@@ -19,7 +19,7 @@ public class SendCreeps extends Button
             bg[1] = Data.creepButtonImg[1];
             bg[2] = Data.creepButtonImg[2];
             cost  = 10;
-            creep = new FireCreep1();
+            creep = new FireCreep(1);
         }
         this.setImage (bg[0]);
         counter = 0;
@@ -60,6 +60,6 @@ public class SendCreeps extends Button
     }
 
     public Creep getCreep(){
-        return new FireCreep1();
+        return new FireCreep(1);
     }
 }
