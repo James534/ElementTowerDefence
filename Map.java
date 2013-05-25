@@ -154,11 +154,8 @@ public class Map extends World{
 
         //variable to run place movemet 
         place =  false;
-
-        //cnostruct both buttons (Later build these buttons in the ui building)
     }
 
-    // CHANGED 0.13
     /**
      * Act - do whatever the Tower wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -176,7 +173,7 @@ public class Map extends World{
             /**Terence's Stuff**/
             checkInput(mouse); 
             if (mouse != null){
-                trackButtons(mouse);        //ADDED 0.135
+                trackButtons(mouse);
                 if (place) // used to place tower when onto the field
                     trackMouse(mouse);
             }
@@ -194,7 +191,6 @@ public class Map extends World{
 
     /**
      * Method that checks the mouse over of buttons
-     * ADDED 0.135
      */
     private void trackButtons (MouseInfo m){
         List<Actor> l = getObjectsAt (m.getX(), m.getY(), null);        //list of all the actors the mouse is ontop of
@@ -216,7 +212,6 @@ public class Map extends World{
 
     /**
      * Method that checks what did the user click on.  or what buttons are pressed
-     * CHANGED 0.135
      */
     private void checkInput(MouseInfo mouse){
         if(mouse != null && Greenfoot.mouseClicked(null)){
@@ -378,7 +373,6 @@ public class Map extends World{
     /**
      * Method for following the mouse when placing on field and placing the object. 
      * WHEN PLACE == TRUE
-     * CHANGED 0.13
      * */
     public void trackMouse(MouseInfo mouse){        
         double x = mouse.getX();
@@ -486,7 +480,7 @@ public class Map extends World{
                 }
 
                 if (!shiftClick){
-                    cancelBuild();      //CHANGED 0.13
+                    cancelBuild();
                 }
                 t.setGridX(x);//pass the grid coordinates for further refrence
                 t.setGridY(y);
@@ -536,7 +530,7 @@ public class Map extends World{
 
         setPaintOrder (StartScreen.class, HoverMenu.class, ChatBox.class, 
             Button.class, Ui.class, PointerArrow.class, Weapon.class, 
-            Tower.class, Range.class, HealthBar.class, Enemy.class, Tower.class, Tile.class);         //CHANGED 0.14
+            Tower.class, Range.class, HealthBar.class, Enemy.class, Tower.class, Tile.class);        
     }
 
     /**
@@ -556,9 +550,6 @@ public class Map extends World{
         }
     }
 
-    /**
-     * ADDED 0.13
-     */
     private void uiAct(){
         if (selectedTower != null && refreshUi){
             refreshUi = false;
@@ -573,9 +564,6 @@ public class Map extends World{
         }
     }
 
-    /**
-     * ADDED 0.13
-     */
     private void showRange(int range, boolean show){
         if (show){
             r = new Range(range);
@@ -625,7 +613,6 @@ public class Map extends World{
     /**
      * called after a mob dies
      * deletes it from the world, and removes it from the arraylist of mobs
-     * CHANGED 0.13
      */
     public void mobDie (Enemy mob, boolean exitWorld){
         if (!exitWorld){
@@ -717,7 +704,6 @@ public class Map extends World{
 
     /**
      * spawns a mob
-     * CHANGED 0.14
      */
     private void spawn(LinkedList<Enemy> ll){
         Enemy newEnemy = ll.remove();

@@ -16,11 +16,13 @@ public class FireTower extends Tower
         range = 300; // maxiumum range of the tower 
         speed = 10;// speed of the projectile
         power = 10; 
-        
+
         element = 3;
         elementString = "fire";
-        
-        desc.add ("Insert Description Here");
-        desc.add ("Tower with average power, range and attack range");
+
+        name = "Fire Tower";
+
+        desc.add ("Tower with average power,");
+        desc.add ("range and attack range");
     }
 }

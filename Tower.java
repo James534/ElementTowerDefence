@@ -33,11 +33,10 @@ public class Tower extends Actor
     protected String elementString; //the string of the element
 
     protected int targetPriority;   //targetting priority, 1 for closest, 2 for furthest, etc
-  
+
     public Tower()
     {
-        //setImage("TowerPlaceHolder.png");
-        name = "Tower";
+        name = "";
         desc = new ArrayList<String>(5);
 
         targetedMob = null;
@@ -63,7 +62,7 @@ public class Tower extends Actor
             counter = 999;
         }
     }
- 
+
     /**
      * Act - do whatever the Tower wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -258,13 +257,12 @@ public class Tower extends Actor
         map.resetUi(); //refreshes the ui after upgrade
     }
 
-
     private void addDebuff()
     {
 
     }
 
-      /**
+    /**
      * passes the maximum attack range of the tower
      */
     public int getRange()
@@ -295,7 +293,7 @@ public class Tower extends Actor
     public int getDmg(){
         return power;
     }
-    
+
     public int getAttackSpeed(){
         return attackRate;
     }

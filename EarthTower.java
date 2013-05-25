@@ -20,7 +20,8 @@ public class EarthTower extends Tower
         element = 4;
         elementString = "earth";
         
-        desc.add ("Insert Description Here");
+        name = "Earth Tower";
+        
         desc.add ("A description of the Tower");
     }
 }

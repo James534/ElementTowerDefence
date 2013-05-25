@@ -245,7 +245,7 @@ public class Ui extends Actor
             bg.setFont  (descFont);
             for (int i = 0; i < desc.size(); i++){
                 tempString = desc.get(i);
-                bg.drawString (tempString, 650, 85 + i * 20);
+                bg.drawString (tempString, 490, 85 + i * 20);
             }
 
             //stats

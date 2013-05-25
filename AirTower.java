@@ -20,7 +20,8 @@ public class AirTower extends Tower
         element = 1;
         elementString = "air";
         
-        desc.add ("Insert Description Here");
-        desc.add ("lightweight tower, capable of attacking air unit");
+        name = "Air Tower";
+        
+        desc.add ("lightweight tower");
     }
 }
