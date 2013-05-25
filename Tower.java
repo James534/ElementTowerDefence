@@ -324,4 +324,11 @@ public class Tower extends Actor
         }
         return false;
     }
+
+    /**
+     * returns the current level of the tower
+     */
+    public int getLevel(){
+        return level;
+    }
 }

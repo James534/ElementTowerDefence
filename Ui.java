@@ -206,7 +206,7 @@ public class Ui extends Actor
         tempX = 110 - tempString.length() * 5;
         bg.setColor (goldColor);
         bg.drawString (tempString, tempX, 75);
-        
+
         //income
         tempString = "+ " + Integer.toString (income);
         tempX = 190 - tempString.length() * 5;
@@ -243,6 +243,8 @@ public class Ui extends Actor
             //tower description
             bg.setColor (descColor);
             bg.setFont  (descFont);
+            tempString = "Level " + Integer.toString(tower.getLevel());
+            bg.drawString (tempString, 260, 100);
             for (int i = 0; i < desc.size(); i++){
                 tempString = desc.get(i);
                 bg.drawString (tempString, 490, 85 + i * 20);
@@ -284,11 +286,11 @@ public class Ui extends Actor
             bg.setColor (elementColor[mob.getType()]);
             tempString = mob.getStringType();
             bg.drawString (tempString, 500, 100);
-            
+
             //debuffs
             ArrayList<Integer> debuff = mob.getDebuffs();
             for (int i = 0; i < debuff.size(); i++){
-                
+
             }
         }
         this.setImage (bg);
