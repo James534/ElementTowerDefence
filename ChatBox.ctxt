@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ChatBox()
+comment1.params=world
+comment1.target=void\ addedToWorld(greenfoot.World)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=m\ id
+comment3.target=void\ setMessage(java.lang.String,\ int)
+comment3.text=\r\n\ sets\ the\ message\ to\ whatever\ passes\ to\ it\r\n\ id\ is\ which\ type\ of\ message\ is\ passed\ through\r\n\ \ \ \ \ \ 1\ is\ warning,\ red\r\n\ \ \ \ \ \ 2\ is\ wave\ starting,\ in\ black\r\n
+comment4.params=
+comment4.target=void\ refresh()
+numComments=5

@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=
+comment0.target=HoverMenu()
+comment1.params=
+comment1.target=void\ refresh()
+comment2.params=a
+comment2.target=void\ setData(greenfoot.Actor)
+comment3.params=
+comment3.target=int\ getWidth()
+comment4.params=
+comment4.target=int\ getHeight()
+numComments=5

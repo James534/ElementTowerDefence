@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=
+comment0.target=PointerArrow()
+comment1.params=world
+comment1.target=void\ addedToWorld(greenfoot.World)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=e
+comment3.target=void\ setMob(Enemy)
+comment4.params=
+comment4.target=Enemy\ getMob()
+numComments=5

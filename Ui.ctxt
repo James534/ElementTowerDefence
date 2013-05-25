@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Ui()
+comment1.params=world
+comment1.target=void\ addedToWorld(greenfoot.World)
+comment10.params=
+comment10.target=int\ getId()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=id
+comment3.target=void\ changeUi(int)
+comment3.text=\r\n\ changes\ the\ ui\ to\ fit\ the\ user's\ selection\r\n\ 0\ for\ general\ ui\r\n\ 1\ for\ building\ a\ tower\r\n\ 2\ for\ sending\ creeps\r\n\ 3\ for\ selected\ a\ tower\r\n\ 4\ for\ selecting\ a\ tower\ during\ the\ buy\r\n\ 5\ for\ selecting\ a\ mob\r\n
+comment4.params=lives\ gold\ income
+comment4.target=void\ setGeneralData(int,\ int,\ int)
+comment5.params=current\ Next
+comment5.target=void\ setWaveData(int,\ int)
+comment6.params=t
+comment6.target=void\ setTowerData(Tower)
+comment7.params=e
+comment7.target=void\ setMobData(Enemy)
+comment8.params=
+comment8.target=Enemy\ getMob()
+comment9.params=
+comment9.target=void\ refresh()
+numComments=11

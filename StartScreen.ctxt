@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=restart
+comment0.target=StartScreen(boolean)
+comment1.params=restart
+comment1.target=void\ refresh(boolean)
+numComments=2

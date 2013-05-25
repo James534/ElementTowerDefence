@@ -1,0 +1,4 @@
+#BlueJ class context
+comment0.params=hp\ armor\ speed\ isBoss\ isFlying
+comment0.target=AirMob(int,\ int,\ float,\ boolean,\ boolean)
+numComments=1
