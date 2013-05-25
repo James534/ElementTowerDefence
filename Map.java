@@ -150,7 +150,8 @@ public class Map extends World{
     private int money;
     private int income;
     private int lives;
-    private int runSpeed;
+    private int currentRunSpeed;
+    private int[] runSpeed;
 
     //ui stuff
     private Ui ui;
@@ -187,7 +188,6 @@ public class Map extends World{
         endX2 = 39; endY2 = 12;
         endXf = 49; endYf = 24;
         topSpace = 15; leftSpace = 12;  //spaces from the top and left, hardcoded on enemy
-        runSpeed = 50;
 
         data = new Data();
 
@@ -213,6 +213,13 @@ public class Map extends World{
         flyingLevel     = false;
         levelStart      = false;
         bossLevel       = false;
+        currentRunSpeed = 3;
+        runSpeed = new int [5];
+        runSpeed[0] = 40;
+        runSpeed[1] = 50;
+        runSpeed[2] = 60;
+        runSpeed[3] = 70;
+        runSpeed[4] = 80;
 
         //ui
         ui = new Ui();             
@@ -384,11 +391,27 @@ public class Map extends World{
         }else if (Greenfoot.isKeyDown("escape")){
             cancelBuild(); 
         }else if (Greenfoot.isKeyDown("=")){
-            runSpeed++;
-            Greenfoot.setSpeed (runSpeed);
+            if (buttonDelay > 50){
+                currentRunSpeed++;
+                buttonDelay = 0;
+                if (currentRunSpeed <= 4){
+                    Greenfoot.setSpeed (runSpeed[currentRunSpeed]);
+                    cb.setMessage ("Speed changed to " + runSpeed[currentRunSpeed], 2);
+                }else{
+                    currentRunSpeed = 4;
+                }
+            }
         }else if (Greenfoot.isKeyDown("-")){
-            runSpeed--;
-            Greenfoot.setSpeed (runSpeed);
+            if (buttonDelay > 50){
+                currentRunSpeed--;
+                buttonDelay = 0;
+                if (currentRunSpeed >= 0){
+                    Greenfoot.setSpeed (runSpeed[currentRunSpeed]);
+                    cb.setMessage ("Speed changed to " + runSpeed[currentRunSpeed], 2);
+                }else{
+                    currentRunSpeed = 0;
+                }
+            }
         }else if (Greenfoot.isKeyDown("1")){
             cancelBuild();
             ui.changeUi (1);
@@ -403,7 +426,6 @@ public class Map extends World{
             if (buttonDelay >= 38) {
                 selectedTower.upgrade();  
                 buttonDelay =  0;
-
             }
         }
         else if (placeHolder == null && selectedTower == null){
