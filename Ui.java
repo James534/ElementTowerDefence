@@ -278,7 +278,7 @@ public class Ui extends Actor
                 //transparancy of the cd
                 tempX = 255 - Math.round ((float)tower.getCD() / tower.getAttackSpeed() * 255);
                 cooldown.setTransparency (tempX);
-                bg.drawImage (cooldown, 450, 160);                          //cooldown
+                bg.drawImage (cooldown, 460, 160);                          //cooldown
             }
 
             for (int i = 0; i < desc.size(); i++){
