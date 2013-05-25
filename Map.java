@@ -265,21 +265,22 @@ public class Map extends World{
                         cb.setMessage ("You Require More Money", 1);
                     }
                 }
-                if (ui.getId() == 2){       //if the user is sending creeps
-                    if (selected instanceof SendCreeps){
-                        SendCreeps button = (SendCreeps) selected;
-                        button.clicked (true);
-                        if (money >= button.getCost()){
-                            income += button.getIncome();
-                            money  -= button.getCost();
-                            resetUi();
-                            mobsToSpawn.add (button.getCreep());
-                            cb.setMessage ("sending 1 creep", 2);
-                        }
-                        else{
-                            cb.setMessage ("YOU DO NOT HAVE ENOUGH MONEY", 1);
-                        }
+                else if (selected instanceof SendCreeps){
+                    SendCreeps button = (SendCreeps) selected;
+                    button.clicked (true);
+                    if (money >= button.getCost()){
+                        income += button.getIncome();
+                        money  -= button.getCost();
+                        resetUi();
+                        mobsToSpawn.add (button.getCreep());
+                        cb.setMessage ("sending 1 creep", 2);
                     }
+                    else{
+                        cb.setMessage ("YOU DO NOT HAVE ENOUGH MONEY", 1);
+                    }
+                }
+                else if (selected instanceof Debuff){
+                    b.clicked (true);
                 }
             }
         }

@@ -47,6 +47,7 @@ public class Ui extends Actor
     private Button[][] buttons;
     private SellButton sellButton;
     private UpgradeButton upgradeButton;
+    private Debuff[] debuffs;
     public Ui(){
         bg = new GreenfootImage (1000, 230);
         cache = new GreenfootImage [6];
@@ -90,6 +91,10 @@ public class Ui extends Actor
         for (int i = 0; i < 32; i++){
             buttons[0][i] = new SendCreeps(i+1);
         }
+        debuffs = new Debuff [5];
+        for (int i = 0; i < 5; i++){
+            debuffs[i] = new Debuff(i);
+        }
 
         id = 0;
         lives   = 20;
@@ -131,6 +136,8 @@ public class Ui extends Actor
             upgradeButton   .clicked (false);
             map.addObject (sellButton   , 850, 675);
             map.addObject (upgradeButton, 850, 730);
+
+            map.addObject (debuffs[0]   , 780, 620);
         }
         refresh();
     }
