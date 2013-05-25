@@ -7,8 +7,8 @@ import java.util.ArrayList;
  * each different type of constructer should counstruct different buttons
  * 
  * 
- * @author Terence Lai, James Lu 
- * @version (0.01)
+ * @author James Lu, Terence Lai
+ * @version (1.0)
  */
 public class Ui extends Actor
 {
@@ -17,6 +17,8 @@ public class Ui extends Actor
     private GreenfootImage bg;
     private GreenfootImage[] cache;
     private GreenfootImage[] elements;
+    private GreenfootImage[] weapons;
+    private GreenfootImage cooldown;
 
     private Font generalFont;
     private Font waveFont;
@@ -64,6 +66,13 @@ public class Ui extends Actor
         elements[2] = new GreenfootImage ("UI/air2.png");
         elements[3] = new GreenfootImage ("UI/earth2.png");
 
+        weapons = new GreenfootImage [3];
+        weapons[0] = new GreenfootImage ("ui/bullet.png");
+        weapons[1] = new GreenfootImage ("ui/laser.png");
+        weapons[2] = new GreenfootImage ("ui/shell.png");
+
+        cooldown = new GreenfootImage ("ui/cd.png");
+
         generalFont = new Font ("Times New Roman", 1, 20);
         waveFont    = new Font ("Verdana"        , 1, 25);
         name        = new Font ("Vrinda"         , 1, 40);
@@ -110,7 +119,9 @@ public class Ui extends Actor
     }
 
     public void act(){
-        if (id == 5){           //if its describing a mob, always refresh to change hp
+        if (id == 3 || id == 5){           
+            //if its describing a mob, always refresh to change hp
+            //if its selecting a tower, refresh to show cooldown
             refresh();
         }
     }
@@ -258,8 +269,18 @@ public class Ui extends Actor
             //tower description
             bg.setColor (descColor);
             bg.setFont  (descFont);
-            tempString = "Level " + Integer.toString(tower.getLevel());
-            bg.drawString (tempString, 260, 100);
+            tempX = tower.getLevel();                   //level of the tower
+            tempString = "Level " + Integer.toString(tempX);
+            //cooldown of weapon
+            bg.drawString (tempString, 260, 100);      
+            bg.drawImage (weapons[tempX-1], 450, 160);                  //weapon id
+            if (id == 3){
+                //transparancy of the cd
+                tempX = 255 - Math.round ((float)tower.getCD() / tower.getAttackSpeed() * 255);
+                cooldown.setTransparency (tempX);
+                bg.drawImage (cooldown, 450, 160);                          //cooldown
+            }
+
             for (int i = 0; i < desc.size(); i++){
                 tempString = desc.get(i);
                 bg.drawString (tempString, 490, 85 + i * 20);
@@ -272,7 +293,7 @@ public class Ui extends Actor
             bg.drawString (tempString, 375, 152);
             tempString = Integer.toString(tower.getRange() );    //range
             bg.drawString (tempString, 375, 200);
-            tempString = Integer.toString(tower.getAttackSpeed());
+            tempString = Integer.toString(tower.getAttackSpeed());  //attack speed
             bg.drawString (tempString, 550, 152);
         } else if (id == 5){                    //mob selection
             //name of the mob

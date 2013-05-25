@@ -16,6 +16,7 @@ public class AirTower extends Tower
         range = 300; // maxiumum range of the tower 
         speed = 10;// speed of the projectile
         power = 50;
+        counter = attackRate;
         
         element = 1;
         elementString = "air";

@@ -10,12 +10,12 @@ public class FireTower extends Tower
 {
     public FireTower() 
     {
-        super();
         setImage("Towers/fireTower.png");
         attackRate = 20; // rate at which it attak
         range = 300; // maxiumum range of the tower 
         speed = 10;// speed of the projectile
         power = 10; 
+        counter = attackRate;
 
         element = 3;
         elementString = "fire";

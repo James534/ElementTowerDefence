@@ -16,6 +16,7 @@ public class EarthTower extends Tower
         range = 500; // maxiumum range of the tower 
         speed = 15;// speed of the projectile
         power = 1;
+        counter = attackRate;
         
         element = 4;
         elementString = "earth";

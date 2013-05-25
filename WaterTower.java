@@ -17,6 +17,7 @@ public class WaterTower extends Tower
         range = 50;
         speed = 4;
         power = 20; 
+        counter = attackRate;
 
         element = 2;
         elementString = "water";

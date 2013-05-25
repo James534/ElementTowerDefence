@@ -15,7 +15,7 @@ public class Tower extends Actor
 
     protected Map map;
     protected int price ;
-    private int counter = 0; //counter used to place the object on the second click (counter ==3 )
+    protected int counter; //counter used to place the object on the second click (counter ==3 )
     protected int gridX, gridY ;// refrence to what grid it is on
     protected Weapon basicAttack; //change this when upgraded.  
     protected int attackRate;
@@ -70,7 +70,7 @@ public class Tower extends Actor
     {
         this.active=n;
         if (active){
-            counter = 999;
+            counter = attackRate;
         }
     }
 
@@ -306,6 +306,13 @@ public class Tower extends Actor
      */
     public int getAttackSpeed(){
         return attackRate;
+    }
+
+    /**
+     * returns the current cooldown of the weapon
+     */
+    public int getCD(){
+        return counter;
     }
 
     /**
