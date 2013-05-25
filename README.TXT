@@ -18,7 +18,6 @@
  * type in tower descriptions *****
  *
  * 
- * get james to do money system for the upgrading.
  * pop up description for weapons
  * 
  * ------------------------------------------------
@@ -32,7 +31,8 @@
  * improved clicking functionality (selecting multiple towers after one another)
  * fixed various bugs involving target hp
  * added different runtimes
- * 
+ * added wall image
+ * added upgrade costs
  * 
  * 0.15 (May 22, 2013)
  * made towers more efficicent
