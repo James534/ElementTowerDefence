@@ -219,7 +219,8 @@ public class Map extends World{
     }
 
     /**
-     * Method that checks what did the user click on.  or what buttons are pressed
+     * Method that checks what did the user click on.  or what buttons are pressed.
+     * all user interaction is does in this method
      */
     private void checkInput(MouseInfo mouse){
         if(mouse != null && Greenfoot.mouseClicked(null)){

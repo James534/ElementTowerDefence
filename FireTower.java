@@ -24,5 +24,6 @@ public class FireTower extends Tower
 
         desc.add ("Tower with average power,");
         desc.add ("range and attack range");
+       
     }
 }
