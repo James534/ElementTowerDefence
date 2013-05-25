@@ -68,7 +68,7 @@ public class Map extends World{
     private ArrayList<Tower> towers = new ArrayList<Tower>(); //put in constructor 
 
     private boolean place =  false; //used to place the tower onto the field
-    private int  lvCounter;
+    private int lvCounter;
     private int buttonDelay; 
 
     //must keep a temporary refrence to the tower since it there are subsequent commands
@@ -254,7 +254,16 @@ public class Map extends World{
                 }
                 else if (selected instanceof UpgradeButton){
                     b.clicked (true);
-                    selectedTower.upgrade();
+                    if (money >= selectedTower.getUpgradeCost()){
+                        if (selectedTower.upgradeable()){
+                            selectedTower.upgrade();  
+                            changeMoney (-selectedTower.getUpgradeCost());
+                        }else{
+                            cb.setMessage ("Tower is fully upgraded", 1);
+                        }
+                    }else{
+                        cb.setMessage ("You Require More Money", 1);
+                    }
                 }
                 if (ui.getId() == 2){       //if the user is sending creeps
                     if (selected instanceof SendCreeps){
@@ -318,8 +327,17 @@ public class Map extends World{
         else if (Greenfoot.isKeyDown("U") && selectedTower != null)//temp placement
         {
             if (buttonDelay >= 38) {
-                selectedTower.upgrade();  
-                buttonDelay =  0;
+                if (money >= selectedTower.getUpgradeCost() ){
+                    if (selectedTower.upgradeable() ){
+                        selectedTower.upgrade();  
+                        changeMoney (-selectedTower.getUpgradeCost());
+                        buttonDelay =  0;
+                    } else{
+                        cb.setMessage ("Tower is Fully Upgraded", 1);
+                    }
+                }else{
+                    cb.setMessage ("You Require More Money", 1);
+                }
             }
         }
         else if (placeHolder == null && selectedTower == null){

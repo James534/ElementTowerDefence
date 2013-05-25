@@ -31,6 +31,7 @@ public class Tower extends Actor
     protected ArrayList<String> desc;
     protected int element;          //the element of the tower (air, water, fire, earth)
     protected String elementString; //the string of the element
+    protected int[] upgradeCost;
 
     protected int targetPriority;   //targetting priority, 1 for closest, 2 for furthest, etc
 
@@ -42,6 +43,11 @@ public class Tower extends Actor
         targetedMob = null;
         targetPriority = 1;
         level = 1; 
+        upgradeCost = new int[4];
+        upgradeCost[0] = 0;
+        upgradeCost[1] = 50;
+        upgradeCost[2] = 100;
+        upgradeCost[3] = 150;
     }
 
     /**
@@ -220,17 +226,16 @@ public class Tower extends Actor
      */
     public void upgrade()
     {
-
-        if (level <= 3)
+        if (level < 3)
         {
             power+=10;
             range+=3;
 
-            if(attackRate >  0){
+            if (attackRate >  0){
                 attackRate-=3;
-            }
-            if (attackRate <= 0){
-                attackRate = 1; 
+                if (attackRate <= 0){
+                    attackRate = 1; 
+                }
             }
 
             if (level == 1)
@@ -250,10 +255,6 @@ public class Tower extends Actor
             level++;
             map.displayMessage("Tower Upgraded"); 
         }
-        else 
-        {
-            map.displayMessage("TOWER FULLY UPGRADED");
-        }   
         map.resetUi(); //refreshes the ui after upgrade
     }
 
@@ -286,15 +287,41 @@ public class Tower extends Actor
         return name;
     }
 
+    /**
+     * returns the description of the tower
+     */
     public ArrayList<String> getDesc(){
         return desc;
     }
 
+    /**
+     * returns the damage of the tower
+     */
     public int getDmg(){
         return power;
     }
 
+    /**
+     * returns the attack speed of the tower
+     */
     public int getAttackSpeed(){
         return attackRate;
+    }
+
+    /**
+     * return the cost to upgrade the tower
+     */
+    public int getUpgradeCost(){
+        return upgradeCost[level-1];
+    }
+
+    /**
+     * returns true if the tower can be upgraded further
+     */
+    public boolean upgradeable(){
+        if (level < 3){
+            return true;
+        }
+        return false;
     }
 }

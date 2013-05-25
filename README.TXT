@@ -11,18 +11,15 @@
  * 
  * Terene's To DO:
  * 
- * add wall
  * change the debuff system do you can buy debuffs
  * balance
  * impliment sound
  * debuff system for last tier upgrades
- * figure out how to refresh tower after upgrade************
  * type in tower descriptions *****
  *
  * 
  * get james to do money system for the upgrading.
  * pop up description for weapons
- * get james to get a wall sprite
  * 
  * ------------------------------------------------
  * Changelog:
