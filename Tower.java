@@ -2,6 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color; 
 import java.util.List; 
 import java.util.ArrayList;
+import java.util.LinkedList;
 /**
  * Write a description of class Tower here.
  * 
@@ -25,16 +26,19 @@ public class Tower extends Actor
     protected String type; 
     private ChatBox cb;
     protected int level; 
+
     //added by james
-    protected Enemy targetedMob;
-    protected String name;
-    protected ArrayList<String> desc;
-    protected int element;          //the element of the tower (air, water, fire, earth)
-    protected String elementString; //the string of the element
-    protected int[] upgradeCost;
-
-    protected int targetPriority;   //targetting priority, 1 for closest, 2 for furthest, etc
-
+    protected Enemy             targetedMob;    
+    protected String            name;
+    protected ArrayList<String> desc;   
+    //the element of the tower (air, water, fire, earth)
+    protected int               element;
+    protected String            elementString;      //the string of the element    
+    protected int[]             upgradeCost;
+    //targetting priority, 1 for closest, 2 for furthest, etc
+    protected int               targetPriority;     
+    //the number of debuffs this tower has bought
+    protected LinkedList<Integer> debuffs;
     public Tower()
     {
         name = "";
@@ -48,6 +52,7 @@ public class Tower extends Actor
         upgradeCost[1] = 50;
         upgradeCost[2] = 100;
         upgradeCost[3] = 150;
+        debuffs = new LinkedList<Integer>();
     }
 
     /**
@@ -330,5 +335,31 @@ public class Tower extends Actor
      */
     public int getLevel(){
         return level;
+    }
+
+    /**
+     * returns the element of the tower
+     */
+    public int getElement(){
+        return element;
+    }
+
+    /**
+     * adds a debuff on the tower
+     * called when the user buys a debuff
+     */
+    public void addDebuff(int id){
+        debuffs.add (id);
+    }
+
+    /**
+     * returns the number of debuffs this tower currently has
+     */
+    public int[] getDebuffs(){
+        int[] temp = new int[debuffs.size()];
+        for (int i = 0; i < debuffs.size(); i++){
+            temp[i] = debuffs.get(i);
+        }
+        return temp;
     }
 }

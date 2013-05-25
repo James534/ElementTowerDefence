@@ -280,7 +280,9 @@ public class Map extends World{
                     }
                 }
                 else if (selected instanceof Debuff){
-                    b.clicked (true);
+                    Debuff d = (Debuff) selected;
+                    d.bought (true);
+                    selectedTower.addDebuff (d.getId());
                 }
             }
         }

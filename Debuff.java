@@ -10,6 +10,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Debuff extends UIButton
 {
+    private boolean bought;
+    private int id;
     public Debuff (int id){
         if (id == 0){                   //stun
             bg[0] = new GreenfootImage ("ui/stunned.png");
@@ -19,18 +21,27 @@ public class Debuff extends UIButton
             bg[0] = new GreenfootImage ("ui/lightning.png");
             bg[1] = new GreenfootImage ("ui/lightning.png");
             bg[2] = new GreenfootImage ("ui/lightning.png");
-        }
-        else{
-            bg[0] = new GreenfootImage ("ui/lightning.png");
-            bg[1] = new GreenfootImage ("ui/lightning.png");
-            bg[2] = new GreenfootImage ("ui/lightning.png");
+        }else if (id == 2){             //water
+            bg[0] = new GreenfootImage ("ui/iceDebuff.png");
+            bg[1] = new GreenfootImage ("ui/iceDebuff.png");
+            bg[2] = new GreenfootImage ("ui/iceDebuff.png");
+        }else if (id == 3){             //fire
+            bg[0] = new GreenfootImage ("ui/burning.png");
+            bg[1] = new GreenfootImage ("ui/burning.png");
+            bg[2] = new GreenfootImage ("ui/burning.png");            
+        }else{                          //earth
+            bg[0] = new GreenfootImage ("ui/stone.png");
+            bg[1] = new GreenfootImage ("ui/stone.png");
+            bg[2] = new GreenfootImage ("ui/stone.png");
         }
         bg[0].setTransparency (100);
         bg[1].setTransparency (200);
+        bought = false;
+        this.id = id;
     }
 
     public void act(){
-        if (clicked){
+        if (bought){
             hoverCounter = 0;
             this.setImage (bg[2]);
         }
@@ -46,5 +57,19 @@ public class Debuff extends UIButton
         else{
             this.setImage (bg[0]);
         }
+    }
+
+    /**
+     * changes the button to see if its bought
+     */
+    public void bought (boolean t){
+        bought = t;
+    }
+
+    /**
+     * returns the id of the debuff
+     */
+    public int getId (){
+        return id;
     }
 }
