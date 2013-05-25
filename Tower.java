@@ -45,11 +45,10 @@ public class Tower extends Actor
         targetedMob = null;
         targetPriority = 1;
         level = 1; 
-        upgradeCost = new int[4];
-        upgradeCost[0] = 0;
-        upgradeCost[1] = 50;
-        upgradeCost[2] = 100;
-        upgradeCost[3] = 150;
+        upgradeCost = new int[3];
+        upgradeCost[0] = 50;
+        upgradeCost[1] = 100;
+        upgradeCost[2] = 150;
         debuffs = new LinkedList<Integer>();
     }
 
