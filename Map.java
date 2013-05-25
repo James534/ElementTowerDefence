@@ -258,6 +258,7 @@ public class Map extends World{
                         if (selectedTower.upgradeable()){
                             selectedTower.upgrade();  
                             changeMoney (-selectedTower.getUpgradeCost());
+                            refreshUi = true;
                         }else{
                             cb.setMessage ("Tower is fully upgraded", 1);
                         }
@@ -335,6 +336,7 @@ public class Map extends World{
                         selectedTower.upgrade();  
                         changeMoney (-selectedTower.getUpgradeCost());
                         buttonDelay =  0;
+                        refreshUi = true;
                     } else{
                         cb.setMessage ("Tower is Fully Upgraded", 1);
                     }

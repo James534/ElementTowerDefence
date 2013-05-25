@@ -263,11 +263,6 @@ public class Tower extends Actor
         map.resetUi(); //refreshes the ui after upgrade
     }
 
-    private void addDebuff()
-    {
-
-    }
-
     /**
      * passes the maximum attack range of the tower
      */
