@@ -35,7 +35,7 @@ public class StartScreen extends Actor
             startButton.fill();
             startButton.setColor    (Color.BLACK);
             startButton.setFont     (startButtonFont);
-            startButton.drawString  ("Press space", 20, 40);
+            startButton.drawString  ("Press Space", 20, 40);
 
             bg.drawImage (startButton, 412, 500);
         }

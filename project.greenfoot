@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Sat May 25 15:57:29 EDT 2013
+#Sat May 25 16:04:06 EDT 2013
 target24.type=ClassTarget
 target16.name=HealthBar
 target13.editor.width=900
@@ -297,8 +297,8 @@ target21.editor.width=900
 dependency37.to=EarthTower
 target2.height=50
 dependency12.type=UsesDependency
-target24.editor.y=203
-target24.editor.x=-1068
+target24.editor.y=119
+target24.editor.x=454
 dependency64.type=UsesDependency
 target8.editor.width=900
 dependency84.to=Debuff
