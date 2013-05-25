@@ -222,7 +222,7 @@ public class Map extends World{
                 refreshUi = true;
                 resetDefaultUi();
             }
-            else if (selected instanceof Tile){    //cancel selection of the tower
+            else if (selected instanceof Tile || selected instanceof Range){    //cancel selection of the tower
                 cancelBuild();                
             } 
             else if (selected instanceof Enemy && selectedTower == null){
