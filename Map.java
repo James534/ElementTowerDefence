@@ -9,6 +9,8 @@ import java.awt.Color;
  * 
  * @James Lu & Terence Lai
  * @0.17
+ * 
+ * I am making change on my mac to sync to my pc
  *
  */
 public class Map extends World{
