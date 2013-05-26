@@ -360,6 +360,7 @@ public class Map extends World{
                 }
             }
         }
+  
         else if (placeHolder == null && selectedTower == null){
             boolean temp = false;
             if      (Greenfoot.isKeyDown ("F")){

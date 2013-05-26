@@ -143,6 +143,8 @@ public class Tower extends Actor
 
     private void launch(){
         if (targetedMob.getTargetHp() >= 0){
+
+            fireDebuff();
             if (type.equals("pierce"))
             {//piercing strike
                 basicAttack = new Laser(speed, power,1,element,targetedMob,elementString);  
@@ -159,6 +161,16 @@ public class Tower extends Actor
             }
             map.addObject (basicAttack,this.getX(), this.getY());
             counter = 0 ; 
+        }
+    }
+
+    private void fireDebuff() 
+    {
+        int[] debuffList = getDebuffs(); 
+        for (int i = 0; i < debuffList.length; i++){
+            if (Math.random()<= 0.1){
+              //  targetedMob.debuff(1,debuffList[i]);
+            }
         }
     }
 
@@ -250,10 +262,7 @@ public class Tower extends Actor
                 changeWeapon("artillery");
                 attackRate= 300;
             }
-            else if (level ==3)
-            {
-                //addDebuff();
-            }
+
             level++;
             counter = 0;
             map.displayMessage("Tower Upgraded", 2); 
