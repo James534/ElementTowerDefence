@@ -49,7 +49,7 @@ public class Ui extends Actor
     private Button[][] buttons;
     private SellButton sellButton;
     private UpgradeButton upgradeButton;
-    private Debuff[] debuffs;
+    private DebuffButton[] debuffs;
     public Ui(){
         bg = new GreenfootImage (1000, 230);
         cache = new GreenfootImage [6];
@@ -100,9 +100,9 @@ public class Ui extends Actor
         for (int i = 0; i < 32; i++){
             buttons[0][i] = new SendCreeps(i+1);
         }
-        debuffs = new Debuff [5];
+        debuffs = new DebuffButton [5];
         for (int i = 0; i < 5; i++){
-            debuffs[i] = new Debuff(i);
+            debuffs[i] = new DebuffButton(i);
         }
 
         id = 0;

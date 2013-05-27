@@ -37,7 +37,8 @@ public class Enemy extends Actor
     protected boolean isBoss;
 
     //debuffs
-    protected ArrayList<Integer> debuff;
+    private float slowX, slowY;
+    protected ArrayList<Debuff> debuff;
     protected DebuffVisu dv;
 
     public Enemy(int hp, int armor, float speed, boolean isBoss, boolean isFlying){
@@ -56,7 +57,7 @@ public class Enemy extends Actor
     }
 
     public Enemy(){
-        debuff = new ArrayList<Integer>();
+        debuff = new ArrayList<Debuff>();
         dv = new DebuffVisu();
     }
 
@@ -75,8 +76,8 @@ public class Enemy extends Actor
     }
 
     public void act(){
-        chooseMovement();
         debuffs();
+        chooseMovement();
     }
 
     /**
@@ -137,13 +138,29 @@ public class Enemy extends Actor
             //increase debuff duration here
         }
         else{
-            debuff.add (id);
+            debuff.add (new Debuff (id, debuffLv, this));
             dv.setDebuff (0);
         }
     }
 
     private void debuffs(){
+        slowX = 0;
+        slowY = 0;
+        for (int i = 0; i < debuff.size(); i++){
+            Debuff d = debuff.get (i);
+            d.run();
+            if (d.getId() == 0){            //if its stun
+                slowX = accX * d.getSlow();
+                slowY = accY * d.getSlow();
+            }
+        }
+    }
 
+    /**
+     * called by the debuff class to remove itself once its run out
+     */
+    public void removeDebuff(Debuff d){
+        debuff.remove (d);
     }
 
     private void chooseMovement(){
@@ -183,8 +200,8 @@ public class Enemy extends Actor
         accY = (tempTile.getMovementY(stage) * speed);
 
         //adds the acceleration to the real x and y
-        realX += accX;
-        realY += accY;
+        realX += (accX - slowX);
+        realY += (accY - slowY);
 
         //smooth movment variables, for making it stay in the grid
         smoothMoveX = Math.round((realX-12) % 20) - 10;
@@ -270,6 +287,10 @@ public class Enemy extends Actor
     }
 
     public ArrayList<Integer> getDebuffs(){
-        return debuff;
+        ArrayList<Integer> al = new ArrayList<Integer> (debuff.size());
+        for (int i = 0; i < debuff.size(); i++){
+            al.add (debuff.get(i).getId());
+        }
+        return al;
     }
 }

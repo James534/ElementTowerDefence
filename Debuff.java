@@ -1,95 +1,54 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
 /**
- * The button to buy debuffs on towers
- * 
- * also shows the debuffs on the mobs
+ * The class of debuffs
+ * each debuff is it's own class
  * 
  * @author James Lu
- * @version 0.1
+ * @version 1.0
  */
-public class Debuff extends UIButton
+public class Debuff  
 {
-    private boolean bought;
-    private int id;
-    private String name;
-    public Debuff (int id){
-        if (id == 0){                   //stun
-            bg[0] = new GreenfootImage ("ui/stunned.png");
-            bg[1] = new GreenfootImage ("ui/stunned.png");
-            bg[2] = new GreenfootImage ("ui/stunned.png");
-            name = "Stun";
-        }else if (id == 1){             //lightning
-            bg[0] = new GreenfootImage ("ui/lightning.png");
-            bg[1] = new GreenfootImage ("ui/lightning.png");
-            bg[2] = new GreenfootImage ("ui/lightning.png");
-            name = "Lightning";
-        }else if (id == 2){             //water
-            bg[0] = new GreenfootImage ("ui/iceDebuff.png");
-            bg[1] = new GreenfootImage ("ui/iceDebuff.png");
-            bg[2] = new GreenfootImage ("ui/iceDebuff.png");
-            name = "Freeze";
-        }else if (id == 3){             //fire
-            bg[0] = new GreenfootImage ("ui/burning.png");
-            bg[1] = new GreenfootImage ("ui/burning.png");
-            bg[2] = new GreenfootImage ("ui/burning.png");      
-            name = "Burn";      
-        }else{                          //earth
-            bg[0] = new GreenfootImage ("ui/stone.png");
-            bg[1] = new GreenfootImage ("ui/stone.png");
-            bg[2] = new GreenfootImage ("ui/stone.png");
-            name = "Earth";
-        }
-        bg[0].setTransparency (100);
-        bg[1].setTransparency (200);
-        bought = false;
+    private Enemy enemy;        //the enemy this debuff belongs to
+    private int id;             //id of the debuff
+    private int duration;       //duration of the debuff
+    private int dmg;            //damage of the debuff
+    private float slow;         //slow of the debuff
+    public Debuff(int id, int lv, Enemy e)
+    {
         this.id = id;
-    }
-
-    public void act(){
-        if (bought){
-            hoverCounter = 0;
-            this.setImage (bg[2]);
-        }
-        else if (selected){
-            selected = false;
-            this.setImage (bg[1]);
-            if (hoverCounter >= 50){
-                map.hm.setData (this);
-                int[] co = setCo();
-                map.addObject (map.hm, co[0], co[1]);
+        enemy = e;
+        if (id == 0){        //stun
+            if (lv == 1){
+                duration = 10;
+                dmg = 0;
+                slow = 1f;
             }
         }
-        else{
-            this.setImage (bg[0]);
+    }
+
+    /**
+     * the "act" method for the debuff class
+     * have to call this class manually since its not an actor
+     */
+    public void run(){
+        duration--;
+        if (duration == 0){
+            enemy.removeDebuff (this);
         }
     }
 
-    /**
-     * changes the button to see if its bought
-     */
-    public void bought (boolean t){
-        bought = t;
-    }
-    
-    /**
-     * returns true if the debuff is already bought
-     */
-    public boolean isBought(){
-        return bought;
-    }
-
-    /**
-     * returns the id of the debuff
-     */
-    public int getId (){
+    public int getId(){
         return id;
     }
 
-    /**
-     * returns the name of the debuff
-     */
-    public String getName(){
-        return name;
+    public int getDuration(){
+        return duration;
+    }
+
+    public int getDmg(){
+        return dmg;
+    }
+
+    public float getSlow(){
+        return slow;
     }
 }

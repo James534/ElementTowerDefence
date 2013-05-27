@@ -17,7 +17,7 @@ public class DebuffVisu extends Actor
     private boolean show;           //whether to show this or not
     public DebuffVisu(){
         counter = 0;
-        bg = new GreenfootImage (40, 40);
+        bg = new GreenfootImage (20, 20);
         this.setImage (bg);
     }
 

@@ -1,18 +1,15 @@
 #BlueJ class context
-comment0.params=id
-comment0.target=Debuff(int)
+comment0.params=id\ lv\ e
+comment0.target=Debuff(int,\ int,\ Enemy)
 comment1.params=
-comment1.target=void\ act()
-comment2.params=t
-comment2.target=void\ bought(boolean)
-comment2.text=\r\n\ changes\ the\ button\ to\ see\ if\ its\ bought\r\n
+comment1.target=void\ run()
+comment1.text=\r\n\ the\ "act"\ method\ for\ the\ debuff\ class\r\n\ have\ to\ call\ this\ class\ manually\ since\ its\ not\ an\ actor\r\n
+comment2.params=
+comment2.target=int\ getId()
 comment3.params=
-comment3.target=boolean\ isBought()
-comment3.text=\r\n\ returns\ true\ if\ the\ debuff\ is\ already\ bought\r\n
+comment3.target=int\ getDuration()
 comment4.params=
-comment4.target=int\ getId()
-comment4.text=\r\n\ returns\ the\ id\ of\ the\ debuff\r\n
+comment4.target=int\ getDmg()
 comment5.params=
-comment5.target=java.lang.String\ getName()
-comment5.text=\r\n\ returns\ the\ name\ of\ the\ debuff\r\n
+comment5.target=float\ getSlow()
 numComments=6

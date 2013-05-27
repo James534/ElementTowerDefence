@@ -72,8 +72,8 @@ public class HoverMenu extends Actor
             desc[4] = "Armor: " + Integer.toString (c.getArmor());
             desc[5] = "Speed: " + Float.toString (c.getSpeed());
         }
-        else if (a instanceof Debuff){
-            Debuff d = (Debuff) a;
+        else if (a instanceof DebuffButton){
+            DebuffButton d = (DebuffButton) a;
         }
         refresh();
     }

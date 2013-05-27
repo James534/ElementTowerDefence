@@ -292,8 +292,8 @@ public class Map extends World{
                         cb.setMessage ("YOU DO NOT HAVE ENOUGH MONEY", 1);
                     }
                 }
-                else if (selected instanceof Debuff){
-                    Debuff d = (Debuff) selected;
+                else if (selected instanceof DebuffButton){
+                    DebuffButton d = (DebuffButton) selected;
                     if (d.isBought() == false){
                         d.bought (true);
                         selectedTower.addDebuff (d.getId());
