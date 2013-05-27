@@ -360,7 +360,7 @@ public class Map extends World{
                 }
             }
         }
-  
+
         else if (placeHolder == null && selectedTower == null){
             boolean temp = false;
             if      (Greenfoot.isKeyDown ("F")){
@@ -569,7 +569,9 @@ public class Map extends World{
 
         setPaintOrder (StartScreen.class, HoverMenu.class, ChatBox.class, 
             Button.class, Ui.class, PointerArrow.class, Weapon.class, 
-            Tower.class, Range.class, HealthBar.class, Enemy.class, Tower.class, Tile.class);        
+            Tower.class, Range.class, 
+            HealthBar.class, Enemy.class, DebuffVisu.class,
+            Tower.class, Tile.class);        
     }
 
     /**

@@ -35,7 +35,10 @@ public class Enemy extends Actor
 
     protected boolean flying;
     protected boolean isBoss;
+
+    //debuffs
     protected ArrayList<Integer> debuff;
+    protected DebuffVisu dv;
 
     public Enemy(int hp, int armor, float speed, boolean isBoss, boolean isFlying){
         this();
@@ -54,6 +57,7 @@ public class Enemy extends Actor
 
     public Enemy(){
         debuff = new ArrayList<Integer>();
+        dv = new DebuffVisu();
     }
 
     protected void addedToWorld(World world){
@@ -67,10 +71,12 @@ public class Enemy extends Actor
         accY    = 0;
 
         world.addObject (hpBar, Math.round (realX), Math.round (realY));
+        world.addObject (dv, Math.round (realX), Math.round (realY));
     }
 
     public void act(){
         chooseMovement();
+        debuffs();
     }
 
     /**
@@ -108,6 +114,7 @@ public class Enemy extends Actor
         hpBar.changeHp (currentHp);
         if (currentHp <=0){
             world.removeObject (hpBar);
+            world.removeObject (dv);
             world.mobDie (this, false);
         }
     }
@@ -122,9 +129,27 @@ public class Enemy extends Actor
         targetHp -= realDmg;
     }
 
+    /**
+     * called when the weapon with a debuff hits the enemy
+     */
+    public void addDebuff (int id, int debuffLv, int element, int orgDmg){
+        if (debuff.contains (id)){             //if there is already a debuff on the mob
+            //increase debuff duration here
+        }
+        else{
+            debuff.add (id);
+            dv.setDebuff (0);
+        }
+    }
+
+    private void debuffs(){
+
+    }
+
     private void chooseMovement(){
         if (x == 49 && y == 25){     
             world.removeObject (hpBar);
+            world.removeObject (dv);
             currentHp = 0;
             world.mobDie (this, true);
         }
@@ -205,6 +230,7 @@ public class Enemy extends Actor
         intX = Math.round (realX);
         intY = Math.round (realY);
         hpBar.changeLocation (intX, intY);
+        dv   .changeLocation (intX, intY);
         setLocation (intX, intY);
     }
 
@@ -242,7 +268,7 @@ public class Enemy extends Actor
     public String getName(){
         return name;
     }
-    
+
     public ArrayList<Integer> getDebuffs(){
         return debuff;
     }

@@ -169,7 +169,8 @@ public class Tower extends Actor
         int[] debuffList = getDebuffs(); 
         for (int i = 0; i < debuffList.length; i++){
             if (Math.random()<= 0.1){
-              //  targetedMob.debuff(1,debuffList[i]);
+                targetedMob.addDebuff(debuffList[i], 1, element, power);
+                //add this to the weapon class
             }
         }
     }

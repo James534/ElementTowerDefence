@@ -49,6 +49,12 @@ public class Data
             new GreenfootImage ("UI/stone.png")
         };
 
+    public static final GreenfootImage[] stun = {
+            new GreenfootImage ("debuff/stun/1.png"), new GreenfootImage ("debuff/stun/2.png"),
+            new GreenfootImage ("debuff/stun/3.png"), new GreenfootImage ("debuff/stun/4.png"),
+            new GreenfootImage ("debuff/stun/5.png"), new GreenfootImage ("debuff/stun/6.png")
+        };
+
     public Data(){
         q = new mobQueue();
         populate();

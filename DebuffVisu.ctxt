@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=
+comment0.target=DebuffVisu()
+comment1.params=id
+comment1.target=void\ setDebuff(int)
+comment2.params=b
+comment2.target=void\ ifShow(boolean)
+comment3.params=
+comment3.target=void\ act()
+comment4.params=x\ y
+comment4.target=void\ changeLocation(int,\ int)
+numComments=5
