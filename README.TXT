@@ -12,10 +12,8 @@
  * Terene's To DO:
  * 
  * change the debuff system do you can buy debuffs
- * balance
- * impliment sound
- * debuff system for last tier upgrades
- * type in tower descriptions *****
+ * balance**
+ * impliment sound***
  *
  * 
  * pop up description for weapons
@@ -23,6 +21,11 @@
  * ------------------------------------------------
  * Changelog:
  * NOW OFFICIALLY IN APLHA
+
+0.18 (I don't know what version, its after debuffs)
+added try/catch to end the game (code end game code in)
+fix healthbar layering
+
  * 
  * 0.16 (May 24,2013)
  * programmed functionality in upgrade button

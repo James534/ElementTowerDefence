@@ -568,9 +568,9 @@ public class Map extends World{
         startInitialize (false);
 
         setPaintOrder (StartScreen.class, HoverMenu.class, ChatBox.class, 
-            Button.class, Ui.class, PointerArrow.class, Weapon.class, 
+            Button.class, Ui.class,HealthBar.class, PointerArrow.class, Weapon.class, 
             Tower.class, Range.class, 
-            HealthBar.class, Enemy.class, DebuffVisu.class,
+             Enemy.class, DebuffVisu.class,
             Tower.class, Tile.class);        
     }
 
