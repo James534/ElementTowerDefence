@@ -8,7 +8,7 @@ import java.awt.Color;
  * Element Tower Defence
  * 
  * @James Lu & Terence Lai
- * @0.17
+ * @0.2
  * 
  * ok now this is a test from the pc to the mac
  *

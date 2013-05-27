@@ -20,7 +20,7 @@
  * 
  * ------------------------------------------------
  * Changelog:
- * NOW OFFICIALLY IN APLHA
+ * NOW OFFICIALLY IN BETA
 
 0.18 (I don't know what version, its after debuffs)
 added try/catch to end the game (code end game code in)

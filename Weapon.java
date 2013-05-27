@@ -41,8 +41,6 @@ public class Weapon extends Actor
      **/
     protected void move() 
     {
-        m= (Map) getWorld();
-
         if (target!= null && m.checkEnemy(target) == true)
         {
             //System.out.println(target);
@@ -54,7 +52,7 @@ public class Weapon extends Actor
         {
             active = false; 
         }
-        checkHit(1); 
+        checkHit(); 
 
     }
 
@@ -66,33 +64,16 @@ public class Weapon extends Actor
     /**
      * checks to see what the rocket hit, and removes it, aoe is splash damage.
      */
-    private void checkHit(int aoe) 
+    private void checkHit() 
     {
         // Enemy e = (Enemy) getOneIntersectingObject(Enemy.class);
         List<Enemy> hit = getObjectsInRange(10,Enemy.class);
+        if ( hit.size() != 0 && hit.get(0) == target)
+        {
+            Enemy e = hit.get(0);
 
-     
-            if ( hit.size() != 0 && hit.get(0) == target)
-            {
-                Enemy e = hit.get(0);
-                if (this instanceof Artillery )
-                {
-                    List<Enemy> temp = getObjectsInRange(aoe,Enemy.class);
-                    for (int i = 0; i < temp.size();i++)
-                    {           
-                        Enemy x = temp.get(i);
-                        if (x!= null)
-                        {
-                            x.damage(power, 1); 
-                        }
-
-                    }
-                }
-                else 
-                {  target.damage(power, elementId); }
-
-                active = false ; //removes the object in the world
-
+            target.damage(power, elementId); 
+            active = false ; //removes the object in the world
         }
         if(m.withinField(this.getX(), this.getY()) == false )
         {
