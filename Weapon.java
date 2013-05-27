@@ -68,12 +68,30 @@ public class Weapon extends Actor
      */
     private void checkHit(int aoe) 
     {
-        Enemy e = (Enemy) getOneIntersectingObject(Enemy.class);
-        if (e!= null || e == target)
-        {
-            target.damage(power, elementId);
+        // Enemy e = (Enemy) getOneIntersectingObject(Enemy.class);
+        List<Enemy> hit = getObjectsInRange(10,Enemy.class);
 
-            active = false ; //removes the object in the world
+     
+            if ( hit.size() != 0 && hit.get(0) == target)
+            {
+                Enemy e = hit.get(0);
+                if (this instanceof Artillery )
+                {
+                    List<Enemy> temp = getObjectsInRange(aoe,Enemy.class);
+                    for (int i = 0; i < temp.size();i++)
+                    {           
+                        Enemy x = temp.get(i);
+                        if (x!= null)
+                        {
+                            x.damage(power, 1); 
+                        }
+
+                    }
+                }
+                else 
+                {  target.damage(power, elementId); }
+
+                active = false ; //removes the object in the world
 
         }
         if(m.withinField(this.getX(), this.getY()) == false )
@@ -83,5 +101,4 @@ public class Weapon extends Actor
 
     }
 
-    
 }

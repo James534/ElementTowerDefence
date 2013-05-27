@@ -161,6 +161,7 @@ public class Enemy extends Actor
      */
     public void removeDebuff(Debuff d){
         debuff.remove (d);
+        dv.show (false);
     }
 
     private void chooseMovement(){

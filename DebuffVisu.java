@@ -31,7 +31,7 @@ public class DebuffVisu extends Actor
         show = true;
     }
 
-    public void ifShow(boolean b){
+    public void show(boolean b){
         show = b;
     }
 
@@ -48,6 +48,8 @@ public class DebuffVisu extends Actor
             else{
                 counter++;
             }
+        }else{
+            this.setImage (bg);
         }
     }
 

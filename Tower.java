@@ -261,7 +261,7 @@ public class Tower extends Actor
             else if (level == 2)
             {
                 changeWeapon("artillery");
-                attackRate= 300;
+                attackRate= 100;
             }
 
             level++;

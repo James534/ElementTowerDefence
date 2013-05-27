@@ -93,14 +93,8 @@ public class Data
     }
 
     public void nextLevel(){
-        try {
-            mob = q.dequeue();
-            updateData();
-        }
-        catch (Exception e)
-        {
-            //run win code here; 
-        }
+        mob = q.dequeue();
+        updateData();
     }
 
     /**

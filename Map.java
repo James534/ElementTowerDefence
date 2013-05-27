@@ -105,7 +105,7 @@ public class Map extends World{
         pf3 = new Pathfind (endX2, endY2, endXf, endYf, this);         //rightmost path
 
         //tower defence stuff
-        money           = 100;
+        money           = 10000;
         income          = 0;
         lives           = 20;
         level           = 1;
@@ -114,13 +114,14 @@ public class Map extends World{
         flyingLevel     = false;
         levelStart      = false;
         bossLevel       = false;
-        currentRunSpeed = 3;
+        currentRunSpeed = 1;
         runSpeed = new int [5];
         runSpeed[0] = 40;
         runSpeed[1] = 50;
         runSpeed[2] = 60;
         runSpeed[3] = 70;
         runSpeed[4] = 80;
+        Greenfoot.setSpeed (50);
 
         //ui
         ui = new Ui();             
