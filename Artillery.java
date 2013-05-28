@@ -22,6 +22,7 @@ public class Artillery extends Weapon
         }
         else
         {
+            m.addObject (new Explosion (aoe), this.getX(), this.getY());
             m.removeObject(this);
         }
     }
@@ -49,7 +50,7 @@ public class Artillery extends Weapon
         List<Enemy> hit = getObjectsInRange(10,Enemy.class);
         if ( hit.size() != 0 && hit.get(0) == target)
         {
-            List<Enemy> temp = getObjectsInRange(aoe,Enemy.class);
+            List<Enemy> temp = getObjectsInRange(aoe/2,Enemy.class);
             for (int i = 0; i < temp.size();i++)
             {           
                 Enemy x = temp.get(i);
@@ -58,7 +59,6 @@ public class Artillery extends Weapon
                     x.damage(power, elementId); 
                 }
             }
-
             active = false ; //removes the object in the world
         }
         if(m.withinField(this.getX(), this.getY()) == false )

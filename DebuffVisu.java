@@ -5,16 +5,10 @@ import greenfoot.*;
  * @author James Lu
  * @version 1.0
  */
-public class DebuffVisu extends Actor  
+public class DebuffVisu extends Effects  
 {
-    private GreenfootImage bg;
-    private GreenfootImage[] cache;
-
-    private int counter;            //increases every act
     private int frame;              //current frame of the picture
     private int maxFrame;           //max frame of the pictures
-
-    private boolean show;           //whether to show this or not
     public DebuffVisu(){
         counter = 0;
         bg = new GreenfootImage (20, 20);
@@ -29,10 +23,6 @@ public class DebuffVisu extends Actor
             maxFrame = 6;
         }
         show = true;
-    }
-
-    public void show(boolean b){
-        show = b;
     }
 
     public void act(){
