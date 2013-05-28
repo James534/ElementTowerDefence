@@ -81,6 +81,8 @@ public class Map extends World{
 
     //sound
     private Sound s;
+    private int[] volume;
+    private int currentVolume;
 
     /** 
      * variable initation
@@ -166,6 +168,12 @@ public class Map extends World{
         towers = new ArrayList<Tower>();
 
         s = new Sound(); 
+        volume = new int[21];
+        currentVolume = 16;
+        for (int i = 0; i < 21; i++){
+            volume[i] = i*5;
+        }
+        s.setVolume (volume[currentVolume]);
 
         //variable to run place movemet 
         place =  false;
@@ -346,6 +354,28 @@ public class Map extends World{
                     cb.setMessage ("Speed changed to " + runSpeed[currentRunSpeed], 2);
                 }else{
                     currentRunSpeed = 0;
+                }
+            }
+        }else if (Greenfoot.isKeyDown("up")){
+            if (buttonDelay > runSpeedDelay[currentRunSpeed]){
+                buttonDelay = 0;
+                currentVolume++;
+                if (currentVolume <= 20){
+                    s.setVolume (volume[currentVolume]);
+                    cb.setMessage ("Volume increased to " + volume[currentVolume], 2);
+                }else{
+                    currentVolume = 20;
+                }
+            }
+        }else if (Greenfoot.isKeyDown("down")){
+            if (buttonDelay > runSpeedDelay[currentRunSpeed]){
+                buttonDelay = 0;
+                currentVolume--;
+                if (currentVolume >= 0){
+                    s.setVolume (volume[currentVolume]);
+                    cb.setMessage ("Volume increased to " + volume[currentVolume], 2);
+                }else{
+                    currentVolume = 0;
                 }
             }
         }else if (Greenfoot.isKeyDown("1")){

@@ -8,13 +8,16 @@ import java.util.ArrayList;
 public class Sound
 {
     private LinkedList<GreenfootSound> track;
-    private String moneyName;
     private GreenfootSound[] attack;
+
+    private String moneyName;
+    private int volume;
     public Sound()
     {
         track = new LinkedList<GreenfootSound>();
-        moneyName = "Sounds/buy.wav";
-        attack = new GreenfootSound[4];
+        moneyName   = "Sounds/buy.wav";
+        volume      = 50;
+        attack      = new GreenfootSound[4];
 
         attack[0] = new GreenfootSound("Sounds/airAttack.wav"); 
         attack[1] = new GreenfootSound("Sounds/fireAttack.wav"); 
@@ -44,6 +47,7 @@ public class Sound
 
     public void playMoney(){
         GreenfootSound money = new GreenfootSound (moneyName);
+        money.setVolume (volume);
         money.play();
         track.add (money);
     }
@@ -54,12 +58,19 @@ public class Sound
 
         money.setVolume(0);
         money.play();
-        money.setVolume(50);
+        money.setVolume(volume);
         for (int i = 0; i < attack.length; i++){
             GreenfootSound s = attack[i];
             s.setVolume (0);
             s.play();
-            s.setVolume (50);
+            s.setVolume (volume);
+        }
+    }
+
+    public void setVolume(int v){
+        volume = v;
+        for (GreenfootSound s : track){
+            s.setVolume (volume);
         }
     }
 }

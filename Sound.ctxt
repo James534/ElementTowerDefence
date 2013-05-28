@@ -9,4 +9,6 @@ comment3.params=
 comment3.target=void\ playMoney()
 comment4.params=
 comment4.target=void\ playOnce()
-numComments=5
+comment5.params=v
+comment5.target=void\ setVolume(int)
+numComments=6
