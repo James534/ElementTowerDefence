@@ -159,6 +159,16 @@ public class Tower extends Actor
                 basicAttack = new Normal(speed, power,1, element, targetedMob, elementString);  
                 targetedMob.targetDmg (power, element);
             }
+            //add sound here
+            if (this instanceof FireTower){
+               
+            }
+            else if (this instanceof WaterTower){
+            }
+            else if (this instanceof EarthTower){
+            }
+            else  if (this instanceof AirTower){
+            }
             map.addObject (basicAttack,this.getX(), this.getY());
             counter = 0 ; 
         }

@@ -70,6 +70,9 @@ comment3.target=void\ checkInput(greenfoot.MouseInfo)
 comment3.text=\n\ Method\ that\ checks\ what\ did\ the\ user\ click\ on.\ \ or\ what\ buttons\ are\ pressed.\n\ all\ user\ interaction\ is\ does\ in\ this\ method\n
 comment30.params=s\ id
 comment30.target=void\ displayMessage(java.lang.String,\ int)
+comment31.params=Id
+comment31.target=void\ playSound(int)
+comment31.text=\n\ Method\ that\ gets\ the\ world\ to\ play\ a\ sound\ based\ on\ the\ id\ that\ they\ input.\ \n
 comment4.params=mouse
 comment4.target=void\ trackMouse(greenfoot.MouseInfo)
 comment4.text=\n\ Method\ for\ following\ the\ mouse\ when\ placing\ on\ field\ and\ placing\ the\ object.\ \n\ WHEN\ PLACE\ \=\=\ TRUE\n
@@ -88,4 +91,4 @@ comment8.text=\n\ changes\ to\ the\ money\ either\ through\ buying\ or\ selling.
 comment9.params=x\ y
 comment9.target=boolean\ withinField(double,\ double)
 comment9.text=\n\ Checks\ to\ see\ if\ the\ coordinates\ supplied\ are\ within\ the\ playing\ area\ of\ the\ game\n
-numComments=31
+numComments=32

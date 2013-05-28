@@ -78,8 +78,10 @@ public class Map extends World{
     private Tower selectedTower;
     private Tower placeHolder;
     private Range r; 
-    
-    
+
+    //sound
+    private Sound s;
+
     /** 
      * variable initation
      * put in here since you intalize everything after you start the game
@@ -163,6 +165,8 @@ public class Map extends World{
         //Towers
         towers = new ArrayList<Tower>();
 
+        s = new Sound(); 
+
         //variable to run place movemet 
         place =  false;
     }
@@ -172,10 +176,11 @@ public class Map extends World{
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act(){
-        MouseInfo mouse = Greenfoot.getMouseInfo() ;
+        MouseInfo mouse = Greenfoot.getMouseInfo();
         //if it gone past the start menu
         if (start){
-            uiAct();
+            uiAct();        
+            s.run();
             //if the level started, increase the time and prepare the spawn
             if (levelStart){
                 prepareSpawn();
@@ -537,7 +542,6 @@ public class Map extends World{
                 towers.add(t);  //added to arraylist
                 setPath();
                 t.setActive(false);
-
             }
             else{
                 //add code to inform the user you cant build there
@@ -554,8 +558,10 @@ public class Map extends World{
      */
     public void changeMoney(int t){
         money+=t;
-
         resetUi();
+        if (t < 0){
+            s.playMoney(); 
+        }
     }
 
     /**
@@ -894,5 +900,13 @@ public class Map extends World{
     public void displayMessage(String s, int id)
     {
         cb.setMessage(s,id);
+    }
+
+    /**
+     * Method that gets the world to play a sound based on the id that they input. 
+     */
+    public void playSound(int Id)
+    {
+        s.play(Id); 
     }
 }
