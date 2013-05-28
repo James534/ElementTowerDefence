@@ -78,7 +78,8 @@ public class Map extends World{
     private Tower selectedTower;
     private Tower placeHolder;
     private Range r; 
-
+    
+    
     /** 
      * variable initation
      * put in here since you intalize everything after you start the game

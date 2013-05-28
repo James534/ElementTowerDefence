@@ -22,6 +22,8 @@ public class Weapon extends Actor
         this.type = type; 
         String name = "Weapon/" + element + type + ".png";
         this.setImage(name);  
+   
+        
     }
 
     /**
@@ -32,7 +34,7 @@ public class Weapon extends Actor
         if (target!= null && m.checkEnemy(target) == true){
             turnTowards(target.getX(), target.getY()); 
         }
-        //this.setImage("laser.png"); 
+        
     }
 
     /**
