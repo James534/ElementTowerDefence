@@ -24,13 +24,6 @@ public class Data
     private boolean isFlying;
 
     /** ---------------------------- Creep Data ------------------------------**/
-    private mobNode[] creepList;
-    public static final GreenfootImage[] creepButtonImg = 
-        {
-            new GreenfootImage ("Buttons/sendFC1.png"), new GreenfootImage ("Buttons/sendFC2.png"),
-            new GreenfootImage ("Buttons/sendFC3.png")
-        };
-
     /** -------------------------- Other Random Stuff ------------------------**/
     public static final float[][] elementDamage = 
         //2 supper effective, 1 normal, 0.75 not really effective, 0.5 not effective
@@ -58,25 +51,9 @@ public class Data
     public Data(){
         q = new mobQueue();
         populate();
-
-        creepList = new mobNode[4];
-        setData();
     }
 
     /** ---------------------------- Creep Data Methods ----------------------**/
-    public int getCreepHp(int id){
-        return creepList[id].hp;
-    }
-
-    private void setData(){
-        int tempType;
-        int tempHp;
-        int tempArmor;
-        int tempSpeed;
-        boolean tempFlying;
-        creepList[0] = new mobNode ();
-    }
-
     /** ---------------------------- Mob Data Methods ------------------------**/
     private void updateData(){
         this.type       = mob.type;

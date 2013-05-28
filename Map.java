@@ -54,6 +54,7 @@ public class Map extends World{
     private int lives;
     private int currentRunSpeed;
     private int[] runSpeed;
+    private int[] runSpeedDelay;
 
     //ui stuff
     private Ui ui;
@@ -121,6 +122,12 @@ public class Map extends World{
         runSpeed[2] = 60;
         runSpeed[3] = 70;
         runSpeed[4] = 80;
+        runSpeedDelay = new int [5];
+        runSpeedDelay[0] = 15;
+        runSpeedDelay[1] = 30;
+        runSpeedDelay[2] = 100;
+        runSpeedDelay[3] = 250;
+        runSpeedDelay[4] = 700;        
         Greenfoot.setSpeed (50);
 
         //ui
@@ -314,7 +321,7 @@ public class Map extends World{
         }else if (Greenfoot.isKeyDown("escape")){
             cancelBuild(); 
         }else if (Greenfoot.isKeyDown("=")){
-            if (buttonDelay > 50){
+            if (buttonDelay > runSpeedDelay[currentRunSpeed]){
                 currentRunSpeed++;
                 buttonDelay = 0;
                 if (currentRunSpeed <= 4){
@@ -325,7 +332,7 @@ public class Map extends World{
                 }
             }
         }else if (Greenfoot.isKeyDown("-")){
-            if (buttonDelay > 50){
+            if (buttonDelay > runSpeedDelay[currentRunSpeed]){
                 currentRunSpeed--;
                 buttonDelay = 0;
                 if (currentRunSpeed >= 0){
@@ -571,7 +578,7 @@ public class Map extends World{
         setPaintOrder (StartScreen.class, HoverMenu.class, ChatBox.class, 
             Button.class, Ui.class,HealthBar.class, PointerArrow.class, Weapon.class, 
             Tower.class, Range.class, 
-             Enemy.class, DebuffVisu.class,
+            Enemy.class, DebuffVisu.class,
             Tower.class, Tile.class);        
     }
 
