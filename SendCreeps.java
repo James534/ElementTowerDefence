@@ -22,9 +22,9 @@ public class SendCreeps extends Button
             cost = 100;
         }
         try{        //temp, remove after i enable all the other buttons
-            bg[0] = Data.creepButtonImg[id-1][0];
-            bg[1] = Data.creepButtonImg[id-1][1];
-            bg[2] = Data.creepButtonImg[id-1][2];
+            bg[0] = new GreenfootImage ("Buttons/sendcreeps/fc"+id+"1.png");
+            bg[1] = new GreenfootImage ("Buttons/sendcreeps/fc"+id+"2.png");
+            bg[2] = new GreenfootImage ("Buttons/sendcreeps/fc"+id+"3.png");
             creep = new FireCreep(id);
             this.setImage (bg[0]);
             counter = 0;
