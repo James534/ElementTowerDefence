@@ -76,8 +76,8 @@ public class Enemy extends Actor
     }
 
     public void act(){
-        debuffs();
         chooseMovement();
+        debuffs();
     }
 
     /**
@@ -86,7 +86,12 @@ public class Enemy extends Actor
      * NEED TO INCLUDE the type of damage
      */
     public int damageCalc(int d, int dmgType){
-        float dmg = d * Data.elementDamage[type-1][dmgType-1];
+        float dmg;
+        if (dmgType == -1){
+            return d;
+        }else{
+            dmg = d * Data.elementDamage[type-1][dmgType-1];
+        }
         float dmgRdu;       //dmg reduction
         if (armor >= 0){
             //dmgRdu = ( (0.06f * armor) / (1 + 0.06f * armor)) * 100f;     //dota armor values
@@ -139,7 +144,7 @@ public class Enemy extends Actor
         }
         else{
             debuff.add (new Debuff (id, debuffLv, this));
-            dv.setDebuff (0);
+            dv.setDebuff (id);
         }
     }
 
@@ -149,10 +154,13 @@ public class Enemy extends Actor
         for (int i = 0; i < debuff.size(); i++){
             Debuff d = debuff.get (i);
             d.run();
-            if (d.getId() == 0){            //if its stun
-                slowX = accX * d.getSlow();
-                slowY = accY * d.getSlow();
-            }
+
+            //movement speed
+            slowX = accX * d.getSlow();
+            slowY = accY * d.getSlow();
+
+            //damage
+            damage (d.getDmg(), -1);
         }
     }
 

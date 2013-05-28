@@ -48,6 +48,10 @@ public class Data
             new GreenfootImage ("debuff/stun/5.png"), new GreenfootImage ("debuff/stun/6.png")
         };
 
+    public static final GreenfootImage[] freeze = {
+            new GreenfootImage ("debuff/freeze/1.png"), new GreenfootImage ("debuff/freeze/1.png")
+        };
+
     public Data(){
         q = new mobQueue();
         populate();

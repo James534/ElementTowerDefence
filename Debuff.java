@@ -11,6 +11,7 @@ public class Debuff
     private int id;             //id of the debuff
     private int duration;       //duration of the debuff
     private int dmg;            //damage of the debuff
+    private int rate;           //rate of the dot
     private float slow;         //slow of the debuff
     public Debuff(int id, int lv, Enemy e)
     {
@@ -18,9 +19,19 @@ public class Debuff
         enemy = e;
         if (id == 0){        //stun
             if (lv == 1){
-                duration = 10;
+                duration = 11;
                 dmg = 0;
+                rate = 100;
                 slow = 1f;
+            }
+        }else if (id == 1){     //lightning
+
+        }else if (id == 2){     //freeze
+            if (lv == 1){
+                duration = 100;
+                dmg = 5;
+                rate = 20;
+                slow = 0.2f;
             }
         }
     }
@@ -45,7 +56,12 @@ public class Debuff
     }
 
     public int getDmg(){
-        return dmg;
+        if (duration > 0 && rate % duration == 0){
+            return dmg;
+        }
+        else{
+            return 0;
+        }
     }
 
     public float getSlow(){

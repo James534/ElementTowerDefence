@@ -21,6 +21,13 @@ public class DebuffVisu extends Effects
             counter = 0;
             frame = 1;
             maxFrame = 6;
+        }else if (id == 1){     //lightning
+
+        }else if (id == 2){     //freeze
+            cache = Data.freeze;
+            counter = 0;
+            frame = 1;
+            maxFrame = 2;
         }
         show = true;
     }
@@ -44,6 +51,6 @@ public class DebuffVisu extends Effects
     }
 
     public void changeLocation (int x, int y){
-        this.setLocation (x, y-20);
+        this.setLocation (x, y-10);
     }
 }

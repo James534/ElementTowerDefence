@@ -69,7 +69,7 @@ public class Weapon extends Actor
     private void checkHit() 
     {
         // Enemy e = (Enemy) getOneIntersectingObject(Enemy.class);
-        List<Enemy> hit = getObjectsInRange(10,Enemy.class);
+        List<Enemy> hit = getObjectsInRange(11,Enemy.class);
         if ( hit.size() != 0 && hit.get(0) == target)
         {
             Enemy e = hit.get(0);
