@@ -75,7 +75,7 @@ public class Ui extends Actor
 
         generalFont = new Font ("Times New Roman", 1, 20);
         waveFont    = new Font ("Verdana"        , 1, 25);
-        name        = new Font ("Vrinda"         , 1, 40);
+        name        = new Font ("Vrinda"         , 1, 35);
         descFont    = new Font ("Vrinda"         , 0, 20);
         statFont    = new Font ("Vrinda"         , 1, 25);
 
@@ -142,7 +142,12 @@ public class Ui extends Actor
             map.removeObjects (map.getObjects (UIButton.class) );
         }
         this.id = id;
-        if (id == 3){       //adds buttons when its selecting a tower
+        if (id == 2){            
+            for (int i = 0; i < 3; i++){
+                map.addObject (buttons[0][i], 340, 610+50*i);
+            }
+        }
+        else if (id == 3){       //adds buttons when its selecting a tower
             sellButton      .clicked (false);
             upgradeButton   .clicked (false);
             map.addObject (sellButton   , 850, 675);
@@ -258,7 +263,6 @@ public class Ui extends Actor
             bg.drawImage (elements[2], 700, 30);
             bg.drawImage (elements[3], 890, 30);*/
         } else if (id == 2){                    //sending creeps
-            map.addObject (buttons[0][0], 340, 600);
         } else if (id == 3 || id == 4){         //tower selection
             //name of the tower
             bg.setColor (nameColor);
@@ -300,7 +304,7 @@ public class Ui extends Actor
             bg.setColor (nameColor);
             bg.setFont  (name);
             tempString = mob.getName();
-            tempX = 320 - tempString.length() * 7;
+            tempX = 320 - tempString.length() * 6;
             bg.drawString (tempString, tempX, 60);
 
             //stats

@@ -15,14 +15,20 @@ public class SendCreeps extends Button
     public SendCreeps(int id){
         this.id = id;
         if (id == 1){
-            bg[0] = Data.creepButtonImg[0];
-            bg[1] = Data.creepButtonImg[1];
-            bg[2] = Data.creepButtonImg[2];
-            cost  = 10;
-            creep = new FireCreep(1);
+            cost = 10;
+        }else if (id == 2){
+            cost = 50;
+        }else if (id == 3){
+            cost = 100;
         }
-        this.setImage (bg[0]);
-        counter = 0;
+        try{        //temp, remove after i enable all the other buttons
+            bg[0] = Data.creepButtonImg[id-1][0];
+            bg[1] = Data.creepButtonImg[id-1][1];
+            bg[2] = Data.creepButtonImg[id-1][2];
+            creep = new FireCreep(id);
+            this.setImage (bg[0]);
+            counter = 0;
+        }catch (Exception e){}
     }
 
     public void act(){
@@ -60,6 +66,6 @@ public class SendCreeps extends Button
     }
 
     public Creep getCreep(){
-        return new FireCreep(1);
+        return new FireCreep(id);
     }
 }

@@ -25,10 +25,17 @@ public class Data
 
     /** ---------------------------- Creep Data ------------------------------**/
     private mobNode[] creepList;
-    public static final GreenfootImage[] creepButtonImg = 
+    public static final GreenfootImage[][] creepButtonImg = 
         {
-            new GreenfootImage ("Buttons/sendFC1.png"), new GreenfootImage ("Buttons/sendFC2.png"),
-            new GreenfootImage ("Buttons/sendFC3.png")
+            {new GreenfootImage ("Buttons/sendcreeps/fc11.png"), 
+                new GreenfootImage ("Buttons/sendcreeps/fc12.png"),
+                new GreenfootImage ("Buttons/sendcreeps/fc13.png")}, 
+            {new GreenfootImage ("Buttons/sendcreeps/fc21.png"), 
+                new GreenfootImage ("Buttons/sendcreeps/fc22.png"),
+                new GreenfootImage ("Buttons/sendcreeps/fc23.png")}, 
+            {new GreenfootImage ("Buttons/sendcreeps/fc31.png"), 
+                new GreenfootImage ("Buttons/sendcreeps/fc32.png"),
+                new GreenfootImage ("Buttons/sendcreeps/fc33.png")} 
         };
 
     /** -------------------------- Other Random Stuff ------------------------**/
