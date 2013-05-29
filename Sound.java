@@ -60,13 +60,11 @@ public class Sound
         GreenfootSound money = new GreenfootSound(moneyName);
 
         money.setVolume(0);
-        money.play();
-        money.setVolume(volume);
+        //money.play();
         for (int i = 0; i < attack.length; i++){
             GreenfootSound s = new GreenfootSound (attack[i]);
             s.setVolume (0);
-            s.play();
-            s.setVolume (volume);
+            //s.play();
         }
     }
 
