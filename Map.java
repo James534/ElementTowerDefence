@@ -80,7 +80,7 @@ public class Map extends World{
     private Range r; 
 
     //sound
-    private Sound s;
+    public final Sound s = new Sound();
     private int[] volume;
     private int currentVolume;
 
@@ -167,7 +167,6 @@ public class Map extends World{
         //Towers
         towers = new ArrayList<Tower>();
 
-        s = new Sound(); 
         volume = new int[21];
         currentVolume = 16;
         for (int i = 0; i < 21; i++){

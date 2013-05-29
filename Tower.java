@@ -169,6 +169,7 @@ public class Tower extends Actor
             }
             else  if (this instanceof AirTower){
             }
+            map.s.play (element);
             map.addObject (basicAttack,this.getX(), this.getY());
             counter = 0 ; 
         }
