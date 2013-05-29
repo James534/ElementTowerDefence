@@ -8,36 +8,40 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author James Lu
  * @version 0.1
  */
-public class DebuffButton extends UIButton
+public class DebuffButton extends UIButton  implements HoverInfo
 {
     private boolean bought;
+    private boolean dummy;
+
     private int id;
     private String name;
+
+    private int hoverCounter;
     public DebuffButton (int id){
         if (id == 0){                   //stun
-            bg[0] = new GreenfootImage ("ui/stunned.png");
-            bg[1] = new GreenfootImage ("ui/stunned.png");
-            bg[2] = new GreenfootImage ("ui/stunned.png");
+            bg[0] = new GreenfootImage ("debuff/stunned.png");
+            bg[1] = new GreenfootImage ("debuff/stunned.png");
+            bg[2] = new GreenfootImage ("debuff/stunned.png");
             name = "Stun";
         }else if (id == 1){             //lightning
-            bg[0] = new GreenfootImage ("ui/lightning.png");
-            bg[1] = new GreenfootImage ("ui/lightning.png");
-            bg[2] = new GreenfootImage ("ui/lightning.png");
+            bg[0] = new GreenfootImage ("debuff/lightning.png");
+            bg[1] = new GreenfootImage ("debuff/lightning.png");
+            bg[2] = new GreenfootImage ("debuff/lightning.png");
             name = "Lightning";
         }else if (id == 2){             //water
-            bg[0] = new GreenfootImage ("ui/iceDebuff.png");
-            bg[1] = new GreenfootImage ("ui/iceDebuff.png");
-            bg[2] = new GreenfootImage ("ui/iceDebuff.png");
+            bg[0] = new GreenfootImage ("debuff/iceDebuff.png");
+            bg[1] = new GreenfootImage ("debuff/iceDebuff.png");
+            bg[2] = new GreenfootImage ("debuff/iceDebuff.png");
             name = "Freeze";
         }else if (id == 3){             //fire
-            bg[0] = new GreenfootImage ("ui/burning.png");
-            bg[1] = new GreenfootImage ("ui/burning.png");
-            bg[2] = new GreenfootImage ("ui/burning.png");      
+            bg[0] = new GreenfootImage ("debuff/burning.png");
+            bg[1] = new GreenfootImage ("debuff/burning.png");
+            bg[2] = new GreenfootImage ("debuff/burning.png");      
             name = "Burn";      
         }else{                          //earth
-            bg[0] = new GreenfootImage ("ui/stone.png");
-            bg[1] = new GreenfootImage ("ui/stone.png");
-            bg[2] = new GreenfootImage ("ui/stone.png");
+            bg[0] = new GreenfootImage ("debuff/stone.png");
+            bg[1] = new GreenfootImage ("debuff/stone.png");
+            bg[2] = new GreenfootImage ("debuff/stone.png");
             name = "Earth";
         }
         bg[0].setTransparency (100);
@@ -71,7 +75,7 @@ public class DebuffButton extends UIButton
     public void bought (boolean t){
         bought = t;
     }
-    
+
     /**
      * returns true if the debuff is already bought
      */
@@ -91,5 +95,25 @@ public class DebuffButton extends UIButton
      */
     public String getName(){
         return name;
+    }
+
+    /**
+     * returns if this button is a dummy button or not
+     */
+    public boolean isDummy(){
+        return dummy;
+    }
+
+    /** interface methods */
+    public void hoverOver(){
+        hoverCounter++;
+    }
+
+    public void changeImg(boolean s){
+        selected = s;
+    }
+
+    public void resetCounter(){
+        hoverCounter = 0;
     }
 }

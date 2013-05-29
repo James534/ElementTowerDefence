@@ -13,7 +13,6 @@ public class Button extends Actor
     protected Map map;
     protected boolean selected;
     protected boolean clicked;
-    protected int hoverCounter;
 
     public Button(){
         bg = new GreenfootImage [3];
@@ -30,14 +29,6 @@ public class Button extends Actor
 
     public void clicked (boolean b){
         clicked = b;
-    }
-
-    public void hoverOver(){
-        hoverCounter++;
-    }
-
-    public void resetCounter(){
-        hoverCounter = 0;
     }
 
     protected int[] setCo(){

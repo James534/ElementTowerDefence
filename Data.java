@@ -37,9 +37,9 @@ public class Data
 
     public static final GreenfootImage[] debuffs = 
         {
-            new GreenfootImage ("UI/stunned.png"), new GreenfootImage ("UI/lightning.png"),
-            new GreenfootImage ("UI/iceDebuff.png"), new GreenfootImage ("UI/burning.png"),
-            new GreenfootImage ("UI/stone.png")
+            new GreenfootImage ("debuff/stunned.png"), new GreenfootImage ("debuff/lightning.png"),
+            new GreenfootImage ("debuff/iceDebuff.png"), new GreenfootImage ("debuff/burning.png"),
+            new GreenfootImage ("debuff/stone.png")
         };
 
     public static final GreenfootImage[] stun = {

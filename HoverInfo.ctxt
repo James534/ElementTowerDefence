@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ hoverOver()
+comment1.params=b
+comment1.target=void\ changeImg(boolean)
+comment2.params=
+comment2.target=void\ resetCounter()
+numComments=3

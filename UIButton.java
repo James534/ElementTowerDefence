@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class UIButton extends Button
 {
     private int counter;
+    private int hoverCounter;
 
     public UIButton (){
         counter = 0;

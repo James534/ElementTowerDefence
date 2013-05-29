@@ -6,12 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class SendCreeps extends Button
+public class SendCreeps extends Button implements HoverInfo
 {
     private int id;
-    private int counter;
     private Creep creep;
     private int cost;
+
+    private int counter;
+    private int hoverCounter;
     public SendCreeps(int id){
         this.id = id;
         if (id == 1){
@@ -68,4 +70,18 @@ public class SendCreeps extends Button
     public Creep getCreep(){
         return new FireCreep(id);
     }
+
+    /** interface methods*/
+    public void hoverOver(){
+        hoverCounter++;
+    }
+
+    public void changeImg(boolean s){
+        selected = s;
+    }
+
+    public void resetCounter(){
+        hoverCounter = 0;
+    }
+
 }

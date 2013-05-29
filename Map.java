@@ -64,7 +64,7 @@ public class Map extends World{
     private PointerArrow pa;
     public TowerButton towerButton;
     public CreepButton creepButton;
-    private Button prevButton;
+    private HoverInfo prevButton;
     public final HoverMenu hm = new HoverMenu();
 
     /**Terrence's variables **/
@@ -221,22 +221,26 @@ public class Map extends World{
         if (l.size() == 1 && l.get(0) instanceof Ui){ 
             //if its just the ui, not hovering over a button
             if (prevButton != null){
+                prevButton = prevButton;
                 prevButton.resetCounter();
             }
             prevButton = null;
         }
         else{
             for (Actor a: l){
-                if (a instanceof Button){       //if the mouse is ontop of a button, change the pic
+                if (a instanceof Button){
                     Button b = (Button) a;
-                    if (b == prevButton){
-                        b.hoverOver();
-                    }else if (prevButton != null){
-                        prevButton.resetCounter();
-                    }
                     b.changeImg (true);
-                    prevButton = b;
-                    return;
+                    if (a instanceof HoverInfo){       //if the mouse is ontop of a button, change the pic
+                        HoverInfo h = (HoverInfo) a;
+                        if (h == prevButton){
+                            h.hoverOver();
+                        }else if (prevButton != null){
+                            prevButton.resetCounter();
+                        }
+                        prevButton = h;
+                        return;
+                    }
                 }
             }
         }
@@ -613,7 +617,7 @@ public class Map extends World{
         startInitialize (false);
 
         setPaintOrder (StartScreen.class, HoverMenu.class, ChatBox.class, 
-            Button.class, Ui.class,
+            Button.class, DummyImage.class, Ui.class,
             Effects.class, HealthBar.class, PointerArrow.class, Weapon.class, 
             Tower.class, Range.class, Enemy.class,
             Tile.class);        

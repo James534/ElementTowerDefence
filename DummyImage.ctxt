@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=DummyImage()
+comment1.params=world
+comment1.target=void\ addedToWorld(greenfoot.World)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=int[]\ setCo()
+comment4.params=
+comment4.target=void\ hoverOver()
+comment4.text=interface\ methods
+comment5.params=s
+comment5.target=void\ changeImg(boolean)
+comment6.params=
+comment6.target=void\ resetCounter()
+numComments=7

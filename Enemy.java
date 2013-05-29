@@ -295,7 +295,11 @@ public class Enemy extends Actor
         return name;
     }
 
-    public ArrayList<Integer> getDebuffs(){
+    public ArrayList<Debuff> getDebuffs(){
+        return debuff;
+    }
+
+    public ArrayList<Integer> getIntDebuffs(){
         ArrayList<Integer> al = new ArrayList<Integer> (debuff.size());
         for (int i = 0; i < debuff.size(); i++){
             al.add (debuff.get(i).getId());

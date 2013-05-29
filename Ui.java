@@ -50,6 +50,8 @@ public class Ui extends Actor
     private SellButton sellButton;
     private UpgradeButton upgradeButton;
     private DebuffButton[] debuffs;
+
+    private DummyDebuff[] dumDebuff;
     public Ui(){
         bg = new GreenfootImage (1000, 230);
         cache = new GreenfootImage [6];
@@ -104,6 +106,10 @@ public class Ui extends Actor
         for (int i = 0; i < 5; i++){
             debuffs[i] = new DebuffButton(i);
         }
+        dumDebuff = new DummyDebuff[5];
+        for (int i = 0; i < 5; i++){
+            dumDebuff[i] = new DummyDebuff(i);
+        }
 
         id = 0;
         lives   = 20;
@@ -140,6 +146,8 @@ public class Ui extends Actor
             map.removeObjects (map.getObjects (SendCreeps.class) );
         }else if (this.id == 3 && id != 3){
             map.removeObjects (map.getObjects (UIButton.class) );
+        }else if (this.id == 5 && id != 5){
+            map.removeObjects (map.getObjects (DummyImage.class) );
         }
         this.id = id;
         if (id == 2){            
@@ -328,9 +336,11 @@ public class Ui extends Actor
             bg.drawString (tempString, 500, 100);
 
             //debuffs
-            ArrayList<Integer> debuff = mob.getDebuffs();
-            for (int i = 0; i < debuff.size(); i++){
-
+            ArrayList<Debuff> debuffs = mob.getDebuffs();
+            for (int i = 0; i < debuffs.size(); i++){
+                Debuff d = debuffs.get(i);
+                DummyDebuff dd = new DummyDebuff (d.getId());
+                map.addObject (dd, 600 + 50*i, 700);
             }
         }
         this.setImage (bg);
