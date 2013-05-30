@@ -69,11 +69,11 @@ public class Ui extends Actor
         elements[3] = new GreenfootImage ("UI/earth2.png");
 
         weapons = new GreenfootImage [3];
-        weapons[0] = new GreenfootImage ("ui/bullet.png");
-        weapons[1] = new GreenfootImage ("ui/laser.png");
-        weapons[2] = new GreenfootImage ("ui/shell.png");
+        weapons[0] = new GreenfootImage ("UI/bullet.png");
+        weapons[1] = new GreenfootImage ("UI/laser.png");
+        weapons[2] = new GreenfootImage ("UI/shell.png");
 
-        cooldown = new GreenfootImage ("ui/cd.png");
+        cooldown = new GreenfootImage ("UI/cd.png");
 
         generalFont = new Font ("Times New Roman", 1, 20);
         waveFont    = new Font ("Verdana"        , 1, 25);
