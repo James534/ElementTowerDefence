@@ -19,29 +19,29 @@ public class DebuffButton extends UIButton  implements HoverInfo
     private int hoverCounter;
     public DebuffButton (int id){
         if (id == 0){                   //stun
-            bg[0] = new GreenfootImage ("debuff/stunned.png");
-            bg[1] = new GreenfootImage ("debuff/stunned.png");
-            bg[2] = new GreenfootImage ("debuff/stunned.png");
+            bg[0] = new GreenfootImage ("Debuff/stunned.png");
+            bg[1] = new GreenfootImage ("Debuff/stunned.png");
+            bg[2] = new GreenfootImage ("Debuff/stunned.png");
             name = "Stun";
         }else if (id == 1){             //lightning
-            bg[0] = new GreenfootImage ("debuff/lightning.png");
-            bg[1] = new GreenfootImage ("debuff/lightning.png");
-            bg[2] = new GreenfootImage ("debuff/lightning.png");
+            bg[0] = new GreenfootImage ("Debuff/lightning.png");
+            bg[1] = new GreenfootImage ("Debuff/lightning.png");
+            bg[2] = new GreenfootImage ("Debuff/lightning.png");
             name = "Lightning";
         }else if (id == 2){             //water
-            bg[0] = new GreenfootImage ("debuff/iceDebuff.png");
-            bg[1] = new GreenfootImage ("debuff/iceDebuff.png");
-            bg[2] = new GreenfootImage ("debuff/iceDebuff.png");
+            bg[0] = new GreenfootImage ("Debuff/iceDebuff.png");
+            bg[1] = new GreenfootImage ("Debuff/iceDebuff.png");
+            bg[2] = new GreenfootImage ("Debuff/iceDebuff.png");
             name = "Freeze";
         }else if (id == 3){             //fire
-            bg[0] = new GreenfootImage ("debuff/burning.png");
-            bg[1] = new GreenfootImage ("debuff/burning.png");
-            bg[2] = new GreenfootImage ("debuff/burning.png");      
+            bg[0] = new GreenfootImage ("Debuff/burning.png");
+            bg[1] = new GreenfootImage ("Debuff/burning.png");
+            bg[2] = new GreenfootImage ("Debuff/burning.png");      
             name = "Burn";      
         }else{                          //earth
-            bg[0] = new GreenfootImage ("debuff/stone.png");
-            bg[1] = new GreenfootImage ("debuff/stone.png");
-            bg[2] = new GreenfootImage ("debuff/stone.png");
+            bg[0] = new GreenfootImage ("Debuff/stone.png");
+            bg[1] = new GreenfootImage ("Debuff/stone.png");
+            bg[2] = new GreenfootImage ("Debuff/stone.png");
             name = "Earth";
         }
         bg[0].setTransparency (100);

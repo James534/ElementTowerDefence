@@ -161,7 +161,7 @@ public class Tower extends Actor
             }
             //add sound here
             if (this instanceof FireTower){
-               
+
             }
             else if (this instanceof WaterTower){
             }

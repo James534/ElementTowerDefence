@@ -12,7 +12,7 @@ public class DummyDebuff extends DummyImage
     public DummyDebuff(int id){
         this.id = id;
         if (id == 0){           //stun
-            bg = new GreenfootImage ("debuff/stunned.png");
+            bg = new GreenfootImage ("Debuff/stunned.png");
             this.setImage (bg);
         }
     }

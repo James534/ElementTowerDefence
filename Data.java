@@ -37,19 +37,19 @@ public class Data
 
     public static final GreenfootImage[] debuffs = 
         {
-            new GreenfootImage ("debuff/stunned.png"), new GreenfootImage ("debuff/lightning.png"),
-            new GreenfootImage ("debuff/iceDebuff.png"), new GreenfootImage ("debuff/burning.png"),
-            new GreenfootImage ("debuff/stone.png")
+            new GreenfootImage ("Debuff/stunned.png"), new GreenfootImage ("Debuff/lightning.png"),
+            new GreenfootImage ("Debuff/iceDebuff.png"), new GreenfootImage ("Debuff/burning.png"),
+            new GreenfootImage ("Debuff/stone.png")
         };
 
     public static final GreenfootImage[] stun = {
-            new GreenfootImage ("debuff/stun/1.png"), new GreenfootImage ("debuff/stun/2.png"),
-            new GreenfootImage ("debuff/stun/3.png"), new GreenfootImage ("debuff/stun/4.png"),
-            new GreenfootImage ("debuff/stun/5.png"), new GreenfootImage ("debuff/stun/6.png")
+            new GreenfootImage ("Debuff/stun/1.png"), new GreenfootImage ("Debuff/stun/2.png"),
+            new GreenfootImage ("Debuff/stun/3.png"), new GreenfootImage ("Debuff/stun/4.png"),
+            new GreenfootImage ("Debuff/stun/5.png"), new GreenfootImage ("Debuff/stun/6.png")
         };
 
     public static final GreenfootImage[] freeze = {
-            new GreenfootImage ("debuff/freeze/1.png"), new GreenfootImage ("debuff/freeze/1.png")
+            new GreenfootImage ("Debuff/freeze/1.png"), new GreenfootImage ("Debuff/freeze/1.png")
         };
 
     public Data(){

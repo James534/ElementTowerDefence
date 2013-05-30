@@ -24,9 +24,9 @@ public class SendCreeps extends Button implements HoverInfo
             cost = 100;
         }
         try{        //temp, remove after i enable all the other buttons
-            bg[0] = new GreenfootImage ("Buttons/sendcreeps/fc"+id+"1.png");
-            bg[1] = new GreenfootImage ("Buttons/sendcreeps/fc"+id+"2.png");
-            bg[2] = new GreenfootImage ("Buttons/sendcreeps/fc"+id+"3.png");
+            bg[0] = new GreenfootImage ("Buttons/SendCreeps/fc"+id+"1.png");
+            bg[1] = new GreenfootImage ("Buttons/SendCreeps/fc"+id+"2.png");
+            bg[2] = new GreenfootImage ("Buttons/SendCreeps/fc"+id+"3.png");
             creep = new FireCreep(id);
             this.setImage (bg[0]);
             counter = 0;

@@ -9,8 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class UpgradeButton extends UIButton
 {
     public UpgradeButton(){
-        bg[0] = new GreenfootImage ("buttons/upgrade1.png");
-        bg[1] = new GreenfootImage ("buttons/upgrade2.png");
-        bg[2] = new GreenfootImage ("buttons/upgrade3.png");
+        bg[0] = new GreenfootImage ("Buttons/upgrade1.png");
+        bg[1] = new GreenfootImage ("Buttons/upgrade2.png");
+        bg[2] = new GreenfootImage ("Buttons/upgrade3.png");
     }
 }
