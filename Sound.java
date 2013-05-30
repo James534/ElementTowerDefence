@@ -8,21 +8,21 @@ import java.util.ArrayList;
 public class Sound
 {
     private LinkedList<GreenfootSound> track;
-    
+
     private String[] attack;
     private String moneyName;
     private int volume;
     public Sound()
     {
         track = new LinkedList<GreenfootSound>();
-        moneyName   = "Sounds/buy.wav";
+        moneyName   = "sounds/buy.wav";
         volume      = 50;
         attack      = new String[4];
 
-        attack[0] = "Sounds/airAttack.wav"; 
-        attack[1] = "Sounds/fireAttack.wav"; 
-        attack[2] = "Sounds/earthAttack.wav"; 
-        attack[3] = "Sounds/waterAttack.wav"; 
+        attack[0] = "sounds/airAttack.wav"; 
+        attack[1] = "sounds/fireAttack.wav"; 
+        attack[2] = "sounds/earthAttack.wav"; 
+        attack[3] = "sounds/waterAttack.wav"; 
 
         playOnce(); 
     }
