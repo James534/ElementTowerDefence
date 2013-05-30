@@ -8,7 +8,7 @@ public class Normal extends Weapon
         super( speed,  power, aoe, eleId, target, element ,"Bullet"); //calls the super classes constructtor, nothign changed
     }
 
-  /**
+    /**
      * Act - do whatever the Tower wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */

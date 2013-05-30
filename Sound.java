@@ -12,11 +12,15 @@ public class Sound
     private String[] attack;
     private String moneyName;
     private int volume;
+
+    private int counter;
     public Sound()
     {
         track = new LinkedList<GreenfootSound>();
         moneyName   = "sounds/buy.wav";
         volume      = 50;
+        counter     = 0;
+
         attack      = new String[4];
 
         attack[0] = "sounds/airAttack.wav"; 
@@ -28,6 +32,7 @@ public class Sound
     }
 
     public void run(){
+        counter++;
         ArrayList <GreenfootSound> al = new ArrayList<GreenfootSound>();
         for (GreenfootSound s : track){
             if (s.isPlaying() == false){
@@ -42,10 +47,13 @@ public class Sound
 
     public void play(int Id)
     {
-        GreenfootSound s = new GreenfootSound (attack[Id-1]);
-        s.setVolume (volume);
-        s.play();
-        track.add (s);
+        if (counter > 2){
+            counter = 0;
+            GreenfootSound s = new GreenfootSound (attack[Id-1]);
+            s.setVolume (volume);
+            s.play();
+            track.add (s);
+        }
     } 
 
     public void playMoney(){
