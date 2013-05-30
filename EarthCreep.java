@@ -6,10 +6,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class FireCreep extends Creep
+public class EarthCreep extends Creep
 {
-    public FireCreep(int id){
-        if (id >= 1 && id <= 3){
+    public EarthCreep(int id){
+        if (id > 0 && id < 4){
             if (id == 1){
                 maxHp           = 50;
                 armor           = 2;
@@ -18,15 +18,15 @@ public class FireCreep extends Creep
                 maxHp           = 250;
                 armor           = 10;
                 speed           = 3f;
-            }else if (id == 3){        
+            }else if (id == 3){
                 maxHp           = 500;
                 armor           = 20;
                 speed           = 3f;
             }
-            bg = new GreenfootImage ("Enemy/fire" + id + ".png");
-            type            = 3;        
-            stringType      = "Fire";
-            name            = "Fire Creep " + id;
+            bg = new GreenfootImage ("Enemy/earth"+id+".png");
+            type            = 4;        
+            name            = "Earth Creep " + id;
+            stringType      = "Earth";
 
             currentHp       = maxHp;
             targetHp        = maxHp + maxHp/20;
