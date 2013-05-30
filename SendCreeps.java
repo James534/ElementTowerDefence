@@ -16,21 +16,57 @@ public class SendCreeps extends Button implements HoverInfo
     private int hoverCounter;
     public SendCreeps(int id){
         this.id = id;
-        if (id == 1){
-            cost = 10;
-        }else if (id == 2){
-            cost = 50;
-        }else if (id == 3){
-            cost = 100;
-        }
-        try{        //temp, remove after i enable all the other buttons
-            bg[0] = new GreenfootImage ("Buttons/SendCreeps/fc"+id+"1.png");
-            bg[1] = new GreenfootImage ("Buttons/SendCreeps/fc"+id+"2.png");
-            bg[2] = new GreenfootImage ("Buttons/SendCreeps/fc"+id+"3.png");
+        String element = "";
+        int ID = (id-1) / 3;
+        if (ID == 0){                   //air
+            if (id == 1){
+                cost = 10;
+            }else if (id == 2){
+                cost = 50;
+            }else if (id == 3){
+                cost = 100;
+            }
+            element = "a";
+            creep = new AirCreep(id);
+        }else if (ID == 1){             //water
+            if (id == 4){          
+                cost = 10;
+            }else if (id == 5){          
+                cost = 50;
+            }else if (id == 6){          
+                cost = 100;
+            }
+            id = (id-1)%3 + 1;
+            element = "w";
+            creep = new WaterCreep(id);
+        }else if (ID == 2){             //Fire
+            if (id == 7){          
+                cost = 10;
+            }else if (id == 8){          
+                cost = 50;
+            }else if (id == 9){          
+                cost = 100;
+            }
+            id = (id-1)%3 + 1;
+            element = "f";
             creep = new FireCreep(id);
-            this.setImage (bg[0]);
-            counter = 0;
-        }catch (Exception e){}
+        }else if (ID == 3){             //Earth
+            if (id == 10){          
+                cost = 10;
+            }else if (id == 11){          
+                cost = 50;
+            }else if (id == 12){          
+                cost = 100;
+            }
+            id = (id-1)%3 + 1;
+            element = "e";
+            creep = new EarthCreep(id);
+        }
+        counter = 0;
+        bg[0] = new GreenfootImage ("Buttons/SendCreeps/"+element + "" +id+"1.png");
+        bg[1] = new GreenfootImage ("Buttons/SendCreeps/"+element + "" +id+"2.png");
+        bg[2] = new GreenfootImage ("Buttons/SendCreeps/"+element + "" +id+"3.png");
+        this.setImage (bg[0]);
     }
 
     public void act(){
@@ -68,7 +104,17 @@ public class SendCreeps extends Button implements HoverInfo
     }
 
     public Creep getCreep(){
-        return new FireCreep(id);
+        int ID = (id-1) / 3;
+        int creepId = (id-1) % 3 + 1;
+        if (ID == 0){           //air
+            return new AirCreep (creepId);
+        }else if (ID == 1){     //water
+            return new WaterCreep (creepId);
+        }else if (ID == 2){     //fire
+            return new FireCreep (creepId);
+        }else{                  //earth
+            return new EarthCreep (creepId);
+        }
     }
 
     /** interface methods*/

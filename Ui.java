@@ -98,8 +98,8 @@ public class Ui extends Actor
 
         sellButton    = new SellButton();
         upgradeButton = new UpgradeButton();
-        buttons = new Button[2][32];
-        for (int i = 0; i < 32; i++){
+        buttons = new Button[2][12];
+        for (int i = 0; i < 12; i++){
             buttons[0][i] = new SendCreeps(i+1);
         }
         debuffs = new DebuffButton [5];
@@ -150,9 +150,13 @@ public class Ui extends Actor
             map.removeObjects (map.getObjects (DummyImage.class) );
         }
         this.id = id;
-        if (id == 2){            
-            for (int i = 0; i < 3; i++){
-                map.addObject (buttons[0][i], 340, 610+50*i);
+        if (id == 2){           
+            int tempCounter = 0;
+            for (int n = 0; n < 4; n++){
+                for (int i = 0; i < 3; i++){
+                    map.addObject (buttons[0][tempCounter], 340 + 190*n, 610+50*i);
+                    tempCounter++;
+                }
             }
         }
         else if (id == 3){       //adds buttons when its selecting a tower
