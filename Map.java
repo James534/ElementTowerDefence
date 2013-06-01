@@ -548,7 +548,74 @@ public class Map extends World{
         }
         /**         GRID HOTKEYS TO SEND CREEPS     */
         else if (ui.getId() == 2){
+            boolean tempPlace = false;
+            SendCreeps button = null;
+            String tempString = Greenfoot.getKey();
 
+            if (tempString != null){
+                if (tempString.equals ("q")){                       //air 1
+                    button = (SendCreeps) ui.getButton (0, 0);
+                    tempPlace= true;
+                }
+                else if (tempString.equals ("a")){                  //air 2
+                    button = (SendCreeps) ui.getButton (0, 1);
+                    tempPlace= true;
+                }
+                else if (tempString.equals ("z")){                  //air 3
+                    button = (SendCreeps) ui.getButton (0, 2);
+                    tempPlace= true;
+                }
+                else if (tempString.equals ("w")){                  //water 1
+                    button = (SendCreeps) ui.getButton (0, 3);
+                    tempPlace= true;
+                }
+                else if (tempString.equals ("s")){                  //water 2
+                    button = (SendCreeps) ui.getButton (0, 4);
+                    tempPlace= true;
+                }
+                else if (tempString.equals ("x")){                  //water 3
+                    button = (SendCreeps) ui.getButton (0, 5);
+                    tempPlace= true;
+                }
+                else if (tempString.equals ("e")){                  //fire 1
+                    button = (SendCreeps) ui.getButton (0, 6);
+                    tempPlace= true;
+                }
+                else if (tempString.equals ("d")){                  //fire 2
+                    button = (SendCreeps) ui.getButton (0, 7);
+                    tempPlace= true;
+                }
+                else if (tempString.equals ("c")){                  //fire 3
+                    button = (SendCreeps) ui.getButton (0, 8);
+                    tempPlace= true;
+                }
+                else if (tempString.equals ("r")){                  //earth 1
+                    button = (SendCreeps) ui.getButton (0, 9);
+                    tempPlace= true;
+                }
+                else if (tempString.equals ("f")){                  //earth 2
+                    button = (SendCreeps) ui.getButton (0, 10);
+                    tempPlace= true;
+                }
+                else if (tempString.equals ("v")){                  //earth 3
+                    button = (SendCreeps) ui.getButton (0, 11);
+                    tempPlace= true;
+                }
+            }
+            if (tempPlace){
+                button.clicked (true);
+                s.playClicked();
+                if (money >= button.getCost()){
+                    income += button.getIncome();
+                    changeMoney (-button.getCost());
+                    resetUi();
+                    mobsToSpawn.add (button.getCreep());
+                    cb.setMessage ("sending 1 creep", 2);
+                }
+                else{
+                    cb.setMessage ("YOU DO NOT HAVE ENOUGH MONEY", 1);
+                }
+            }
         }
         buttonDelay++;
     }
