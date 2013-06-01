@@ -64,6 +64,7 @@ public class Map extends World{
     private Ui ui;
     private boolean refreshUi;
     private ChatBox cb;
+    private WaveProgress wp;
     private Data data;
     private PointerArrow pa;
     public TowerButton towerButton;
@@ -147,6 +148,7 @@ public class Map extends World{
             ui = new Ui();             
             refreshUi = false;
             cb = new ChatBox();
+            wp = new WaveProgress();
             pa = new PointerArrow();
             towerButton = new TowerButton();
             creepButton = new CreepButton();
@@ -167,6 +169,7 @@ public class Map extends World{
 
             addObject (ui, 512, 643);
             addObject (cb, 512, 500);
+            addObject (wp, 120, 675);
             addObject (towerButton, 262, 538);
             addObject (creepButton, 762, 538);
         }
@@ -784,7 +787,7 @@ public class Map extends World{
 
         startInitialize (false);
 
-        setPaintOrder (StartScreen.class, HoverMenu.class, ChatBox.class, 
+        setPaintOrder (StartScreen.class, HoverMenu.class, ChatBox.class, WaveProgress.class,
             Button.class, DummyImage.class, Ui.class,
             Effects.class, HealthBar.class, PointerArrow.class, Weapon.class, 
             Tower.class, Range.class, Enemy.class,
@@ -893,6 +896,7 @@ public class Map extends World{
             if (maxSpawnCount > spawnCount){
                 spawn(mobsToSpawn);
                 spawnCount++;
+                wp.setLeft (maxSpawnCount - spawnCount);
             }
         }
 
@@ -907,6 +911,7 @@ public class Map extends World{
             for (Tower t: tempTower){
                 t.setActive (false);
             }
+            wp.reset();
         }
     }
 
@@ -960,6 +965,7 @@ public class Map extends World{
             t.setActive (true);
         }
         //System.out.println (level);
+        wp.setMax (maxSpawnCount);
     }
 
     /**

@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=WaveProgress()
+comment1.params=max
+comment1.target=void\ setMax(int)
+comment2.params=left
+comment2.target=void\ setLeft(int)
+comment3.params=
+comment3.target=void\ reset()
+numComments=4
