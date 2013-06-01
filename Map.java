@@ -16,6 +16,7 @@ import java.awt.Color;
 public class Map extends World{
     private Tile[][] map;                                 //2d array of tiles
     private StartScreen startScreen;                      //the start screen before the main game
+    private LoadScreen loadScreen;                        //the loading screen
 
     //starting and ending points of start, checkpoints and end
     private int startX, startY;
@@ -36,8 +37,11 @@ public class Map extends World{
     private ArrayList<Enemy> mobs;
     private LinkedList<Enemy> mobsToSpawn;
 
+    private boolean start;      //start game
+    private boolean init;       //initalizing
+    private int initCounter;
+
     //variables for spawning mobs
-    private boolean start;
     private boolean levelStart;
     private boolean flyingLevel;
     private boolean bossLevel;
@@ -89,93 +93,102 @@ public class Map extends World{
      * put in here since you intalize everything after you start the game
      */
     private void intalize (){
-        //x and y values
-        startX = 0; startY = 0;
-        endX1 = 10; endY1 = 12;
-        endX2 = 39; endY2 = 12;
-        endXf = 49; endYf = 24;
-        topSpace = 15; leftSpace = 12;  //spaces from the top and left, hardcoded on enemy
+        if (initCounter == 1){
+            //x and y values
+            startX = 0; startY = 0;
+            endX1 = 10; endY1 = 12;
+            endX2 = 39; endY2 = 12;
+            endXf = 49; endYf = 24;
+            topSpace = 15; leftSpace = 12;  //spaces from the top and left, hardcoded on enemy
 
-        data = new Data();
+            data = new Data();
 
-        map = new Tile [endYf+1][endXf+1];        //new map
+            map = new Tile [endYf+1][endXf+1];        //new map
 
-        //new arraylists
-        flyingPath = new ArrayList <ArrayList <Integer>>();
-        mobs = new ArrayList<Enemy>();
-        mobsToSpawn = new LinkedList <Enemy> ();
-
-        //new pathfinders
-        pf1 = new Pathfind (startX, startY, endX1, endY1, this);       //top to the first checkpoint
-        pf2 = new Pathfind (endX1, endY1, endX2, endY2, this);         //middle path
-        pf3 = new Pathfind (endX2, endY2, endXf, endYf, this);         //rightmost path
-
-        //tower defence stuff
-        money           = 10000;
-        income          = 0;
-        lives           = 20;
-        level           = 1;
-        time            = 0;
-        spawnCount      = 0;
-        flyingLevel     = false;
-        levelStart      = false;
-        bossLevel       = false;
-        currentRunSpeed = 1;
-        runSpeed = new int [5];
-        runSpeed[0] = 40;
-        runSpeed[1] = 50;
-        runSpeed[2] = 60;
-        runSpeed[3] = 70;
-        runSpeed[4] = 80;
-        runSpeedDelay = new int [5];
-        runSpeedDelay[0] = 15;
-        runSpeedDelay[1] = 30;
-        runSpeedDelay[2] = 100;
-        runSpeedDelay[3] = 250;
-        runSpeedDelay[4] = 700;        
-        Greenfoot.setSpeed (50);
-
-        //ui
-        ui = new Ui();             
-        refreshUi = false;
-        cb = new ChatBox();
-        pa = new PointerArrow();
-        towerButton = new TowerButton();
-        creepButton = new CreepButton();
-        buttonDelay = 0; 
-
-        //generates the map
-        generate();      
-
-        //sets the path first
-        setPath();
-
-        //generates the path for the flying path, its always gona stay the same, so doing it here
-        flyingPath.add (pf1.generatePath());       
-        flyingPath.add (pf2.generatePath());
-        flyingPath.add (pf3.generatePath());
-
-        //populates the data queue for mobs
-        data.populate();
-
-        addObject (ui, 512, 643);
-        addObject (cb, 512, 500);
-        addObject (towerButton, 262, 538);
-        addObject (creepButton, 762, 538);
-
-        /** Terence's stuff**/
-        //Towers
-        towers = new ArrayList<Tower>();
-
-        volume = new int[21];
-        currentVolume = 16;
-        for (int i = 0; i < 21; i++){
-            volume[i] = i*5;
+            //new arraylists
+            flyingPath = new ArrayList <ArrayList <Integer>>();
+            mobs = new ArrayList<Enemy>();
+            mobsToSpawn = new LinkedList <Enemy> ();
         }
-        s.setVolume (volume[currentVolume]);
+        else if (initCounter == 2){
+            //new pathfinders
+            pf1 = new Pathfind (startX, startY, endX1, endY1, this);       //top to the first checkpoint
+            pf2 = new Pathfind (endX1, endY1, endX2, endY2, this);         //middle path
+            pf3 = new Pathfind (endX2, endY2, endXf, endYf, this);         //rightmost path
+        }
+        else if (initCounter == 3){
+            //tower defence stuff
+            money           = 10000;
+            income          = 0;
+            lives           = 20;
+            level           = 1;
+            time            = 0;
+            spawnCount      = 0;
+            flyingLevel     = false;
+            levelStart      = false;
+            bossLevel       = false;
+            currentRunSpeed = 1;
+            runSpeed = new int [5];
+            runSpeed[0] = 40;
+            runSpeed[1] = 50;
+            runSpeed[2] = 60;
+            runSpeed[3] = 70;
+            runSpeed[4] = 80;
+            runSpeedDelay = new int [5];
+            runSpeedDelay[0] = 15;
+            runSpeedDelay[1] = 30;
+            runSpeedDelay[2] = 100;
+            runSpeedDelay[3] = 250;
+            runSpeedDelay[4] = 700;        
+            Greenfoot.setSpeed (50);
+        }
+        else if (initCounter == 4){
+            //ui
+            ui = new Ui();             
+            refreshUi = false;
+            cb = new ChatBox();
+            pa = new PointerArrow();
+            towerButton = new TowerButton();
+            creepButton = new CreepButton();
+            buttonDelay = 0; 
+            //generates the map
+            generate();      
+        }
+        else if (initCounter == 5){
+            //sets the path first
+            setPath();
 
-        //variable to run place movemet 
-        place =  false;
+            //generates the path for the flying path, its always gona stay the same, so doing it here
+            flyingPath.add (pf1.generatePath());       
+            flyingPath.add (pf2.generatePath());
+            flyingPath.add (pf3.generatePath());
+            //populates the data queue for mobs
+            data.populate();
+
+            addObject (ui, 512, 643);
+            addObject (cb, 512, 500);
+            addObject (towerButton, 262, 538);
+            addObject (creepButton, 762, 538);
+        }
+        else if (initCounter == 6){
+            /** Terence's stuff**/
+            //Towers
+            towers = new ArrayList<Tower>();
+
+            volume = new int[21];
+            currentVolume = 16;
+            for (int i = 0; i < 21; i++){
+                volume[i] = i*5;
+            }
+            s.setVolume (volume[currentVolume]);
+
+            //variable to run place movemet 
+            place =  false;
+
+            init = false;
+            start = true;
+            removeObject (loadScreen);
+        }
     }
 
     /**
@@ -201,13 +214,19 @@ public class Map extends World{
                     trackMouse(mouse);
             }
         }
+        else if (init){
+            initCounter++;
+            intalize();
+            loadScreen.update();
+        }
         else{
             //if the user presses a when they are on the start screen, start the actual game
             //temp fix, add buttons later
             if (Greenfoot.isKeyDown (" ")){
-                start = true;
                 removeObject (startScreen);
-                intalize();
+                loadScreen = new LoadScreen(6);
+                addObject (loadScreen, 512, 384);
+                init = true;
             }
         }
     }
@@ -667,6 +686,8 @@ public class Map extends World{
         startScreen = new StartScreen (restart);        
         addObject (startScreen, 512, 384);
         start = false;
+        init = false;
+        initCounter = 0;
     }
 
     /**
