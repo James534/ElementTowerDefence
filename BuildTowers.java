@@ -81,7 +81,8 @@ public class BuildTowers extends Button
         bg[1] = new GreenfootImage ("Buttons/BuildTowers/"+element + "" +id+"2.png");
         bg[2] = new GreenfootImage ("Buttons/BuildTowers/"+element + "" +id+"3.png");
         this.setImage (bg[0]);
-    }
+    }
+
 
     public void act(){
         if (clicked){
@@ -122,7 +123,7 @@ public class BuildTowers extends Button
         }else{                  //earth
             t = new EarthTower();
         }        
-        for (int i = 0; i < level; i++){
+        for (int i = 1; i < level; i++){
             t.upgrade (true);
         }
         return t;
