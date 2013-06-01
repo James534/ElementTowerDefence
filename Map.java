@@ -270,6 +270,7 @@ public class Map extends World{
             }
             else if (selected instanceof Button){
                 Button b = (Button) selected;
+                s.playClicked();
                 if (selected instanceof TowerButton){
                     cancelBuild();
                     ui.changeUi (1);
@@ -308,7 +309,7 @@ public class Map extends World{
                     button.clicked (true);
                     if (money >= button.getCost()){
                         income += button.getIncome();
-                        money  -= button.getCost();
+                        changeMoney (-button.getCost());
                         resetUi();
                         mobsToSpawn.add (button.getCreep());
                         cb.setMessage ("sending 1 creep", 2);

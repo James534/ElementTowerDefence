@@ -11,6 +11,7 @@ public class Sound
 
     private String[] attack;
     private String moneyName;
+    private GreenfootSound clicked;
     private int volume;
 
     private int counter;
@@ -27,6 +28,8 @@ public class Sound
         attack[1] = "sounds/fireAttack.wav"; 
         attack[2] = "sounds/earthAttack.wav"; 
         attack[3] = "sounds/waterAttack.wav"; 
+
+        clicked = new GreenfootSound ("sounds/clicked.wav");
 
         playOnce(); 
     }
@@ -61,6 +64,11 @@ public class Sound
         money.setVolume (volume);
         money.play();
         track.add (money);
+    }
+
+    public void playClicked(){
+        clicked.setVolume (volume);
+        clicked.play();
     }
 
     private void playOnce()
