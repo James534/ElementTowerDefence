@@ -1,14 +1,10 @@
 import greenfoot.*;
-import java.util.LinkedList;
-import java.util.ArrayList;
 
 /**
  * DataBase of Sound files
  */
 public class Sound
 {
-    private LinkedList<GreenfootSound> track;
-
     private String[] attack;
     private String moneyName;
     private GreenfootSound clicked;
@@ -17,7 +13,6 @@ public class Sound
     private int counter;
     public Sound()
     {
-        track = new LinkedList<GreenfootSound>();
         moneyName   = "sounds/buy.wav";
         volume      = 50;
         counter     = 0;
@@ -36,16 +31,6 @@ public class Sound
 
     public void run(){
         counter++;
-        ArrayList <GreenfootSound> al = new ArrayList<GreenfootSound>();
-        for (GreenfootSound s : track){
-            if (s.isPlaying() == false){
-                al.add (s);
-            }
-        }
-        for (int i = 0; i < al.size(); i++){
-            GreenfootSound s = al.get(i);
-            track.remove (s);
-        }
     }
 
     public void play(int Id)
@@ -55,7 +40,6 @@ public class Sound
             GreenfootSound s = new GreenfootSound (attack[Id-1]);
             s.setVolume (volume);
             s.play();
-            track.add (s);
         }
     } 
 
@@ -63,7 +47,6 @@ public class Sound
         GreenfootSound money = new GreenfootSound (moneyName);
         money.setVolume (volume);
         money.play();
-        track.add (money);
     }
 
     public void playClicked(){
@@ -86,8 +69,5 @@ public class Sound
 
     public void setVolume(int v){
         volume = v;
-        for (GreenfootSound s : track){
-            s.setVolume (volume);
-        }
     }
 }
