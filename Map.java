@@ -320,11 +320,28 @@ public class Map extends World{
                 else if (selected instanceof BuildTowers && selectedTower == null){
                     BuildTowers button = (BuildTowers) selected;
                     button.clicked (true);
-                    if (money >= button.getCost()){
-                        money -= button.getCost();
-                        placeHolder = button.getTower();
-                    }else{
-                        cb.setMessage ("YOU REQUIRE MORE MONEY", 1);
+                    if (levelStart == false){
+                        if (money >= button.getCost()){
+                            money -= button.getCost();
+                            placeHolder = button.getTower();
+
+                            place = true;                               //terrence's place variable
+                            ui.setTowerData (placeHolder);              //changes the ui to match the tower
+                            ui.changeUi (4);
+                            r = new Range(placeHolder.getRange()) ;     //shows the range of the tower
+
+                            if (getObjects (PointerArrow.class) != null){       //removes the arrow if there is one
+                                removeObject (pa);
+                            }
+                            addObject (r, 10000, 10000); 
+                            addObject (placeHolder, 10000, 10000);
+                        }else{
+                            cb.setMessage ("YOU REQUIRE MORE MONEY", 1);
+                        }
+                    }
+                    else{
+                        placeHolder = null;             
+                        cb.setMessage ("You Cant Build During a Wave", 1);
                     }
                 }
                 else if (selected instanceof DebuffButton){
@@ -414,52 +431,6 @@ public class Map extends World{
                     }
                 }else{
                     cb.setMessage ("You Require More Money", 1);
-                }
-            }
-        }
-
-        else if (placeHolder == null && selectedTower == null){
-            boolean temp = false;
-            if      (Greenfoot.isKeyDown ("F")){
-
-                //build the fire tower
-                placeHolder = new FireTower();    
-                temp = true;
-            }
-            else if (Greenfoot.isKeyDown("W")){
-                placeHolder = new WaterTower(); 
-                temp = true;
-            }
-            else if (Greenfoot.isKeyDown("G")){
-                placeHolder = new EarthTower(); 
-                temp = true;
-            }
-            else if (Greenfoot.isKeyDown("A")){
-                placeHolder = new AirTower();
-                temp = true;
-            }   
-            else if (Greenfoot.isKeyDown("B"))
-            {
-                placeHolder = new Wall();
-                temp = true;
-            }
-
-            if (temp){
-                if (levelStart == false){
-                    place = true;                               //terrence's place variable
-                    ui.setTowerData (placeHolder);              //changes the ui to match the tower
-                    ui.changeUi (4);
-                    r = new Range(placeHolder.getRange()) ;     //shows the range of the tower
-
-                    if (getObjects (PointerArrow.class) != null){       //removes the arrow if there is one
-                        removeObject (pa);
-                    }
-                    addObject (r, 10000, 10000); 
-                    addObject (placeHolder, 10000, 10000);
-                }
-                else{
-                    placeHolder = null;             
-                    cb.setMessage ("You Cant Build During a Wave", 1);
                 }
             }
         }
@@ -560,6 +531,7 @@ public class Map extends World{
 
                 map[y][x].setWalkable(false);  
                 map[y][x].setPlaceable (false);
+                int tempLevel = placeHolder.getLevel();
                 if      (placeHolder instanceof  FireTower){
                     t = new FireTower();}
                 else if (placeHolder instanceof WaterTower){
@@ -573,6 +545,10 @@ public class Map extends World{
 
                 else{
                     t= new Tower(); //this should never happen it is only to make code compile
+                }
+
+                for (int i = 1; i < tempLevel; i++){
+                    t.upgrade(true);
                 }
 
                 if (!shiftClick){

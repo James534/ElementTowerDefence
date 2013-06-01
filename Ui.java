@@ -145,7 +145,9 @@ public class Ui extends Actor
      * 5 for selecting a mob
      */
     public void changeUi (int id){
-        if       (this.id == 2 && id != 2){
+        if       (this.id == 1 && id != 1){
+            map.removeObjects (map.getObjects (BuildTowers.class) );
+        }else if (this.id == 2 && id != 2){
             map.removeObjects (map.getObjects (SendCreeps.class) );
         }else if (this.id == 3 && id != 3){
             map.removeObjects (map.getObjects (UIButton.class) );
@@ -153,16 +155,16 @@ public class Ui extends Actor
             map.removeObjects (map.getObjects (DummyImage.class) );
         }
         this.id = id;
-        if (id == 1){
+        if (id == 1){               //build towers
             int tempCounter = 0;
             for (int n = 0; n < 4; n++){
                 for (int i = 0; i < 3; i++){
-                    map.addObject (buttons[1][tempCounter], 340 + 190*n, 610+50*i);
+                    map.addObject (buttons[1][tempCounter], 350 + 189*n, 610+50*i);
                     tempCounter++;
                 }
             }
         }
-        else if (id == 2){           
+        else if (id == 2){           //send creeps
             int tempCounter = 0;
             for (int n = 0; n < 4; n++){
                 for (int i = 0; i < 3; i++){

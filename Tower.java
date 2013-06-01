@@ -58,7 +58,7 @@ public class Tower extends Actor
      */
     protected void addedToWorld(World world){
         map = (Map) world;
-        type = " "; 
+        //type = " "; 
     }
 
     /**
