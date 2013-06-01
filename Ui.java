@@ -51,7 +51,7 @@ public class Ui extends Actor
     private UpgradeButton upgradeButton;
     private DebuffButton[] debuffs;
 
-    private DummyDebuff[] dumDebuff;
+    private DummyDebuff[] dumbDebuff;
     public Ui(){
         bg = new GreenfootImage (1000, 230);
         cache = new GreenfootImage [6];
@@ -109,9 +109,9 @@ public class Ui extends Actor
         for (int i = 0; i < 5; i++){
             debuffs[i] = new DebuffButton(i);
         }
-        dumDebuff = new DummyDebuff[5];
+        dumbDebuff = new DummyDebuff[5];
         for (int i = 0; i < 5; i++){
-            dumDebuff[i] = new DummyDebuff(i);
+            dumbDebuff[i] = new DummyDebuff(i);
         }
 
         id = 0;
@@ -357,8 +357,14 @@ public class Ui extends Actor
             ArrayList<Debuff> debuffs = mob.getDebuffs();
             for (int i = 0; i < debuffs.size(); i++){
                 Debuff d = debuffs.get(i);
-                DummyDebuff dd = new DummyDebuff (d.getId());
-                map.addObject (dd, 600 + 50*i, 700);
+                DummyDebuff dd = dumbDebuff [d.getId()];
+                dd.setDuration (d.getDuration());
+                if (d.getDuration() > 1){
+                    map.addObject (dd, 750 + 50*i, 620);
+                }
+                else{
+                    map.removeObject (dd);
+                }
             }
         }
         this.setImage (bg);

@@ -14,6 +14,7 @@ public class DebuffButton extends UIButton  implements HoverInfo
     private boolean dummy;
 
     private int id;
+    private int level;
     private String name;
 
     private int hoverCounter;
@@ -29,9 +30,9 @@ public class DebuffButton extends UIButton  implements HoverInfo
             bg[2] = new GreenfootImage ("Debuff/lightning.png");
             name = "Lightning";
         }else if (id == 2){             //water
-            bg[0] = new GreenfootImage ("Debuff/iceDebuff.png");
-            bg[1] = new GreenfootImage ("Debuff/iceDebuff.png");
-            bg[2] = new GreenfootImage ("Debuff/iceDebuff.png");
+            bg[0] = new GreenfootImage ("Debuff/freeze.png");
+            bg[1] = new GreenfootImage ("Debuff/freeze.png");
+            bg[2] = new GreenfootImage ("Debuff/freeze.png");
             name = "Freeze";
         }else if (id == 3){             //fire
             bg[0] = new GreenfootImage ("Debuff/burning.png");
@@ -48,6 +49,7 @@ public class DebuffButton extends UIButton  implements HoverInfo
         bg[1].setTransparency (200);
         bought = false;
         this.id = id;
+        level = 1;
     }
 
     public void act(){
@@ -88,6 +90,13 @@ public class DebuffButton extends UIButton  implements HoverInfo
      */
     public int getId (){
         return id;
+    }
+
+    /**
+     * returns the level of this debuff
+     */
+    public int getLevel(){
+        return level;
     }
 
     /**

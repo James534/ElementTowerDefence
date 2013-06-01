@@ -1,4 +1,16 @@
 #BlueJ class context
 comment0.params=id
 comment0.target=DummyDebuff(int)
-numComments=1
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ updateImg()
+comment3.params=d
+comment3.target=void\ setDuration(int)
+comment4.params=lv
+comment4.target=void\ setLevel(int)
+comment5.params=
+comment5.target=int\ getDuration()
+comment6.params=
+comment6.target=int\ getId()
+numComments=7

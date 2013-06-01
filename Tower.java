@@ -37,11 +37,12 @@ public class Tower extends Actor
     //targetting priority, 1 for closest, 2 for furthest, etc
     protected int               targetPriority;     
     //the number of debuffs this tower has bought
-    protected LinkedList<Integer> debuffs;
+    protected LinkedList<Debuff> debuffs;
     public Tower()
     {
         name = "";
         desc = new ArrayList<String>(5);
+        type = "";
 
         targetedMob = null;
         targetPriority = 1;
@@ -50,7 +51,7 @@ public class Tower extends Actor
         upgradeCost[0] = 50;
         upgradeCost[1] = 100;
         upgradeCost[2] = 150;
-        debuffs = new LinkedList<Integer>();
+        debuffs = new LinkedList<Debuff>();
     }
 
     /**
@@ -58,7 +59,6 @@ public class Tower extends Actor
      */
     protected void addedToWorld(World world){
         map = (Map) world;
-        //type = " "; 
     }
 
     /**
@@ -159,16 +159,6 @@ public class Tower extends Actor
             {  //the default attack
                 basicAttack = new Normal(speed, power,1, element, targetedMob, elementString);  
                 targetedMob.targetDmg (power, element);
-            }
-            //add sound here
-            if (this instanceof FireTower){
-
-            }
-            else if (this instanceof WaterTower){
-            }
-            else if (this instanceof EarthTower){
-            }
-            else  if (this instanceof AirTower){
             }
             map.s.play (element);
             map.addObject (basicAttack,this.getX(), this.getY());
@@ -376,8 +366,9 @@ public class Tower extends Actor
      * adds a debuff on the tower
      * called when the user buys a debuff
      */
-    public void addDebuff(int id){
-        debuffs.add (id);
+    public void addDebuff(int id, int level){
+        Debuff d = new Debuff (id, level);
+        debuffs.add (d);
     }
 
     /**
@@ -386,7 +377,7 @@ public class Tower extends Actor
     public int[] getDebuffs(){
         int[] temp = new int[debuffs.size()];
         for (int i = 0; i < debuffs.size(); i++){
-            temp[i] = debuffs.get(i);
+            temp[i] = debuffs.get(i).getId();
         }
         return temp;
     }

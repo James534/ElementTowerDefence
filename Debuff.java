@@ -9,17 +9,19 @@ public class Debuff
 {
     private Enemy enemy;        //the enemy this debuff belongs to
     private int id;             //id of the debuff
+    private int lv;
     private int duration;       //duration of the debuff
+    private int maxDuration;    //the max duration
     private int dmg;            //damage of the debuff
     private int rate;           //rate of the dot
     private float slow;         //slow of the debuff
     public Debuff(int id, int lv, Enemy e)
     {
         this.id = id;
+        this.lv = lv;
         enemy = e;
         if (id == 0){        //stun
             if (lv == 1){
-                duration = 11;
                 dmg = 0;
                 rate = 100;
                 slow = 1f;
@@ -28,12 +30,18 @@ public class Debuff
 
         }else if (id == 2){     //freeze
             if (lv == 1){
-                duration = 100;
-                dmg = 5;
+                dmg = 1;
                 rate = 20;
                 slow = 0.2f;
             }
         }
+        maxDuration = Data.debuffDuration[lv-1][id];
+        duration = maxDuration;
+    }
+
+    public Debuff (int id, int lv){
+        this.id = id;
+        this.lv = lv;
     }
 
     /**
@@ -47,12 +55,23 @@ public class Debuff
         }
     }
 
+    /**
+     * increases the duration
+     */
+    public void increasseDuration (){
+        duration = maxDuration;
+    }
+
     public int getId(){
         return id;
     }
 
     public int getDuration(){
         return duration;
+    }
+
+    public int getMaxDuration(){
+        return maxDuration;
     }
 
     public int getDmg(){

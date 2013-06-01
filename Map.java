@@ -287,6 +287,13 @@ public class Map extends World{
                 ui.changeUi (5);
                 drawArrow (false);
             }
+            else if (selected instanceof DebuffVisu && selectedTower == null){
+                cancelBuild();
+                DebuffVisu d = (DebuffVisu) selected;
+                ui.setMobData (d.getEnemy());
+                ui.changeUi (5);
+                drawArrow (false);                
+            }
             else if (selected instanceof Button){
                 Button b = (Button) selected;
                 s.playClicked();
@@ -368,7 +375,7 @@ public class Map extends World{
                     DebuffButton d = (DebuffButton) selected;
                     if (d.isBought() == false){
                         d.bought (true);
-                        selectedTower.addDebuff (d.getId());
+                        selectedTower.addDebuff (d.getId(), d.getLevel());
                         cb.setMessage ("Bought " + d.getName(), 2);
                     }
                 }

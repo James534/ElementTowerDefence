@@ -58,7 +58,7 @@ public class Enemy extends Actor
 
     public Enemy(){
         debuff = new ArrayList<Debuff>();
-        dv = new DebuffVisu();
+        dv = new DebuffVisu(this);
     }
 
     protected void addedToWorld(World world){
@@ -139,13 +139,14 @@ public class Enemy extends Actor
      * called when the weapon with a debuff hits the enemy
      */
     public void addDebuff (int id, int debuffLv, int element, int orgDmg){
-        if (debuff.contains (id)){             //if there is already a debuff on the mob
-            //increase debuff duration here
+        for (Debuff d : debuff){
+            if (d.getId() == id){
+                //increase duration
+                return;
+            }
         }
-        else{
-            debuff.add (new Debuff (id, debuffLv, this));
-            dv.setDebuff (id);
-        }
+        debuff.add (new Debuff (id, debuffLv, this));
+        dv.setDebuff (id);
     }
 
     private void debuffs(){

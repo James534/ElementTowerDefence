@@ -9,8 +9,11 @@ public class DebuffVisu extends Effects
 {
     private int frame;              //current frame of the picture
     private int maxFrame;           //max frame of the pictures
-    public DebuffVisu(){
+
+    private Enemy e;
+    public DebuffVisu(Enemy e){
         counter = 0;
+        this.e = e;
         bg = new GreenfootImage (20, 20);
         this.setImage (bg);
     }
@@ -52,5 +55,9 @@ public class DebuffVisu extends Effects
 
     public void changeLocation (int x, int y){
         this.setLocation (x, y-10);
+    }
+
+    public Enemy getEnemy(){
+        return e;
     }
 }
