@@ -385,7 +385,7 @@ public class Map extends World{
 
         //if the user presses s, start the level
         //temp spawning        
-        if (Greenfoot.isKeyDown ("S") && levelStart == false){
+        if (Greenfoot.isKeyDown ("space") && levelStart == false){
             cancelBuild(); 
             levelStart = true;
             setLevelSpawn();
@@ -460,6 +460,95 @@ public class Map extends World{
                     cb.setMessage ("You Require More Money", 1);
                 }
             }
+        }
+
+        /**     grid controls for building towers **/
+        if (ui.getId() == 1){
+            boolean tempPlace = false;
+            BuildTowers button = null;
+            String tempString = Greenfoot.getKey();
+            if (tempString != null && selectedTower == null){
+                if (tempString.equals ("q")){                //air 1
+                    button = (BuildTowers) ui.getButton (1, 0);
+                    tempPlace = true;
+                }
+                else if (tempString.equals ("a")){            //air 2
+                    button = (BuildTowers) ui.getButton (1, 1);
+                    tempPlace = true;
+                }
+                else if (tempString.equals ("z")){            //air 3
+                    button = (BuildTowers) ui.getButton (1, 2);
+                    tempPlace = true;
+                }
+                else if (tempString.equals ("w")){            //water 1
+                    button = (BuildTowers) ui.getButton (1, 3);
+                    tempPlace = true;
+                }
+                else if (tempString.equals ("s")){            //water 2
+                    button = (BuildTowers) ui.getButton (1, 4);
+                    tempPlace = true;
+                }
+                else if (tempString.equals ("x")){            //water 3
+                    button = (BuildTowers) ui.getButton (1, 5);
+                    tempPlace = true;
+                }
+                else if (tempString.equals ("e")){            //fire 1
+                    button = (BuildTowers) ui.getButton (1, 6);
+                    tempPlace = true;
+                }
+                else if (tempString.equals ("d")){            //fire 2
+                    button = (BuildTowers) ui.getButton (1, 7);
+                    tempPlace = true;
+                }
+                else if (tempString.equals ("c")){            //fire 3
+                    button = (BuildTowers) ui.getButton (1, 8);
+                    tempPlace = true;
+                }
+                else if (tempString.equals ("r")){            //earth 1
+                    button = (BuildTowers) ui.getButton (1, 9);
+                    tempPlace = true;
+                }
+                else if (tempString.equals ("f")){            //earth 2
+                    button = (BuildTowers) ui.getButton (1, 10);
+                    tempPlace = true;
+                }
+                else if (tempString.equals ("v")){            //earth 3
+                    button = (BuildTowers) ui.getButton (1, 11);
+                    tempPlace = true;
+                }
+            }
+
+            if (tempPlace){
+                button.clicked (true);
+                s.playClicked();
+                if (levelStart == false){
+                    if (money >= button.getCost()){
+                        money -= button.getCost();
+                        placeHolder = button.getTower();
+
+                        place = true;                               //terrence's place variable
+                        ui.setTowerData (placeHolder);              //changes the ui to match the tower
+                        ui.changeUi (4);
+                        r = new Range(placeHolder.getRange()) ;     //shows the range of the tower
+
+                        if (getObjects (PointerArrow.class) != null){       //removes the arrow if there is one
+                            removeObject (pa);
+                        }
+                        addObject (r, 10000, 10000); 
+                        addObject (placeHolder, 10000, 10000);
+                    }else{
+                        cb.setMessage ("YOU REQUIRE MORE MONEY", 1);
+                    }
+                }
+                else{
+                    placeHolder = null;             
+                    cb.setMessage ("You Cant Build During a Wave", 1);      
+                }
+            }
+        }
+        /**         GRID HOTKEYS TO SEND CREEPS     */
+        else if (ui.getId() == 2){
+
         }
         buttonDelay++;
     }

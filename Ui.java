@@ -373,4 +373,8 @@ public class Ui extends Actor
     public int getId(){
         return id;
     }
+
+    public Button getButton(int n, int id){
+        return buttons[n][id];
+    }
 }
