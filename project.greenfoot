@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Wed May 29 21:13:31 EDT 2013
+#Fri May 31 21:57:19 EDT 2013
 target24.type=ClassTarget
 target16.name=Tower
 target13.editor.width=900
@@ -210,6 +210,7 @@ target6.editor.width=900
 target6.width=120
 target17.editor.height=700
 dependency30.to=WaterMob
+class.BuildTowers.superclass=Button
 target7.editor.width=900
 target7.editor.y=49
 target27.type=ClassTarget

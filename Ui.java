@@ -102,6 +102,9 @@ public class Ui extends Actor
         for (int i = 0; i < 12; i++){
             buttons[0][i] = new SendCreeps(i+1);
         }
+        for (int i = 0; i < 12; i++){
+            buttons[1][i] = new BuildTowers(i+1);
+        }
         debuffs = new DebuffButton [5];
         for (int i = 0; i < 5; i++){
             debuffs[i] = new DebuffButton(i);
@@ -150,7 +153,16 @@ public class Ui extends Actor
             map.removeObjects (map.getObjects (DummyImage.class) );
         }
         this.id = id;
-        if (id == 2){           
+        if (id == 1){
+            int tempCounter = 0;
+            for (int n = 0; n < 4; n++){
+                for (int i = 0; i < 3; i++){
+                    map.addObject (buttons[1][tempCounter], 340 + 190*n, 610+50*i);
+                    tempCounter++;
+                }
+            }
+        }
+        else if (id == 2){           
             int tempCounter = 0;
             for (int n = 0; n < 4; n++){
                 for (int i = 0; i < 3; i++){

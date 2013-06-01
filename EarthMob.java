@@ -11,7 +11,11 @@ public class EarthMob extends Enemy
 {
     public EarthMob(int hp, int armor, float speed, boolean isBoss, boolean isFlying){
         super (hp, armor, speed, isBoss, isFlying);
-        bg = new GreenfootImage ("Enemy/earthMob.png");
+        if (isBoss){
+            bg = new GreenfootImage ("Enemy/earthBoss.png");
+        }else{
+            bg = new GreenfootImage ("Enemy/earthMob.png");            
+        }
 
         this.type        = 4;
         stringType       = "Earth";

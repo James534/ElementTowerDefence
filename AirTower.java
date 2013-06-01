@@ -10,20 +10,24 @@ public class AirTower extends Tower
 {
     public AirTower()
     {
-        super();
-        setImage("Towers/airTower.png");
+        fileName = "Towers/a";
+        setImage("Towers/a1.png");
         attackRate = 20; // rate at which it attak
         range = 300; // maxiumum range of the tower 
         speed = 10;// speed of the projectile
         power = 50;
         counter = attackRate;
-        
+
         element = 1;
         elementString = "air";
-        
+
         name = "Air Tower";
-        
+
         desc.add ("lightweight tower");
         desc.add ("Average range and power");
+    }
+
+    private void upgradeImg(){
+
     }
 }

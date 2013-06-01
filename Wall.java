@@ -3,8 +3,8 @@ public class Wall extends Tower
 {
     public Wall()
     {
-
-        setImage("Towers/wall.png");
+        fileName = "Towers/wall";
+        setImage("Towers/wall1.png");
         attackRate = 20; // rate at which it attak
         range = 1; // 
         speed = 0;// speed of the projectile

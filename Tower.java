@@ -28,6 +28,7 @@ public class Tower extends Actor
     //added by james
     protected Enemy             targetedMob;    
     protected String            name;
+    protected String            fileName;
     protected ArrayList<String> desc;   
     //the element of the tower (air, water, fire, earth)
     protected int               element;
@@ -250,7 +251,7 @@ public class Tower extends Actor
     /**
      * Upgrades the tower by changing base stats and changes weapon or add debuff
      */
-    public void upgrade()
+    public void upgrade(boolean button)
     {
         if (level < 3)
         {
@@ -276,10 +277,16 @@ public class Tower extends Actor
             }
 
             level++;
+            this.setImage (fileName + (level) + ".png");
             counter = 0;
-            map.displayMessage("Tower Upgraded", 2); 
+            if (!button){
+                map.displayMessage("Tower Upgraded", 2); 
+            }
         }
-        map.resetUi(); //refreshes the ui after upgrade
+
+        if (!button){
+            map.resetUi(); //refreshes the ui after upgrade
+        }
     }
 
     /**

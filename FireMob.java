@@ -11,7 +11,11 @@ public class FireMob extends Enemy
 {
     public FireMob(int hp, int armor, float speed, boolean isBoss, boolean isFlying){
         super (hp, armor, speed, isBoss, isFlying);
-        bg = new GreenfootImage ("Enemy/fireMob.png");
+        if (isBoss){
+            bg = new GreenfootImage ("Enemy/fireBoss.png");
+        }else{
+            bg = new GreenfootImage ("Enemy/fireMob.png");            
+        }
 
         this.type        = 3;
         stringType       = "Fire";

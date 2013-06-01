@@ -294,7 +294,7 @@ public class Map extends World{
                     if (money >= selectedTower.getUpgradeCost()){
                         if (selectedTower.upgradeable()){
                             changeMoney (-selectedTower.getUpgradeCost());
-                            selectedTower.upgrade();  
+                            selectedTower.upgrade(false);  
                             refreshUi = true;
                         }else{
                             cb.setMessage ("Tower is fully upgraded", 1);
@@ -315,6 +315,16 @@ public class Map extends World{
                     }
                     else{
                         cb.setMessage ("YOU DO NOT HAVE ENOUGH MONEY", 1);
+                    }
+                }
+                else if (selected instanceof BuildTowers && selectedTower == null){
+                    BuildTowers button = (BuildTowers) selected;
+                    button.clicked (true);
+                    if (money >= button.getCost()){
+                        money -= button.getCost();
+                        placeHolder = button.getTower();
+                    }else{
+                        cb.setMessage ("YOU REQUIRE MORE MONEY", 1);
                     }
                 }
                 else if (selected instanceof DebuffButton){
@@ -396,7 +406,7 @@ public class Map extends World{
                 if (money >= selectedTower.getUpgradeCost() ){
                     if (selectedTower.upgradeable() ){
                         changeMoney (-selectedTower.getUpgradeCost());
-                        selectedTower.upgrade();  
+                        selectedTower.upgrade(false);  
                         buttonDelay =  0;
                         refreshUi = true;
                     } else{

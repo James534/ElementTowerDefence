@@ -10,7 +10,11 @@ public class WaterMob extends Enemy
 {
     public WaterMob(int hp, int armor, float speed, boolean isBoss, boolean isFlying){
         super (hp, armor, speed, isBoss, isFlying);
-        bg = new GreenfootImage ("Enemy/waterMob.png");
+        if (isBoss){
+            bg = new GreenfootImage ("Enemy/waterBoss.png");
+        }else{
+            bg = new GreenfootImage ("Enemy/waterMob.png");            
+        }
 
         this.type        = 2;
         stringType       = "Water";

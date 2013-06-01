@@ -10,8 +10,8 @@ public class WaterTower extends Tower
 {
     public WaterTower() 
     {
-        super();
-        setImage("Towers/waterTower.png");
+        fileName = "Towers/w";
+        setImage("Towers/w1.png");
 
         attackRate = 20;
         range = 100;

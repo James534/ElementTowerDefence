@@ -13,7 +13,11 @@ public class AirMob extends Enemy
     public AirMob(int hp, int armor, float speed, boolean isBoss, boolean isFlying)
     {
         super (hp, armor, speed, isBoss, isFlying);
-        bg = new GreenfootImage ("Enemy/airMob.png");
+        if (isBoss){
+            bg = new GreenfootImage ("Enemy/airBoss.png");
+        }else{
+            bg = new GreenfootImage ("Enemy/airMob.png");            
+        }
 
         this.type        = 1;
         stringType       = "Air";
