@@ -96,7 +96,7 @@ public class Map extends World{
     private void intalize (){
         if (initCounter == 1){
             Greenfoot.setSpeed (50);
-            
+
             //x and y values
             startX = 0; startY = 0;
             endX1 = 10; endY1 = 12;
@@ -121,7 +121,7 @@ public class Map extends World{
         }
         else if (initCounter == 3){
             //tower defence stuff
-            money           = 10000;
+            money           = 100;
             income          = 0;
             lives           = 20;
             level           = 1;
@@ -158,7 +158,7 @@ public class Map extends World{
             buttonDelay = 0; 
             //generates the map
             generate();      
-            
+
             //sets the path first
             setPath();
 
@@ -316,6 +316,7 @@ public class Map extends World{
                     b.clicked(true);
                     map[selectedTower.getGridY()] [selectedTower.getGridX()].setWalkable(true);
                     map[selectedTower.getGridY()] [selectedTower.getGridX()].setPlaceable(true);
+                    selectedTower.sell();
                     removeObject (selectedTower);
                     towers.remove(selectedTower); 
                     setPath();
@@ -354,7 +355,6 @@ public class Map extends World{
                     button.clicked (true);
                     if (levelStart == false){
                         if (money >= button.getCost()){
-                            changeMoney (-button.getCost());
                             placeHolder = button.getTower();
 
                             place = true;                               //terrence's place variable
@@ -534,7 +534,6 @@ public class Map extends World{
                 s.playClicked();
                 if (levelStart == false){
                     if (money >= button.getCost()){
-                        money -= button.getCost();
                         placeHolder = button.getTower();
 
                         place = true;                               //terrence's place variable
@@ -713,38 +712,35 @@ public class Map extends World{
      * Creates a tower and adds it to the world. detects what tower to place based on its place holder
      */
     private void createTower(int realX, int realY, int x, int y,boolean shiftClick){
-        int cost = 5;
-        if (money >= cost){
-            if (map[y][x].getWalkable() && map[y][x].getPlaceable() && canStillWalk(x, y)){
+        if (map[y][x].getWalkable() && map[y][x].getPlaceable() && canStillWalk(x, y)){
+            Tower t; 
+            if      (placeHolder instanceof  FireTower){
+                t = new FireTower();}
+            else if (placeHolder instanceof WaterTower){
+                t= new WaterTower();}
+            else if (placeHolder instanceof EarthTower){
+                t= new EarthTower();  }
+            else if (placeHolder instanceof   AirTower){
+                t= new AirTower(); }
+            else if (placeHolder instanceof Wall){
+                t = new Wall(); }
 
-                Tower t; 
+            else{
+                t= new Tower(); //this should never happen it is only to make code compile
+            }
+            int tempLevel = placeHolder.getLevel();
+            for (int i = 1; i < tempLevel; i++){
+                t.upgrade(true);
+            }
 
+            int cost = t.getCost();
+            if (money >= cost){
                 changeMoney (-cost);
                 //places the real tower 
                 selectedTower = null;  // prevents the placement click from slecting the tower
 
                 map[y][x].setWalkable(false);  
                 map[y][x].setPlaceable (false);
-                int tempLevel = placeHolder.getLevel();
-                if      (placeHolder instanceof  FireTower){
-                    t = new FireTower();}
-                else if (placeHolder instanceof WaterTower){
-                    t= new WaterTower();}
-                else if (placeHolder instanceof EarthTower){
-                    t= new EarthTower();  }
-                else if (placeHolder instanceof   AirTower){
-                    t= new AirTower(); }
-                else if (placeHolder instanceof Wall){
-                    t = new Wall(); }
-
-                else{
-                    t= new Tower(); //this should never happen it is only to make code compile
-                }
-
-                for (int i = 1; i < tempLevel; i++){
-                    t.upgrade(true);
-                }
-
                 if (!shiftClick){
                     cancelBuild();
                 }
@@ -757,12 +753,11 @@ public class Map extends World{
                 t.setActive(false);
             }
             else{
-                //add code to inform the user you cant build there
-                cb.setMessage ("YOU CANT BUILD THERE", 1);
+                cb.setMessage ("YOU REQUIRE MORE MINERALS", 1);
             }
         }
         else{
-            cb.setMessage ("YOU REQUIRE MORE MINERALS", 1);
+            cb.setMessage ("YOU CANT BUILD THERE", 1);
         }
     }
 

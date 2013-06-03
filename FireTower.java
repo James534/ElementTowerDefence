@@ -22,6 +22,7 @@ public class FireTower extends Tower
         elementString = "fire";
 
         name = "Fire Tower";
+        cost = 10;
 
         desc.add ("Tower with average power,");
         desc.add ("range and attack range");

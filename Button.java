@@ -36,9 +36,9 @@ public class Button extends Actor
         int tempX = this.getX();
         int tempY = this.getY();
         if (tempX < 600){
-            coordinates[0] = tempX + tempX/2;
+            coordinates[0] = tempX + 160;
         }else{
-            coordinates[0] = tempX - 150;
+            coordinates[0] = tempX - 160;
         }
         coordinates[1] = tempY - map.hm.getHeight()/2;
         return coordinates;

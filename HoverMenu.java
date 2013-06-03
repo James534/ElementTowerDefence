@@ -10,6 +10,7 @@ import java.awt.Color;
 public class HoverMenu extends Actor
 {
     private GreenfootImage bg;
+    private GreenfootImage menuImg;
     private int width;
     private int height;
 
@@ -25,6 +26,7 @@ public class HoverMenu extends Actor
         width = 300;
         height = 300;
         bg = new GreenfootImage (width, height);
+        menuImg = new GreenfootImage ("UI/menu.png");
 
         titleFont = new Font ("Vrinda", 1, 40);
         descFont  = new Font ("Vrinda", 1, 20);
@@ -44,8 +46,7 @@ public class HoverMenu extends Actor
     private void refresh(){
         bg.clear();
 
-        bg.setColor (bgColor);
-        bg.fill();
+        bg.drawImage (menuImg, 0, 0);
 
         bg.setFont (titleFont);
         bg.setColor (titleColor);

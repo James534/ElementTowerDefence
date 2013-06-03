@@ -18,10 +18,16 @@ public class DummyDebuff extends DummyImage
             bg = new GreenfootImage ("Debuff/stunned.png");
         }
         else if (id == 1){
-
+            bg = new GreenfootImage ("Debuff/lightning.png");
         }
         else if (id == 2){            
             bg = new GreenfootImage ("Debuff/freeze.png");
+        }
+        else if (id == 3){
+            bg = new GreenfootImage ("Debuff/burning.png");
+        }
+        else if (id == 4){
+            bg = new GreenfootImage ("Debuff/stone.png");
         }
         this.setImage (bg);
         maxDuration = Data.debuffDuration [0][id];

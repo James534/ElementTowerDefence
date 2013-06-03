@@ -53,8 +53,16 @@ public class Data
             new GreenfootImage ("Debuff/stun/5.png"), new GreenfootImage ("Debuff/stun/6.png")
         };
 
+    public static final GreenfootImage[] air = {
+            new GreenfootImage ("Debuff/air/1.png"),  new GreenfootImage ("Debuff/air/1.png")
+        };
+
     public static final GreenfootImage[] freeze = {
             new GreenfootImage ("Debuff/freeze/1.png"), new GreenfootImage ("Debuff/freeze/1.png")
+        };
+
+    public static final GreenfootImage[] burn = {
+            new GreenfootImage ("Debuff/burn/1.png"), new GreenfootImage ("Debuff/burn/1.png")
         };
 
     public Data(){

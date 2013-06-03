@@ -15,13 +15,14 @@ public class AirTower extends Tower
         attackRate = 20; // rate at which it attak
         range = 300; // maxiumum range of the tower 
         speed = 10;// speed of the projectile
-        power = 50;
+        power = 5;
         counter = attackRate;
 
         element = 1;
         elementString = "air";
 
         name = "Air Tower";
+        cost = 10;
 
         desc.add ("lightweight tower");
         desc.add ("Average range and power");

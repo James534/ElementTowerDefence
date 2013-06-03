@@ -22,12 +22,9 @@ public class BuildTowers extends Button implements HoverInfo
         if (ID == 0){                   //air
             tower = new AirTower();
             if (id == 1){
-                cost = 10;
             }else if (id == 2){
-                cost = 50;
                 tower.upgrade(true);
             }else if (id == 3){
-                cost = 100;
                 tower.upgrade(true);
                 tower.upgrade(true);
             }
@@ -35,12 +32,9 @@ public class BuildTowers extends Button implements HoverInfo
         }else if (ID == 1){             //water
             tower = new WaterTower();
             if (id == 4){          
-                cost = 10;
             }else if (id == 5){          
-                cost = 50;
                 tower.upgrade(true);
-            }else if (id == 6){          
-                cost = 100;
+            }else if (id == 6){         
                 tower.upgrade(true);
                 tower.upgrade(true);
             }
@@ -49,12 +43,9 @@ public class BuildTowers extends Button implements HoverInfo
         }else if (ID == 2){             //Fire
             tower = new FireTower();
             if (id == 7){          
-                cost = 10;
             }else if (id == 8){          
-                cost = 50;
                 tower.upgrade(true);
             }else if (id == 9){          
-                cost = 100;
                 tower.upgrade(true);
                 tower.upgrade(true);
             }
@@ -63,12 +54,9 @@ public class BuildTowers extends Button implements HoverInfo
         }else if (ID == 3){             //Earth
             tower = new EarthTower();
             if (id == 10){          
-                cost = 10;
-            }else if (id == 11){          
-                cost = 50;
+            }else if (id == 11){         
                 tower.upgrade(true);
-            }else if (id == 12){          
-                cost = 100;
+            }else if (id == 12){       
                 tower.upgrade(true);
                 tower.upgrade(true);
             }
@@ -80,9 +68,9 @@ public class BuildTowers extends Button implements HoverInfo
         bg[0] = new GreenfootImage ("Buttons/BuildTowers/"+element + "" +id+"1.png");
         bg[1] = new GreenfootImage ("Buttons/BuildTowers/"+element + "" +id+"2.png");
         bg[2] = new GreenfootImage ("Buttons/BuildTowers/"+element + "" +id+"3.png");
+        cost = tower.getCost();
         this.setImage (bg[0]);
     }
-
 
     public void act(){
         if (clicked){

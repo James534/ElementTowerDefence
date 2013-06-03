@@ -21,17 +21,19 @@ public class DebuffVisu extends Effects
     public void setDebuff (int id){
         if (id == 0){           //stun
             cache = Data.stun;
-            counter = 0;
-            frame = 1;
             maxFrame = 6;
         }else if (id == 1){     //lightning
-
+            cache = Data.air;
+            maxFrame = 2;
         }else if (id == 2){     //freeze
             cache = Data.freeze;
-            counter = 0;
-            frame = 1;
+            maxFrame = 2;
+        }else if (id == 3){     //burn
+            cache = Data.burn;
             maxFrame = 2;
         }
+        counter = 0;
+        frame = 1;
         show = true;
     }
 

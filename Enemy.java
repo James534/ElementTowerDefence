@@ -37,7 +37,8 @@ public class Enemy extends Actor
     protected boolean isBoss;
 
     //debuffs
-    private float slowX, slowY;
+    protected float slowX, slowY;
+    protected float armorRedu;
     protected ArrayList<Debuff> debuff;
     protected DebuffVisu dv;
 
@@ -93,9 +94,10 @@ public class Enemy extends Actor
             dmg = d * Data.elementDamage[type-1][dmgType-1];
         }
         float dmgRdu;       //dmg reduction
-        if (armor >= 0){
+        float tempArmor = armor - armorRedu;
+        if (tempArmor >= 0){
             //dmgRdu = ( (0.06f * armor) / (1 + 0.06f * armor)) * 100f;     //dota armor values
-            dmgRdu = dmg / ((100f + armor) / 100f);
+            dmgRdu = dmg / ((100f + tempArmor) / 100f);
             if (dmgRdu > 1){
                 return Math.round (dmgRdu);
             }
@@ -103,7 +105,7 @@ public class Enemy extends Actor
                 return 1;
             }
         } else{
-            dmgRdu = (float) (1.0d - Math.pow (0.94d, -armor)) * 100;
+            dmgRdu = (float) (1.0d - Math.pow (0.94d, -tempArmor)) * 100;
             return Math.round (dmgRdu);
         }
     }
@@ -142,6 +144,7 @@ public class Enemy extends Actor
         for (Debuff d : debuff){
             if (d.getId() == id){
                 //increase duration
+                d.increasseDuration();
                 return;
             }
         }
@@ -159,6 +162,9 @@ public class Enemy extends Actor
             //movement speed
             slowX = accX * d.getSlow();
             slowY = accY * d.getSlow();
+
+            //armor redu
+            armorRedu = d.getRedu();
 
             //damage
             damage (d.getDmg(), -1);
@@ -306,5 +312,17 @@ public class Enemy extends Actor
             al.add (debuff.get(i).getId());
         }
         return al;
+    }
+
+    public float getSlow(){
+        if (accX != 0){
+            return slowX;
+        }else{
+            return slowY;
+        }
+    }
+
+    public float getRedu(){
+        return armorRedu;
     }
 }

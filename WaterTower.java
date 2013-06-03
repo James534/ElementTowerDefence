@@ -23,6 +23,7 @@ public class WaterTower extends Tower
         elementString = "water";
 
         name = "Water Tower";
+        cost = 10;
 
         desc.add ("Insert Description Here");
         desc.add ("A description of the Tower");

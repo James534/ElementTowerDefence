@@ -17,12 +17,13 @@ public class EarthTower extends Tower
         speed = 15;// speed of the projectile
         power = 1;
         counter = attackRate;
-        
+
         element = 4;
         elementString = "earth";
-        
+
         name = "Earth Tower";
-        
+        cost = 10;
+
         desc.add ("Earth Tower Description");
     }
 }

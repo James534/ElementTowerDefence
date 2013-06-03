@@ -14,7 +14,8 @@ public class Debuff
     private int maxDuration;    //the max duration
     private int dmg;            //damage of the debuff
     private int rate;           //rate of the dot
-    private float slow;         //slow of the debuff
+    private float slow;         //slow of the debuff, precentage
+    private float armorRedu;    //armor reduction
     public Debuff(int id, int lv, Enemy e)
     {
         this.id = id;
@@ -25,14 +26,28 @@ public class Debuff
                 dmg = 0;
                 rate = 100;
                 slow = 1f;
+                armorRedu = 0;
             }
         }else if (id == 1){     //lightning
-
+            if (lv == 1){
+                dmg = 3;
+                rate = 30;
+                slow = 0.05f;
+                armorRedu = 2;
+            }
         }else if (id == 2){     //freeze
             if (lv == 1){
                 dmg = 1;
                 rate = 20;
-                slow = 0.2f;
+                slow = 0.5f;
+                armorRedu = 1;
+            }
+        }else if (id == 3){     //burn
+            if (lv == 1){
+                dmg = 10;
+                rate = 10;
+                slow = 0.005f;
+                armorRedu = 1;
             }
         }
         maxDuration = Data.debuffDuration[lv-1][id];
@@ -85,6 +100,8 @@ public class Debuff
     public float getSlow(){
         return slow;
     }
-    
-   
+
+    public float getRedu(){
+        return armorRedu;
+    }
 }

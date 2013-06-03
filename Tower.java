@@ -14,7 +14,6 @@ public class Tower extends Actor
     protected boolean  active = false; //will not fire unless it is true 
 
     protected Map map;
-    protected int price ;
     protected int counter; //counter used to place the object on the second click (counter ==3 )
     protected int gridX, gridY ;// refrence to what grid it is on
     protected Weapon basicAttack; //change this when upgraded.  
@@ -37,7 +36,8 @@ public class Tower extends Actor
     //targetting priority, 1 for closest, 2 for furthest, etc
     protected int               targetPriority;     
     //the number of debuffs this tower has bought
-    protected LinkedList<Debuff> debuffs;
+    protected LinkedList<Debuff>debuffs;
+    protected int               cost;         //the cost of the tower
     public Tower()
     {
         name = "";
@@ -182,7 +182,7 @@ public class Tower extends Actor
      */
     public void sell()
     {
-        map.changeMoney((int)(price*0.75)) ;//add money 75% of them money back.
+        map.changeMoney(Math.round(cost*0.75f)) ;//add money 75% of them money back.
     }
 
     /**
@@ -259,11 +259,13 @@ public class Tower extends Actor
             {
                 changeWeapon("pierce");
                 power = (int)(power*0.1);
+                cost = 3 * cost;
             }
             else if (level == 2)
             {
                 changeWeapon("artillery");
                 attackRate= 100;
+                cost = 5 * cost;
             }
 
             level++;
@@ -380,5 +382,12 @@ public class Tower extends Actor
             temp[i] = debuffs.get(i).getId();
         }
         return temp;
+    }
+
+    /**
+     * returns the cost of the tower
+     */
+    public int getCost(){
+        return cost;
     }
 }

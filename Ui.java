@@ -34,6 +34,7 @@ public class Ui extends Actor
     private Color nameColor;
     private Color descColor;
     private Color statColor;
+    private Color debuffColor;
     private int id;                 //which picture to display
 
     private int gold;
@@ -95,6 +96,7 @@ public class Ui extends Actor
         nameColor   = new Color (20 , 210, 245);
         descColor   = new Color (255, 255, 255);
         statColor   = new Color (45 , 200, 45 );
+        debuffColor = new Color (255, 50, 0);
 
         sellButton    = new SellButton();
         upgradeButton = new UpgradeButton();
@@ -365,6 +367,22 @@ public class Ui extends Actor
                 else{
                     map.removeObject (dd);
                 }
+            }
+
+            //negative stuff
+            bg.setColor (debuffColor);
+
+            //dot
+
+            //negative armor
+            if (mob.getRedu() != 0.0f){
+                tempString = "-" + Float.toString (mob.getRedu());
+                bg.drawString (tempString, 380, 200);
+            }
+            //negative speed
+            if (mob.getSlow() != 0.0f){
+                tempString = "-" + Float.toString (mob.getSlow());
+                bg.drawString (tempString, 600, 200);
             }
         }
         this.setImage (bg);
