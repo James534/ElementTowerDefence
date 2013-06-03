@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * The class for the button that upgrades the tower
  * 
- * @author James Lu
+ * @author Terence Lai
  * @version 1.0
  */
 public class UpgradeButton extends UIButton

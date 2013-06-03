@@ -1,4 +1,8 @@
 import greenfoot.*;
+/**
+ * @author (Terence Lai)
+ * @Version (0.01)
+ */
 public class SellButton extends UIButton
 {
     public SellButton(){

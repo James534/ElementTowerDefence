@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class SendCreeps here.
  * 
- * @author (your name) 
+ * @author (James Lu)
  * @version (a version number or a date)
  */
 public class SendCreeps extends Button implements HoverInfo

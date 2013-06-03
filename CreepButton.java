@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class CreepButton here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Terence Lai) 
+ * @version (0.01)
  */
 public class CreepButton extends Button
 {

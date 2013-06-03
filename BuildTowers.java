@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class BuildTowers here.
  * 
- * @author (your name) 
+ * @author (James Lu) 
  * @version (a version number or a date)
  */
 public class BuildTowers extends Button implements HoverInfo

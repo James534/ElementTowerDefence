@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class UIButton here.
  * 
- * @author (your name) 
+ * @author (James Luu) 
  * @version (a version number or a date)
  */
 public class UIButton extends Button
