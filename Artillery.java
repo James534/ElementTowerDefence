@@ -22,7 +22,6 @@ public class Artillery extends Weapon
         }
         else
         {
-            m.addObject (new Explosion (aoe), this.getX(), this.getY());
             m.removeObject(this);
         }
     }
@@ -59,6 +58,7 @@ public class Artillery extends Weapon
                     x.damage(power, elementId); 
                 }
             }
+            m.addObject (new Explosion (aoe), this.getX(), this.getY());
             active = false ; //removes the object in the world
         }
         if(m.withinField(this.getX(), this.getY()) == false )

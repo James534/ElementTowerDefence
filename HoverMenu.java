@@ -74,6 +74,24 @@ public class HoverMenu extends Actor
         }
         else if (a instanceof DebuffButton){
             DebuffButton d = (DebuffButton) a;
+
+            Debuff h = new Debuff (d.getId(), d.getLevel()); 
+
+            desc[0] = "Costs";
+            desc[1] = "Damage Over time: ";
+            desc[2] = "Slow: ";
+            desc[3] = "Armor reduction ";
+
+        }
+        else if (a instanceof BuildTowers){
+            BuildTowers b = (BuildTowers) a; 
+            Tower t = b.getTower(); 
+
+            desc[1] = "Damage: "  + Integer.toString(t.getDmg()); 
+            desc[2] = "Attack Rate: " + Integer.toString(t.getAttackSpeed()); 
+            desc[3] = "Range: " + Integer.toString(t.getRange()); 
+            desc[0] = t.getName();  
+
         }
         refresh();
     }

@@ -15,6 +15,7 @@ public class DebuffButton extends UIButton  implements HoverInfo
 
     private int id;
     private int level;
+    private int cost;
     private String name;
 
     private int hoverCounter;
@@ -50,6 +51,7 @@ public class DebuffButton extends UIButton  implements HoverInfo
         bought = false;
         this.id = id;
         level = 1;
+        cost = 50;
     }
 
     public void act(){
@@ -113,6 +115,13 @@ public class DebuffButton extends UIButton  implements HoverInfo
         return dummy;
     }
 
+    /**
+     * returns the cost of the button
+     */
+    public int getCost(){
+        return cost;
+    }
+    
     /** interface methods */
     public void hoverOver(){
         hoverCounter++;

@@ -40,8 +40,7 @@ public class Debuff
     }
 
     public Debuff (int id, int lv){
-        this.id = id;
-        this.lv = lv;
+        this (id, lv, null);
     }
 
     /**
@@ -86,4 +85,6 @@ public class Debuff
     public float getSlow(){
         return slow;
     }
+    
+   
 }

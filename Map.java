@@ -95,6 +95,8 @@ public class Map extends World{
      */
     private void intalize (){
         if (initCounter == 1){
+            Greenfoot.setSpeed (50);
+            
             //x and y values
             startX = 0; startY = 0;
             endX1 = 10; endY1 = 12;
@@ -140,12 +142,13 @@ public class Map extends World{
             runSpeedDelay[1] = 30;
             runSpeedDelay[2] = 100;
             runSpeedDelay[3] = 250;
-            runSpeedDelay[4] = 700;        
-            Greenfoot.setSpeed (50);
+            runSpeedDelay[4] = 700;     
         }
         else if (initCounter == 4){
             //ui
-            ui = new Ui();             
+            ui = new Ui();          
+        }
+        else if (initCounter == 5){
             refreshUi = false;
             cb = new ChatBox();
             wp = new WaveProgress();
@@ -155,8 +158,7 @@ public class Map extends World{
             buttonDelay = 0; 
             //generates the map
             generate();      
-        }
-        else if (initCounter == 5){
+            
             //sets the path first
             setPath();
 
@@ -352,7 +354,7 @@ public class Map extends World{
                     button.clicked (true);
                     if (levelStart == false){
                         if (money >= button.getCost()){
-                            money -= button.getCost();
+                            changeMoney (-button.getCost());
                             placeHolder = button.getTower();
 
                             place = true;                               //terrence's place variable
@@ -377,9 +379,15 @@ public class Map extends World{
                 else if (selected instanceof DebuffButton){
                     DebuffButton d = (DebuffButton) selected;
                     if (d.isBought() == false){
-                        d.bought (true);
-                        selectedTower.addDebuff (d.getId(), d.getLevel());
-                        cb.setMessage ("Bought " + d.getName(), 2);
+                        if (money >= d.getCost()){
+                            changeMoney (-d.getCost());
+                            d.bought (true);
+                            selectedTower.addDebuff (d.getId(), d.getLevel());
+                            cb.setMessage ("Bought " + d.getName(), 2);
+                        }
+                        else{
+                            cb.setMessage ("You Require More Money", 1);
+                        }
                     }
                 }
             }
