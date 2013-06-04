@@ -7,14 +7,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class WaterTower extends Tower
-{
+{//fast tower  short range
     public WaterTower() 
     {
         fileName = "Towers/w";
         setImage("Towers/w1.png");
 
-        attackRate = 20;
-        range = 1000;
+        attackRate = 5;
+        range = 50;
         speed = 4;
         power = 1; 
         counter = attackRate;

@@ -245,8 +245,8 @@ public class Tower extends Actor
     {
         if (level < 3)
         {
-            power+=10;
-            range+=3;
+            power+= Math.round(power*.05f);
+            range+= Math.round(range*.05f);
 
             if (attackRate >  0){
                 attackRate-=3;
@@ -259,15 +259,14 @@ public class Tower extends Actor
             {
                 changeWeapon("pierce");
                 power = (int)(power*0.1);
-                cost = 3 * cost;
             }
             else if (level == 2)
             {
                 changeWeapon("artillery");
                 attackRate= 100;
-                cost = 5 * cost;
             }
 
+            cost = upgradeCost[level];
             level++;
             this.setImage (fileName + (level) + ".png");
             counter = attackRate;
@@ -390,4 +389,9 @@ public class Tower extends Actor
     public int getCost(){
         return cost;
     }
+    public int getCurrentLevel()
+    {
+        return level;
+    }
+  
 }

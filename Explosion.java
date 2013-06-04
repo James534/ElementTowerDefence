@@ -13,12 +13,12 @@ public class Explosion extends Effects
     public Explosion(int aoe){
         bg = new GreenfootImage (aoe, aoe);
 
-        int r = aoe/2;
         bg.setColor (Color.RED);
         bg.fillOval(0, 0, aoe, aoe);
 
         trans = 255;
         show = true;
+        this.setImage (blank);
     }
 
     public void act(){

@@ -19,7 +19,7 @@ public class Effects extends Actor
     protected boolean show;           //whether to show this or not
 
     public Effects(){
-        blank = new GreenfootImage (1,1);
+        blank = new GreenfootImage ("blank.png");
     }
 
     protected void addedToWorld(World world){

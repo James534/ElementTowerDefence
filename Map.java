@@ -121,7 +121,7 @@ public class Map extends World{
         }
         else if (initCounter == 3){
             //tower defence stuff
-            money           = 100;
+            money           = 2000000;
             income          = 0;
             lives           = 20;
             level           = 1;
@@ -194,7 +194,7 @@ public class Map extends World{
             init = false;
             start = true;
             removeObject (loadScreen);
-            
+
             ui.setWaveData (1, 2);
         }
     }
@@ -254,17 +254,18 @@ public class Map extends World{
         }
         else{
             for (Actor a: l){
-                if (a instanceof Button){
+                if (a instanceof Button){       //if the mouse is ontop of a button, change the pic
                     Button b = (Button) a;
                     b.changeImg (true);
                 }
-                if (a instanceof HoverInfo){       //if the mouse is ontop of a button, change the pic
+                if (a instanceof HoverInfo){       
                     HoverInfo h = (HoverInfo) a;
                     if (h == prevButton){
                         h.hoverOver();
                     }else if (prevButton != null){
                         prevButton.resetCounter();
                     }
+
                     prevButton = h;
                     return;
                 }
@@ -885,7 +886,7 @@ public class Map extends World{
      */
     public void mobDie (Enemy mob, boolean exitWorld){
         if (!exitWorld){
-            changeMoney (mob.getMaxHp() / 20);
+            changeMoney (mob.getMaxHp() / 10);
         }
         else{
             loseLife();
@@ -1125,4 +1126,12 @@ public class Map extends World{
     {
         s.play(Id); 
     }
+     /**
+      * Returns the tower that is currently selected
+      */
+    public Tower getSelectedTower()
+    {
+        return selectedTower; 
+    }
+
 }

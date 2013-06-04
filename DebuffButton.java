@@ -17,8 +17,7 @@ public class DebuffButton extends UIButton
     private int level;
     private int cost;
     private String name;
-
-    private int hoverCounter;
+    
     public DebuffButton (int id){
         if (id == 0){                   //stun
             bg[0] = new GreenfootImage ("Debuff/stunned.png");
@@ -52,25 +51,6 @@ public class DebuffButton extends UIButton
         this.id = id;
         level = 1;
         cost = 50;
-    }
-
-    public void act(){
-        if (bought){
-            hoverCounter = 0;
-            this.setImage (bg[2]);
-        }
-        else if (selected){
-            selected = false;
-            this.setImage (bg[1]);
-            if (hoverCounter >= 50){
-                map.hm.setData (this);
-                int[] co = setCo();
-                map.addObject (map.hm, co[0], co[1]);
-            }
-        }
-        else{
-            this.setImage (bg[0]);
-        }
     }
 
     /**

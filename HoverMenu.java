@@ -21,6 +21,7 @@ public class HoverMenu extends Actor
     private Color descColor;
 
     private String[] desc;
+    private Map map;
     public HoverMenu(){
         width = 300;
         height = 300;
@@ -60,7 +61,17 @@ public class HoverMenu extends Actor
         this.setImage (bg);
     }
 
+    protected void addedToWorld(World world)
+    {
+        map = (Map) world;
+    }
+
     public void setData(Actor a){
+
+        for (int i = 0; i < desc.length; i++){
+            desc[i] = "";
+        }
+
         if (a instanceof SendCreeps){       //if the actor passed is the button to send mobs
             SendCreeps b = (SendCreeps) a;
             Creep c = b.getCreep();         //make a instance of the creep that the button will send
@@ -96,6 +107,19 @@ public class HoverMenu extends Actor
             //add prices into the hoverable
 
         }
+        else if (a instanceof SellButton){
+            desc[1] = "Sells current tower";
+        }
+        else if (a instanceof UpgradeButton) {
+            Tower t = map.getSelectedTower(); 
+            if (t != null)
+            {    desc[1] = "CurrentLevel: " +Integer.toString(t.getCurrentLevel())  ;
+                desc[2] = "Cost: " + Integer.toString(t.getUpgradeCost()) ; 
+            }
+            desc[3] = "Power +5%";
+            desc[4]  ="Range + 5%"; 
+        }
+
         refresh();
     }
 
@@ -106,4 +130,5 @@ public class HoverMenu extends Actor
     public int getHeight(){
         return height;
     }
+
 }

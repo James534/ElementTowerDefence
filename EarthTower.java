@@ -12,10 +12,10 @@ public class EarthTower extends Tower
     {
         fileName = "Towers/e";
         setImage("Towers/e1.png");
-        attackRate = 10; // rate at which it attak
+        attackRate = 45; // rate at which it attak
         range = 500; // maxiumum range of the tower 
         speed = 15;// speed of the projectile
-        power = 1;
+        power = 25;
         counter = attackRate;
 
         element = 4;

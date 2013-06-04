@@ -12,10 +12,10 @@ public class AirTower extends Tower
     {
         fileName = "Towers/a";
         setImage("Towers/a1.png");
-        attackRate = 20; // rate at which it attak
-        range = 300; // maxiumum range of the tower 
+        attackRate = 15; // rate at which it attak
+        range = 400; // maxiumum range of the tower 
         speed = 10;// speed of the projectile
-        power = 5;
+        power = 4;
         counter = attackRate;
 
         element = 1;
