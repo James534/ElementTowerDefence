@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Reload()
+comment1.params=
+comment1.target=void\ refresh()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=i
+comment3.target=void\ setId(int)
+comment4.params=rate
+comment4.target=void\ setRate(int)
+comment5.params=c
+comment5.target=void\ setCD(int)
+numComments=6

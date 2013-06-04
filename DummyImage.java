@@ -24,13 +24,10 @@ public class DummyImage extends Actor implements HoverInfo
     }
 
     public void act(){
-        if (selected){
-            selected = false;
-            if (hoverCounter >= 50){
-                map.hm.setData (this);
-                int[] co = setCo();
-                map.addObject (map.hm, co[0], co[1]);
-            }
+        if (hoverCounter >= 50){
+            map.hm.setData (this);
+            int[] co = setCo();
+            map.addObject (map.hm, co[0], co[1]);
         }
         this.setImage (bg);        
     }
@@ -40,7 +37,7 @@ public class DummyImage extends Actor implements HoverInfo
         int tempX = this.getX();
         int tempY = this.getY();
         if (tempX < 600){
-            coordinates[0] = tempX + tempX/2;
+            coordinates[0] = tempX + 200;
         }else{
             coordinates[0] = tempX - 150;
         }

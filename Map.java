@@ -190,9 +190,12 @@ public class Map extends World{
             //variable to run place movemet 
             place =  false;
 
+            //stuff before start
             init = false;
             start = true;
             removeObject (loadScreen);
+            
+            ui.setWaveData (1, 2);
         }
     }
 
@@ -254,16 +257,16 @@ public class Map extends World{
                 if (a instanceof Button){
                     Button b = (Button) a;
                     b.changeImg (true);
-                    if (a instanceof HoverInfo){       //if the mouse is ontop of a button, change the pic
-                        HoverInfo h = (HoverInfo) a;
-                        if (h == prevButton){
-                            h.hoverOver();
-                        }else if (prevButton != null){
-                            prevButton.resetCounter();
-                        }
-                        prevButton = h;
-                        return;
+                }
+                if (a instanceof HoverInfo){       //if the mouse is ontop of a button, change the pic
+                    HoverInfo h = (HoverInfo) a;
+                    if (h == prevButton){
+                        h.hoverOver();
+                    }else if (prevButton != null){
+                        prevButton.resetCounter();
                     }
+                    prevButton = h;
+                    return;
                 }
             }
         }

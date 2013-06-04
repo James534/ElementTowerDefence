@@ -17,20 +17,14 @@ public class Ui extends Actor
     private GreenfootImage bg;
     private GreenfootImage[] cache;
     private GreenfootImage[] elements;
-    private GreenfootImage[] weapons;
-    private GreenfootImage cooldown;
 
     private Font generalFont;
-    private Font waveFont;
     private Font name;
     private Font descFont;
     private Font statFont;
 
-    private Color[] elementColor;
     private Color goldColor;
     private Color lifeColor;
-    private Color waveColor;
-    private Color nextColor;
     private Color nameColor;
     private Color descColor;
     private Color statColor;
@@ -53,6 +47,8 @@ public class Ui extends Actor
     private DebuffButton[] debuffs;
 
     private DummyDebuff[] dumbDebuff;
+    private Reload reload;
+    private Element[] waveElement;
     public Ui(){
         bg = new GreenfootImage (1000, 230);
         cache = new GreenfootImage [6];
@@ -69,30 +65,13 @@ public class Ui extends Actor
         elements[2] = new GreenfootImage ("UI/air2.png");
         elements[3] = new GreenfootImage ("UI/earth2.png");
 
-        weapons = new GreenfootImage [3];
-        weapons[0] = new GreenfootImage ("UI/bullet.png");
-        weapons[1] = new GreenfootImage ("UI/laser.png");
-        weapons[2] = new GreenfootImage ("UI/shell.png");
-
-        cooldown = new GreenfootImage ("UI/cd.png");
-
         generalFont = new Font ("Times New Roman", 1, 20);
-        waveFont    = new Font ("Verdana"        , 1, 25);
         name        = new Font ("Vrinda"         , 1, 35);
         descFont    = new Font ("Vrinda"         , 0, 20);
         statFont    = new Font ("Vrinda"         , 1, 25);
 
-        elementColor = new Color [5];
-        elementColor[0]= new Color (255, 255, 255);
-        elementColor[1]= new Color (255, 255, 255);
-        elementColor[2]= new Color (0, 0, 255);
-        elementColor[3]= new Color (255, 0, 0);
-        elementColor[4]= new Color (150, 75, 0);
-
         lifeColor   = new Color (225, 0  , 0);
         goldColor   = new Color (225, 175, 55);
-        waveColor   = new Color (255, 255, 255);
-        nextColor   = new Color (0  , 0  , 255);
         nameColor   = new Color (20 , 210, 245);
         descColor   = new Color (255, 255, 255);
         statColor   = new Color (45 , 200, 45 );
@@ -115,6 +94,11 @@ public class Ui extends Actor
         for (int i = 0; i < 5; i++){
             dumbDebuff[i] = new DummyDebuff(i);
         }
+        reload = new Reload();
+        waveElement = new Element[3];
+        waveElement[0] = new Element();     //current wave
+        waveElement[1] = new Element();     //next wave
+        waveElement[2] = new Element();     //mob element
 
         id = 0;
         lives   = 20;
@@ -153,8 +137,10 @@ public class Ui extends Actor
             map.removeObjects (map.getObjects (SendCreeps.class) );
         }else if (this.id == 3 && id != 3){
             map.removeObjects (map.getObjects (UIButton.class) );
+            map.removeObjects (map.getObjects (Reload.class) );
         }else if (this.id == 5 && id != 5){
             map.removeObjects (map.getObjects (DummyImage.class) );
+            map.removeObject (waveElement[2]);
         }
         this.id = id;
         if (id == 1){               //build towers
@@ -183,6 +169,8 @@ public class Ui extends Actor
 
             map.addObject (debuffs[0]   , 800, 620);
             map.addObject (debuffs[tower.getElement()], 860, 620);
+
+            map.addObject (reload       , 525, 720);
             int[] debuffsBought = tower.getDebuffs();
             for (int n = 0; n < debuffs.length; n++){
                 debuffs[n].bought (false);
@@ -190,6 +178,10 @@ public class Ui extends Actor
             for (int i = 0; i < debuffsBought.length; i++){
                 debuffs[debuffsBought[i]].bought (true);
             }
+        }
+        else if (id == 5){      //selecting a mob
+            waveElement[2].setId (mob.getType());
+            map.addObject (waveElement[2], 525, 625);
         }
         refresh();
     }
@@ -202,29 +194,12 @@ public class Ui extends Actor
     }
 
     public void setWaveData(int current, int Next){
-        if          (current == 0){
-            wave = "";
-        } else if   (current == 1){
-            wave = "Air";
-        } else if   (current == 2){
-            wave = "Water";
-        } else if   (current == 3){
-            wave = "Fire";
-        } else if   (current == 4){
-            wave = "Earth";
-        }
+        waveElement[0].setId (current);
+        waveElement[1].setId (Next);
 
-        if          (Next == 1){
-            next = "Air";
-        } else if   (Next == 2){
-            next = "Water";
-        } else if   (Next == 3){
-            next = "Fire";            
-        } else if   (Next == 4){
-            next = "Earth";
-        }
-        waveColor = elementColor[current];
-        nextColor = elementColor[Next];
+        map.addObject (waveElement[0], 150, 650);
+        map.addObject (waveElement[1], 150, 700);
+
         refresh();
     }
 
@@ -271,18 +246,6 @@ public class Ui extends Actor
         tempX = 190 - tempString.length() * 5;
         bg.drawString (tempString, tempX, 75);
 
-        /**--------------------------------------waves-------------------------------------**/
-        bg.setFont  (waveFont);
-        //current wave
-        tempX = 145 - wave.length() * 7;
-        bg.setColor (waveColor);        
-        bg.drawString (wave, tempX, 130);
-
-        //next wave
-        tempX = 140 - next.length() * 7;
-        bg.setColor (nextColor);
-        bg.drawString (next, tempX, 185);
-
         if        (id == 0){
 
         } else if (id == 1){                    //building towers
@@ -301,22 +264,20 @@ public class Ui extends Actor
             //tower description
             bg.setColor (descColor);
             bg.setFont  (descFont);
-            tempX = tower.getLevel();                   //level of the tower
-            tempString = "Level " + Integer.toString(tempX);
-            //cooldown of weapon
-            bg.drawString (tempString, 260, 100);      
-            bg.drawImage (weapons[tempX-1], 460, 160);                  //weapon id
-            if (id == 3){
-                //transparancy of the cd
-                tempX = 255 - Math.round ((float)tower.getCD() / tower.getAttackSpeed() * 255);
-                cooldown.setTransparency (tempX);
-                bg.drawImage (cooldown, 460, 160);                          //cooldown
-            }
-
+            //description
             for (int i = 0; i < desc.size(); i++){
                 tempString = desc.get(i);
                 bg.drawString (tempString, 490, 85 + i * 20);
             }
+            //level of the tower
+            tempX = tower.getLevel();
+            tempString = "Level " + Integer.toString(tempX);
+            bg.drawString (tempString, 260, 100);      
+
+            //cooldown of weapon
+            reload.setId (tempX-1);
+            reload.setRate (tower.getAttackSpeed());
+            reload.setCD (tower.getCD());
 
             //stats
             bg.setColor (statColor);
@@ -349,11 +310,6 @@ public class Ui extends Actor
             //speed
             tempString = Float.toString (mob.getSpeed());
             bg.drawString (tempString, 545, 200);
-
-            //type
-            bg.setColor (elementColor[mob.getType()]);
-            tempString = mob.getStringType();
-            bg.drawString (tempString, 500, 100);
 
             //debuffs
             ArrayList<Debuff> debuffs = mob.getDebuffs();

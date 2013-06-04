@@ -270,7 +270,7 @@ public class Tower extends Actor
 
             level++;
             this.setImage (fileName + (level) + ".png");
-            counter = 0;
+            counter = attackRate;
             if (!button){
                 map.displayMessage("Tower Upgraded", 2); 
             }
