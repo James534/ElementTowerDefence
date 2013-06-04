@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author James Lu
  * @version 0.1
  */
-public class DebuffButton extends UIButton  implements HoverInfo
+public class DebuffButton extends UIButton
 {
     private boolean bought;
     private boolean dummy;
@@ -120,18 +120,5 @@ public class DebuffButton extends UIButton  implements HoverInfo
      */
     public int getCost(){
         return cost;
-    }
-    
-    /** interface methods */
-    public void hoverOver(){
-        hoverCounter++;
-    }
-
-    public void changeImg(boolean s){
-        selected = s;
-    }
-
-    public void resetCounter(){
-        hoverCounter = 0;
     }
 }

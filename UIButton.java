@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (James Luu) 
  * @version (a version number or a date)
  */
-public class UIButton extends Button
+public class UIButton extends Button implements HoverInfo
 {
     private int counter;
     private int hoverCounter;
@@ -30,9 +30,27 @@ public class UIButton extends Button
         else if (selected){
             selected = false;
             this.setImage (bg[1]);
+            if (hoverCounter >= 50){
+                map.hm.setData (this);
+                int[] co = setCo();
+                map.addObject (map.hm, co[0], co[1]);
+            }
         }
         else{
             this.setImage (bg[0]);
         }
+    }
+
+    /** interface methods */
+    public void hoverOver(){
+        hoverCounter++;
+    }
+
+    public void changeImg(boolean s){
+        selected = s;
+    }
+
+    public void resetCounter(){
+        hoverCounter = 0;
     }
 }
