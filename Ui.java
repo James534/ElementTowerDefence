@@ -373,7 +373,10 @@ public class Ui extends Actor
             bg.setColor (debuffColor);
 
             //dot
-
+            if (mob.getDOT() != 0.0f){
+                tempString = "-" + Float.toString (mob.getDOT());
+                bg.drawString (tempString, 420, 152);
+            }
             //negative armor
             if (mob.getRedu() != 0.0f){
                 tempString = "-" + Float.toString (mob.getRedu());

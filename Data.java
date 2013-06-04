@@ -65,6 +65,10 @@ public class Data
             new GreenfootImage ("Debuff/burn/1.png"), new GreenfootImage ("Debuff/burn/1.png")
         };
 
+    public static final GreenfootImage[] stone = {
+            new GreenfootImage ("Debuff/stone/1.png"), new GreenfootImage ("Debuff/stone/1.png")
+        };
+
     public Data(){
         q = new mobQueue();
         populate();

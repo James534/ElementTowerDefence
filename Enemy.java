@@ -39,6 +39,7 @@ public class Enemy extends Actor
     //debuffs
     protected float slowX, slowY;
     protected float armorRedu;
+    protected float dot;
     protected ArrayList<Debuff> debuff;
     protected DebuffVisu dv;
 
@@ -155,6 +156,7 @@ public class Enemy extends Actor
     private void debuffs(){
         slowX = 0;
         slowY = 0;
+        dot = 0;
         for (int i = 0; i < debuff.size(); i++){
             Debuff d = debuff.get (i);
             d.run();
@@ -168,6 +170,7 @@ public class Enemy extends Actor
 
             //damage
             damage (d.getDmg(), -1);
+            dot += d.getDOT();
         }
     }
 
@@ -324,5 +327,9 @@ public class Enemy extends Actor
 
     public float getRedu(){
         return armorRedu;
+    }
+
+    public float getDOT(){
+        return dot;
     }
 }

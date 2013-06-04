@@ -31,6 +31,9 @@ public class DebuffVisu extends Effects
         }else if (id == 3){     //burn
             cache = Data.burn;
             maxFrame = 2;
+        }else if (id == 4){
+            cache = Data.stone;
+            maxFrame = 2;
         }
         counter = 0;
         frame = 1;

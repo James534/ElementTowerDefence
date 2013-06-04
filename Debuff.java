@@ -49,6 +49,13 @@ public class Debuff
                 slow = 0.005f;
                 armorRedu = 1;
             }
+        }else if (id == 4){     //stone
+            if (lv == 1){
+                dmg = 3;
+                rate = 30;
+                slow = 0.75f;
+                armorRedu = 5;
+            }
         }
         maxDuration = Data.debuffDuration[lv-1][id];
         duration = maxDuration;
@@ -95,6 +102,15 @@ public class Debuff
         else{
             return 0;
         }
+    }
+
+    public int getRate(){
+        return rate;
+    }
+
+    public float getDOT(){
+        float r = rate;
+        return dmg/r;
     }
 
     public float getSlow(){
