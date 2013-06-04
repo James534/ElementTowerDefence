@@ -77,21 +77,24 @@ public class HoverMenu extends Actor
             DebuffButton d = (DebuffButton) a;
 
             Debuff h = new Debuff (d.getId(), d.getLevel()); 
-
-            desc[0] = "Costs";
-            desc[1] = "Damage Over time: ";
-            desc[2] = "Slow: ";
-            desc[3] = "Armor reduction ";
+            desc[0] = h.getName(); 
+            desc[1] = "Costs: "            + Integer.toString(d.getCost());
+            desc[2] = "Damage Over time: " + Float.toString(h.getDOT()) ;
+            desc[3] = "Slow: "            + Float.toString(h.getSlow());
+            desc[4] = "Armor reduction " + Float.toString(h.getRedu());
 
         }
         else if (a instanceof BuildTowers){
             BuildTowers b = (BuildTowers) a; 
             Tower t = b.getTower(); 
 
-            desc[1] = "Damage: "  + Integer.toString(t.getDmg()); 
+            desc[0] =  t.getName(); 
+            desc[1] = "Damage: "      + Integer.toString(t.getDmg()); 
             desc[2] = "Attack Rate: " + Integer.toString(t.getAttackSpeed()); 
-            desc[3] = "Range: " + Integer.toString(t.getRange()); 
-            desc[0] = t.getName();  
+            desc[3] = "Range: "      + Integer.toString(t.getRange()); 
+            desc[4] = "Cost: "        + Integer.toString(t.getCost()) ;
+
+            //add prices into the hoverable
 
         }
         refresh();
