@@ -4,8 +4,7 @@ import java.awt.Color;
 /**
  * The menu that pops up after user hovers over certain buttons
  * 
- * @author James Lu
- * @version 1.0
+ * @author James Lu && Terence Lai
  */
 public class HoverMenu extends Actor
 {

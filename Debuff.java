@@ -2,7 +2,7 @@
  * The class of debuffs
  * each debuff is it's own class
  * 
- * @author James Lu
+ * @author James Lu & Terence Lai
  * @version 1.0
  */
 public class Debuff 
