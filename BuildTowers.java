@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class BuildTowers here.
+ * The buttons that you click to build towers <br>
+ * Each button builds a new Tower
  * 
  * @author (James Lu) 
- * @version (a version number or a date)
+ * @version (1.0)
  */
 public class BuildTowers extends Button implements HoverInfo
 {
@@ -98,6 +99,9 @@ public class BuildTowers extends Button implements HoverInfo
         }
     }
 
+    /**
+     * Returns the tower that this button builds
+     */
     public Tower getTower(){
         int ID = (id-1) / 3;
         int level = (id-1) % 3 + 1;
@@ -117,19 +121,31 @@ public class BuildTowers extends Button implements HoverInfo
         return t;
     }
 
+    /**
+     * Returns the cost of building the tower
+     */
     public int getCost(){
         return cost;
     }
 
     /** interface methods*/
+    /**
+     * Increases the hover counter when the mouse hovers over this object
+     */
     public void hoverOver(){
         hoverCounter++;
     }
 
+    /**
+     * Changes the image to be selected or not Pass true if the button is selected
+     */
     public void changeImg(boolean s){
         selected = s;
     }
 
+    /**
+     * Resets the hover counter when the mouse is no longer hovering over it
+     */
     public void resetCounter(){
         hoverCounter = 0;
     }

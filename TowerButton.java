@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class TowerButton here.
+ * The big tower button at the top of the Ui<br>
+ * Click on this to build towers
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author James Lu
+ * @version 1.0
  */
 public class TowerButton extends Button
 {

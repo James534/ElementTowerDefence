@@ -1,12 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * The button to buy debuffs on towers
- * 
- * also shows the debuffs on the mobs
+ * The button to buy debuffs on towers <br>
+ * Debuffs are slows, stuns, -armor, etc
  * 
  * @author James Lu
- * @version 0.1
+ * @version 1.0
  */
 public class DebuffButton extends UIButton
 {

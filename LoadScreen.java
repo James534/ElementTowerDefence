@@ -2,7 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 
 /**
- * The loading screen
+ * The loading screen <br>
+ * Displays the loading process
  * 
  * @author James Lu
  * @version 1.0
@@ -26,6 +27,9 @@ public class LoadScreen extends Actor
         refresh();
     }
 
+    /**
+     * Updates the loading screen
+     */
     public void update(){
         counter++;
         refresh();

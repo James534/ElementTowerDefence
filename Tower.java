@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
 /**
- * Write a description of class Tower here.
+ * The 
  * 
  * @author (Terence Lai + James Lu) 
  * @version (2.00)

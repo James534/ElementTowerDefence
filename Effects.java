@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Effects here.
+ * The parent class for the effects that show up
  * 
- * @author (Terence Lai) 
- * @version (a version number or a date)
+ * @author (James Lu) 
+ * @version (1.0)
  */
 public class Effects extends Actor
 {
@@ -26,6 +26,9 @@ public class Effects extends Actor
         m = (Map) world;
     }
     
+    /**
+     * Passes true to make the effect show on the screen
+     */
     public void show(boolean b){
         show = b;
     }

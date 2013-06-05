@@ -2,10 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color; 
 
 /**
- * Write a description of class Button here.
+ * The parent class for the buttons that the user can click on
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author James Lu
+ * @version 1.0
  */
 public class Button extends Actor
 {
@@ -23,14 +23,26 @@ public class Button extends Actor
         map = (Map) world;
     }
 
+    /**
+     * Changes the image to be selected or not <br>
+     * Pass true if the button is selected
+     */
     public void changeImg(boolean s){
         selected = s;
     }
 
+    /**
+     * Change the image to be clicked <br>
+     * Pass true if the button is clicked
+     */
     public void clicked (boolean b){
         clicked = b;
     }
 
+    /**
+     * Sets the coordinates of the hovermenu <br>
+     * returns the X and Y coordinates to place the hover menu
+     */
     protected int[] setCo(){
         int[] coordinates = new int[2];
         int tempX = this.getX();

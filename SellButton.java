@@ -1,7 +1,9 @@
 import greenfoot.*;
 /**
- * @author (Terence Lai)
- * @Version (0.01)
+ * The button that the user clicks to sell the selected tower
+ * 
+ * @author (James Lu)
+ * @Version (1.0)
  */
 public class SellButton extends UIButton implements HoverInfo
 {

@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SendCreeps here.
+ * The button that sends creeps <br>
+ * Each button sends a new creep
  * 
  * @author (James Lu)
- * @version (a version number or a date)
+ * @version (1.0)
  */
 public class SendCreeps extends Button implements HoverInfo
 {
@@ -95,14 +96,23 @@ public class SendCreeps extends Button implements HoverInfo
         }
     }
 
+    /**
+     * Returns the cost of this creep
+     */
     public int getCost(){
         return cost;
     }
 
+    /**
+     * Returns how much income this creep gives
+     */
     public int getIncome(){
         return creep.getMaxHp()/10;
     }
 
+    /**
+     * Returns the creep of this button
+     */
     public Creep getCreep(){
         int ID = (id-1) / 3;
         int creepId = (id-1) % 3 + 1;
@@ -118,16 +128,24 @@ public class SendCreeps extends Button implements HoverInfo
     }
 
     /** interface methods*/
+    /**
+     * Increases the hover counter when the mouse hovers over this object
+     */
     public void hoverOver(){
         hoverCounter++;
     }
 
+    /**
+     * Changes the image to be selected or not Pass true if the button is selected
+     */
     public void changeImg(boolean s){
         selected = s;
     }
 
+    /**
+     * Resets the hover counter when the mouse is no longer hovering over it
+     */
     public void resetCounter(){
         hoverCounter = 0;
     }
-
 }

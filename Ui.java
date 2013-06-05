@@ -3,9 +3,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 /**
- * Used to rebuild the specific type of ui for when the tower is selected. 
- * each different type of constructer should counstruct different buttons
- * 
+ * The User Interface; the screen that shows up on the bottom
+ * <br>
+ * It changes every time the user selects something
+ * <br>
+ * It creates buttons when the user selects specific objects, and removes them when they are not needed <br>
  * 
  * @author James Lu, Terence Lai
  * @version (1.0)
@@ -122,12 +124,12 @@ public class Ui extends Actor
     }
 
     /**
-     * changes the ui to fit the user's selection
-     * 0 for general ui
-     * 1 for building a tower
-     * 2 for sending creeps
-     * 3 for selected a tower
-     * 4 for selecting a tower during the buy
+     * changes the ui to fit the user's selection <br>
+     * 0 for general ui                           <br>
+     * 1 for building a tower                     <br> 
+     * 2 for sending creeps                       <br>
+     * 3 for selected a tower                     <br>
+     * 4 for selecting a tower during the buy     <br>
      * 5 for selecting a mob
      */
     public void changeUi (int id){
@@ -186,6 +188,12 @@ public class Ui extends Actor
         refresh();
     }
 
+    /**
+     * Sets the general data of the ui: <br>
+     * The number of lives <br>
+     * The current gold <br>
+     * and the income
+     */
     public void setGeneralData(int lives, int gold, int income){
         this.lives = lives;
         this.gold  = gold;
@@ -193,6 +201,10 @@ public class Ui extends Actor
         refresh();
     }
 
+    /**
+     * Sets the wave data of the current and next wave <br>
+     * The paramaters are int ids of the current and next wave
+     */
     public void setWaveData(int current, int Next){
         waveElement[0].setId (current);
         waveElement[1].setId (Next);
@@ -203,15 +215,26 @@ public class Ui extends Actor
         refresh();
     }
 
+    /**
+     * Sets the tower data for the Ui <br>
+     * The Ui calls upon the passed tower to display it's stats
+     */
     public void setTowerData (Tower t){
         tower = t;
         desc = t.getDesc();
     }
 
+    /**
+     * Sets the enemy data for the Ui <br>
+     * The Ui calls upon the passed enemy to display it's stats
+     */
     public void setMobData(Enemy e){
         mob = e;
     }
 
+    /**
+     * Returns the current mob that the Ui is displaying
+     */
     public Enemy getMob(){
         return mob;
     }
@@ -347,10 +370,26 @@ public class Ui extends Actor
         this.setImage (bg);
     }
 
+    /**
+     * returns the stage of this Ui <br>
+     * 
+     * 0 for general ui                           <br>
+     * 1 for building a tower                     <br> 
+     * 2 for sending creeps                       <br>
+     * 3 for selected a tower                     <br>
+     * 4 for selecting a tower during the buy     <br>
+     * 5 for selecting a mob
+     * 
+     */
     public int getId(){
         return id;
     }
 
+    /**
+     * returns a certain button <br>
+     * n = 0 is for the buttons to send creeps <br>
+     * n = 1 is for the buttons to build towers <br>
+     */
     public Button getButton(int n, int id){
         return buttons[n][id];
     }

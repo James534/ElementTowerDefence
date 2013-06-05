@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.awt.Color;
+import java.lang.NullPointerException;
 
 /**
  * Element Tower Defence
@@ -16,7 +17,7 @@ import java.awt.Color;
 public class Map extends World{
     private Tile[][] map;                                 //2d array of tiles
     private StartScreen startScreen;                      //the start screen before the main game
-    private LoadScreen loadScreen;                        //the loading screen
+    private LoadScreen loadScreen; 
 
     //starting and ending points of start, checkpoints and end
     private int startX, startY;
@@ -67,9 +68,11 @@ public class Map extends World{
     private WaveProgress wp;
     private Data data;
     private PointerArrow pa;
-    public TowerButton towerButton;
-    public CreepButton creepButton;
+    private TowerButton towerButton;
+    private CreepButton creepButton;
     private HoverInfo prevButton;
+    
+    /** the hover menu that pops up*/
     public final HoverMenu hm = new HoverMenu();
 
     /**Terrence's variables **/
@@ -85,6 +88,7 @@ public class Map extends World{
     private Range r; 
 
     //sound
+    /** the sound class*/
     public final Sound s = new Sound();
     private int[] volume;
     private int currentVolume;
@@ -403,7 +407,12 @@ public class Map extends World{
         if (Greenfoot.isKeyDown ("space") && levelStart == false){
             cancelBuild(); 
             levelStart = true;
-            setLevelSpawn();
+            try {
+                setLevelSpawn();
+            }
+            catch (NullPointerException e){
+                winGame(); 
+            }
         }else if (Greenfoot.isKeyDown("escape")){
             cancelBuild(); 
         }else if (Greenfoot.isKeyDown("=")){
@@ -927,6 +936,7 @@ public class Map extends World{
      * also sets the special type of enemy (boss, flying, etc)
      */
     private void setLevelSpawn(){
+
         data.nextLevel();
         bossLevel       = data.ifBoss();    //checking if its a boss level, every 10 levels        
         currentElement  = data.getType();   //1 is air, 2 is water, 3 is fire, 0 is earth
@@ -974,6 +984,7 @@ public class Map extends World{
         //System.out.println (level);
         wp.setMax (maxSpawnCount);
     }
+    
 
     /**
      * spawns a mob
@@ -1114,6 +1125,9 @@ public class Map extends World{
         return income;
     }
 
+    /**
+     * displays the message on the screen
+     */
     public void displayMessage(String s, int id)
     {
         cb.setMessage(s,id);
@@ -1126,12 +1140,17 @@ public class Map extends World{
     {
         s.play(Id); 
     }
-     /**
-      * Returns the tower that is currently selected
-      */
+
+    /**
+     * Returns the tower that is currently selected
+     */
     public Tower getSelectedTower()
     {
         return selectedTower; 
+    }
+
+    private void winGame()
+    {
     }
 
 }

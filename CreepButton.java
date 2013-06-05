@@ -1,9 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class CreepButton here.
+ * The big creep button at the top <br>
+ * Click on this button to send creeps
  * 
- * @author (Terence Lai) 
+ * @author (James Lu) 
  * @version (0.01)
  */
 public class CreepButton extends Button

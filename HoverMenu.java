@@ -66,8 +66,11 @@ public class HoverMenu extends Actor
         map = (Map) world;
     }
 
+    /**
+     * Passes an Actor, the actor that the hovermenu is currently displaying <br>
+     * It sets the data based on what the actor passed through is
+     */
     public void setData(Actor a){
-
         for (int i = 0; i < desc.length; i++){
             desc[i] = "";
         }
@@ -123,12 +126,17 @@ public class HoverMenu extends Actor
         refresh();
     }
 
+    /**
+     * Return the width of the hovermenu
+     */
     public int getWidth(){
         return width;
     }
 
+    /**
+     * Returns the height of the hover menu
+     */
     public int getHeight(){
         return height;
     }
-
 }

@@ -58,10 +58,17 @@ public class DebuffVisu extends Effects
         }
     }
 
+    /**
+     * Sets the location of the debuff <br>
+     * The paramaters passed are the x and y values of the enemy
+     */
     public void changeLocation (int x, int y){
         this.setLocation (x, y-10);
     }
 
+    /**
+     * Returns the enemy that this debuff belongs to
+     */
     public Enemy getEnemy(){
         return e;
     }

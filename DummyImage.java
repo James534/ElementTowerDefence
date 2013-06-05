@@ -46,14 +46,23 @@ public class DummyImage extends Actor implements HoverInfo
     }
 
     /** interface methods */
+    /**
+     * Increases the hover counter when the mouse hovers over this object
+     */
     public void hoverOver(){
         hoverCounter++;
     }
 
+    /**
+     * Changes the image to be selected or not Pass true if the button is selected
+     */
     public void changeImg(boolean s){
         selected = s;
     }
 
+    /**
+     * Resets the hover counter when the mouse is no longer hovering over it
+     */
     public void resetCounter(){
         hoverCounter = 0;
     }

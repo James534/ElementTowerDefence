@@ -1,10 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class UIButton here.
+ * A class to simplify the removal of specific buttons <br>
+ * Easier to call remove (UIButton.class) instead of <br>
+ * Remove (___.class), remove (___.class), remove (___.class), etc
  * 
- * @author (James Luu) 
- * @version (a version number or a date)
+ * @author (James Lu) 
+ * @version (1.0)
  */
 public class UIButton extends Button implements HoverInfo
 {
@@ -42,14 +44,23 @@ public class UIButton extends Button implements HoverInfo
     }
 
     /** interface methods */
+    /**
+     * Increases the hover counter when the mouse hovers over this object
+     */
     public void hoverOver(){
         hoverCounter++;
     }
 
+    /**
+     * Changes the image to be selected or not Pass true if the button is selected
+     */
     public void changeImg(boolean s){
         selected = s;
     }
 
+    /**
+     * Resets the hover counter when the mouse is no longer hovering over it
+     */
     public void resetCounter(){
         hoverCounter = 0;
     }
