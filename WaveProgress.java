@@ -26,10 +26,16 @@ public class WaveProgress extends DummyImage implements HoverInfo
         bg.drawImage (progressSide, 0, 0);
     }
 
+    /**
+     * Sets the max enemies of the wave
+     */
     public void setMax(int max){
         enemyMax = max;
     }
 
+    /**
+     * Sets how many enemies are left
+     */
     public void setLeft(int left){
         enemyLeft = left;
         int x = Math.round ( (float) enemyLeft / enemyMax * 200);
@@ -40,6 +46,9 @@ public class WaveProgress extends DummyImage implements HoverInfo
         bg.drawImage (progressSide, 0, 0);
     }
 
+    /**
+     * Resets the meter
+     */
     public void reset(){
         bg.clear();
         bg.drawImage (progress, 0,0);

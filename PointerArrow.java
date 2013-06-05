@@ -22,7 +22,7 @@ public class PointerArrow extends Actor
     protected void addedToWorld (World world){
         map = (Map) world;
     }
-    
+
     public void act(){
         if (mob != null){
             if (mob.getHp() > 0 && map.checkEnemy (mob)){
@@ -35,10 +35,16 @@ public class PointerArrow extends Actor
         }
     }
 
+    /**
+     * Sets which mob this arrow is following
+     */
     public void setMob(Enemy e){
         mob = e;
     }
-    
+
+    /**
+     * Returns which mob this arrow is following
+     */
     public Enemy getMob(){
         return mob;
     }

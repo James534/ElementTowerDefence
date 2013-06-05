@@ -89,18 +89,35 @@ public class Debuff
         duration = maxDuration;
     }
 
+    /**
+     * Returns the id of the debuff <br>
+     * 0 is stun <br>
+     * 1 is lightning <br>
+     * 2 is freeze <br>
+     * 3 is burn <br>
+     * 4 is stone
+     */
     public int getId(){
         return id;
     }
 
+    /**
+     * Returns the duration of the debuff thats left
+     */
     public int getDuration(){
         return duration;
     }
 
+    /**
+     * Returns the max duration of the debuff
+     */
     public int getMaxDuration(){
         return maxDuration;
     }
 
+    /**
+     * Returns the currenent debuff's damage
+     */
     public int getDmg(){
         if (duration > 0 && rate % duration == 0){
             return dmg;
@@ -110,26 +127,41 @@ public class Debuff
         }
     }
 
+    /**
+     * Returns the damage rate of the DoT
+     */
     public int getRate(){
         return rate;
     }
 
+    /**
+     * Returns the Damage Over Time of the debuff
+     */
     public float getDOT(){
         float r = rate;
         return dmg/r;
     }
 
+    /**
+     * Returns the amount that this debuff slows <br>
+     * Returns a float between 0 and 1, which is a precentage
+     */
     public float getSlow(){
         return slow;
     }
 
+    /**
+     * Returns the armor reduction of this debuff
+     */
     public float getRedu(){
         return armorRedu;
     }
-    public String getName()
-{
-return name; 
-}
 
-   
+    /**
+     * Returns the name of this debuff
+     */
+    public String getName()
+    {
+        return name; 
+    }
 }

@@ -51,19 +51,31 @@ public class DummyDebuff extends DummyImage
         bg.setTransparency (Math.round ( (float)duration / maxDuration * 255));
     }
 
+    /**
+     * Sets the duration of the debuff
+     */
     public void setDuration (int d){
         duration = d;
     }
 
+    /**
+     * Sets the level of the debuff
+     */
     public void setLevel (int lv){
         level = lv;
         maxDuration = Data.debuffDuration [lv][id];
     }
 
+    /**
+     * Returns the duration of the debuff
+     */
     public int getDuration(){
         return duration;
     }
 
+    /**
+     * Returns the Id of the debuff
+     */
     public int getId(){
         return id;
     }

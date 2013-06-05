@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 /**
- * The method to find a path from the start point to the end point
+ * The class to find a path from the start point to the end point
  * 
  * @author James Lu
  * @version 1.0
@@ -46,8 +46,8 @@ public class Pathfind
     }
 
     /**
-     * finds the path from start to end
-     * the main A* method
+     * finds the path from start to end <br>
+     * the main A* method <br>
      * if there is no path, path will be null
      */
     public void findPath(){
@@ -139,7 +139,7 @@ public class Pathfind
     }
 
     /**
-     * call upon this to generate a path
+     * call upon this to generate a path <br>
      * it returns the best possible path, with the A* pathfinding algorithm
      */
     public ArrayList<Integer> generatePath(){

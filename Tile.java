@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
- * Classes for individual tiles
+ * Class for individual tiles of the map
  * 
  * @author James Lu
  * @version 0.01
@@ -36,7 +36,7 @@ public class Tile extends Actor
         hasMovement = false;        //if this tile has any movement
         movementX   = new int [3];    //the movement for all 3 stages
         movementY   = new int [3];
-        
+
         for (int i = 0; i < 3; i++){movementX [i] = 0; movementY[i] = 0;}
 
         refresh();              //refresh it
@@ -48,7 +48,7 @@ public class Tile extends Actor
         this.y = y;
         this.map = map;
     }
-    
+
     /**
      * refreshes the tile after any changes to the sprite
      */
@@ -118,7 +118,7 @@ public class Tile extends Actor
         hasMovement  = true;
         tileId       = 4;
     }
-    
+
     /**
      * sets if you can place a tower on this tile
      */
@@ -132,27 +132,47 @@ public class Tile extends Actor
     public boolean getPlaceable(){
         return placeable;
     }
-    
+
+    /**
+     * Returns the movement in the x direction of this tile <br>
+     * The paramater is which checkpoint the mob has passed already
+     */
     public int getMovementX (int checkpoint){
         return movementX[checkpoint];
     }
 
+    /**
+     * Returns the movement in the y direction of this tile <br>
+     * The paramater is which checkpoint the mob has passed already
+     */
     public int getMovementY (int checkpoint){
         return movementY[checkpoint];
     }
 
+    /**
+     * Sets true or false on whether this tile is able to be walked over
+     */
     public void setWalkable (boolean w){
         walkable = w;
     }
-    
+
+    /**
+     * Returns whether this tile is abled to walked over
+     */
     public boolean getWalkable(){
         return walkable;
     }
 
+    /**
+     * Returns the x coordinate of the tile
+     */
     public int getX(){
         return x;
     }
 
+    /**
+     * Returns the y coordinate of the tile
+     */
     public int getY(){
         return y;
     }
