@@ -12,7 +12,7 @@ import java.util.LinkedList;
  * @author (Terence Lai + James Lu) 
  * @version (2.00)
  */
-public class Tower extends Actor
+public abstract class Tower extends Actor
 {
     protected boolean  active = false; //will not fire unless it is true 
 
@@ -41,7 +41,7 @@ public class Tower extends Actor
     //the number of debuffs this tower has bought
     protected LinkedList<Debuff>debuffs;
     protected int               cost;         //the cost of the tower
-    public Tower()
+    protected Tower()
     {
         name = "";
         desc = new ArrayList<String>(5);
@@ -392,6 +392,9 @@ public class Tower extends Actor
     public int getCost(){
         return cost;
     }
+    /**
+     * returns the current level of the tower
+     */
     public int getCurrentLevel()
     {
         return level;

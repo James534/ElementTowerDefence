@@ -1,4 +1,10 @@
 import greenfoot.*; 
+/**
+ * The basic weapon of each tower. Used for all level 1 towers <br>
+ * 
+ * 
+ * @author Terence Lai
+ */
 public class Normal extends Weapon
 {
     String name ;

@@ -1,4 +1,10 @@
 import greenfoot.*;
+/**
+ * 
+ * The laser Weaopon available as an upgrade from tower.<br>
+ * overides the superclass checkhit method <br>
+ * @author (Terence Lai) 
+ */
 public class Laser extends Weapon
 {
 

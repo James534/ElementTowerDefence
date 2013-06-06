@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 /**
- * Write a description of class Range here.
+ * Visulizer for the maximum attack range of the tower. <br>
+ * called when user places a tower, or selectes a tower already in game
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Terence Lai ) 
  */
 public class Range extends Actor
 {

@@ -2,9 +2,11 @@ import greenfoot.*;
 import java.util.List;
 /**
  * Generic Weapon class, contains moving and collision detection. <br>
- * Does not get built in game. Can be thought of as an abstract clas 
+ * Abstract class and does not get built in game
+ * 
+ * @author Terence Lai
  */
-public class Weapon extends Actor
+public abstract class Weapon extends Actor
 {
     protected int speed;
     protected int power; 
@@ -14,7 +16,7 @@ public class Weapon extends Actor
     protected Enemy target; 
     protected Map m;
     protected String element, type, name; 
-    public Weapon(int speed, int power,int aoe, int elementId, Enemy target ,String element,String type)
+    protected Weapon(int speed, int power,int aoe, int elementId, Enemy target ,String element,String type)
     {
         this.speed = speed;
         this.power = power;
@@ -26,7 +28,6 @@ public class Weapon extends Actor
         this.type = type; 
         String name = "Weapon/" + element + type + ".png";
         this.setImage(name);  
-   
         
     }
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author James Lu
  * @version 0.02
  */
-public class Enemy extends Actor
+public abstract class Enemy extends Actor
 {
     protected Map world;
 
@@ -40,7 +40,7 @@ public class Enemy extends Actor
     protected ArrayList<Debuff> debuff;
     protected DebuffVisu dv;
 
-    public Enemy(int hp, int armor, float speed, boolean isBoss, boolean isFlying){
+    protected Enemy(int hp, int armor, float speed, boolean isBoss, boolean isFlying){
         this();
         this.maxHp       = hp;
         this.currentHp   = maxHp;

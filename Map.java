@@ -73,7 +73,7 @@ public class Map extends World{
     private TowerButton towerButton;
     private CreepButton creepButton;
     private HoverInfo prevButton;
-    
+
     /** the hover menu that pops up*/
     public final HoverMenu hm = new HoverMenu();
 
@@ -727,8 +727,9 @@ public class Map extends World{
      * Creates a tower and adds it to the world. detects what tower to place based on its place holder
      */
     private void createTower(int realX, int realY, int x, int y,boolean shiftClick){
+        Tower t = new FireTower(); //just a preset tower, should be replaced soon, since a generic tower is abstract 
         if (map[y][x].getWalkable() && map[y][x].getPlaceable() && canStillWalk(x, y)){
-            Tower t; 
+
             if      (placeHolder instanceof  FireTower){
                 t = new FireTower();}
             else if (placeHolder instanceof WaterTower){
@@ -737,11 +738,7 @@ public class Map extends World{
                 t= new EarthTower();  }
             else if (placeHolder instanceof   AirTower){
                 t= new AirTower(); }
-           
 
-            else{
-                t= new Tower(); //this should never happen it is only to make code compile
-            }
             int tempLevel = placeHolder.getLevel();
             for (int i = 1; i < tempLevel; i++){
                 t.upgrade(true);
@@ -769,6 +766,7 @@ public class Map extends World{
             else{
                 cb.setMessage ("YOU REQUIRE MORE MINERALS", 1);
             }
+
         }
         else{
             cb.setMessage ("YOU CANT BUILD THERE", 1);
@@ -985,7 +983,6 @@ public class Map extends World{
         //System.out.println (level);
         wp.setMax (maxSpawnCount);
     }
-    
 
     /**
      * spawns a mob

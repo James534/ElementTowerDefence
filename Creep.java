@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author James Lu
  * @version 0.01
  */
-public class Creep extends Enemy
+public abstract class Creep extends Enemy
 {
 
 }

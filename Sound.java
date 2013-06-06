@@ -1,7 +1,9 @@
 import greenfoot.*;
 
 /**
- * DataBase of Sound files
+ * DataBase of Sound files.
+ * 
+ * @author (Terence Lai)
  */
 public class Sound
 {
@@ -33,6 +35,9 @@ public class Sound
         counter++;
     }
 
+    /**
+     * Play sound based on the ID
+     */
     public void play(int Id)
     {
         if (counter > 2){
@@ -43,12 +48,18 @@ public class Sound
         }
     } 
 
+    /**
+     * Play the sound when the user buys or sells a tower
+     */
     public void playMoney(){
         GreenfootSound money = new GreenfootSound (moneyName);
         money.setVolume (volume);
         money.play();
     }
 
+    /**
+     * Play the click sound
+     */
     public void playClicked(){
         clicked.setVolume (volume);
         clicked.play();
@@ -67,6 +78,9 @@ public class Sound
         }
     }
 
+    /**
+     * Change the volume of the game
+     */
     public void setVolume(int v){
         volume = v;
     }

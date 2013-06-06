@@ -1,5 +1,11 @@
 import greenfoot.*; 
 import java.util.List;
+/**
+ * 
+ * The Artillery weapon available as the last upgrade of tower. <br>
+ * 
+ * @author (Terence Lai)
+ */
 public class Artillery extends Weapon
 {
     String name;
