@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class FireTower here.
+ * Creates a Fire Tower, and changes the characteristics of a generic <br>
+ * tower when constructed. All actions are done within the superclass.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Terence) 
  */
 public class FireTower extends Tower
 {

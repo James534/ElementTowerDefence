@@ -6,7 +6,9 @@ import java.awt.Color;
 import java.lang.NullPointerException;
 
 /**
- * Element Tower Defence
+ * Element Tower Defence <br>
+ * class controls the entire game
+ * 
  * 
  * @(Terence Lai & James Luuuuu
  * @0.20
@@ -735,8 +737,7 @@ public class Map extends World{
                 t= new EarthTower();  }
             else if (placeHolder instanceof   AirTower){
                 t= new AirTower(); }
-            else if (placeHolder instanceof Wall){
-                t = new Wall(); }
+           
 
             else{
                 t= new Tower(); //this should never happen it is only to make code compile
@@ -1098,7 +1099,7 @@ public class Map extends World{
     }
 
     /**
-     * returns the tile at X, Yhl1wjrh
+     * returns the tile at X, Y
      */
     public Tile getTile(int x, int y){
         if (x >= 0 && x < map[0].length){

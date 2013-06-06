@@ -2,7 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Font;
 import java.awt.Color;
 /**
- * The menu that pops up after user hovers over certain buttons
+ * A menu that pops up displaying information about the <br>
+ * item you are hovering over. <br>
+ * created when mouse is over object for 1 second.
  * 
  * @author James Lu && Terence Lai
  */
@@ -60,7 +62,9 @@ public class HoverMenu extends Actor
 
         this.setImage (bg);
     }
-
+    /**
+     * Gives the class access to map methods when added to world
+     */
     protected void addedToWorld(World world)
     {
         map = (Map) world;

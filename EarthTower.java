@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class EarthTower here.
+ *Creates a Earth Tower, and changes mutates the characteristics of a generic <br>
+ * tower when constructed. All actions are done within the superclass.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Terence Lai) 
  */
 public class EarthTower extends Tower
 {

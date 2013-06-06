@@ -5,6 +5,7 @@ comment1.params=
 comment1.target=void\ refresh()
 comment2.params=world
 comment2.target=void\ addedToWorld(greenfoot.World)
+comment2.text=\n\ Gives\ the\ class\ access\ to\ map\ methods\ when\ added\ to\ world\n
 comment3.params=a
 comment3.target=void\ setData(greenfoot.Actor)
 comment3.text=\n\ Passes\ an\ Actor,\ the\ actor\ that\ the\ hovermenu\ is\ currently\ displaying\ <br>\n\ It\ sets\ the\ data\ based\ on\ what\ the\ actor\ passed\ through\ is\n

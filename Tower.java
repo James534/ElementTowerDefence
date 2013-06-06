@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
 /**
- * The 
+ * The generic tower that the user places onto the map.<br>
+ * User can only build elemntal towers which inherites this tower <br>
+ * contains the all enemy tracking, and firing algorithms.
+ * 
  * 
  * @author (Terence Lai + James Lu) 
  * @version (2.00)
