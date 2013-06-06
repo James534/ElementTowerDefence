@@ -2,10 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 import java.util.ArrayList;
 /**
- * The mobs that appear
- * 
- * CHANGELOG:
- * included the elemental damage
+ * The parent class for the creatures that appear
  * 
  * @author James Lu
  * @version 0.02
@@ -83,9 +80,9 @@ public class Enemy extends Actor
     }
 
     /**
-     * damages the mob
-     * damage is the raw damage
-     * NEED TO INCLUDE the type of damage
+     * Damages the mob <br>
+     * The first int is the damage, the second is the damage type <br>
+     * Returns the amount of damage after armor reduction
      */
     public int damageCalc(int d, int dmgType){
         float dmg;
@@ -112,9 +109,8 @@ public class Enemy extends Actor
     }
 
     /**
-     * damages the enemy
-     * 
-     * includes elemental damage reduction/increase
+     * Damages the enemy <br>
+     * First int is the damage, second int is the damage type
      */
     public void damage (int dmg, int dmgType){
         int realDmg = damageCalc (dmg, dmgType);
@@ -129,8 +125,7 @@ public class Enemy extends Actor
     }
 
     /**
-     * changes the targetting hp, NOT the actual hp
-     * 
+     * changes the targetting hp, NOT the actual hp <br>
      * call after shooting a projectile at the enemy
      */
     public void targetDmg (int dmg, int dmgType){
@@ -270,10 +265,16 @@ public class Enemy extends Actor
         setLocation (intX, intY);
     }
 
+    /**
+     * Returns the max hp of the enemy
+     */
     public int getMaxHp(){
         return maxHp;
     }
 
+    /**
+     * Returns the current hp of the enemy
+     */
     public int getHp(){
         return currentHp;
     }
@@ -285,30 +286,51 @@ public class Enemy extends Actor
         return targetHp;
     }
 
+    /**
+     * Returns the amount of armor the enemy has
+     */
     public int getArmor(){
         return armor;
     }
 
+    /**
+     * Returns the enemy's speed
+     */
     public float getSpeed(){
         return speed;
     }
 
+    /**
+     * Returns the type of the enemy
+     */
     public int getType(){
         return type;
     }
 
+    /**
+     * Returns the type of the enemy, in string
+     */
     public String getStringType(){
         return stringType;
     }
 
+    /**
+     * Returns the name of the enemy
+     */
     public String getName(){
         return name;
     }
 
+    /**
+     * Returns an arraylist of debuffs that the enemy currently has
+     */
     public ArrayList<Debuff> getDebuffs(){
         return debuff;
     }
 
+    /**
+     * Returns an arraylist of int ids of debuffs the enemy currently has
+     */
     public ArrayList<Integer> getIntDebuffs(){
         ArrayList<Integer> al = new ArrayList<Integer> (debuff.size());
         for (int i = 0; i < debuff.size(); i++){
@@ -317,6 +339,9 @@ public class Enemy extends Actor
         return al;
     }
 
+    /**
+     * Returns the amount of slow this enemy has
+     */
     public float getSlow(){
         if (accX != 0){
             return slowX;
@@ -325,10 +350,16 @@ public class Enemy extends Actor
         }
     }
 
+    /**
+     * Returns the armor reduction of the enmemy
+     */
     public float getRedu(){
         return armorRedu;
     }
 
+    /**
+     * Returns the DOT (Damage Over Time) of the enemy
+     */
     public float getDOT(){
         return dot;
     }

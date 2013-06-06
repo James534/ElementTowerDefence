@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * The element picture
+ * The element picture displaying air, water, fire, earth
  * 
  * @author James Lu
  * @version 1.0
@@ -26,6 +26,12 @@ public class Element extends DummyImage
         bg.fill();
     }
 
+    /**
+     * Sets the id of the element <br>
+     * 0 is the current wave <br>
+     * 1 is the next wave <br>
+     * 2 is the monster/tower's element
+     */
     public void setId (int i){
         id = i;
         bg = element[id];

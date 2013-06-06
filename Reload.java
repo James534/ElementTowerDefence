@@ -45,14 +45,26 @@ public class Reload extends DummyImage
         this.setImage (bg);        
     }
 
+    /**
+     * Sets the id of image <br>
+     * 0 is bullet <br>
+     * 1 is laser <br>
+     * 2 is artilary
+     */
     public void setId(int i){
         id = i;
     }
 
+    /**
+     * Sets the fire rate of the tower; how fast should this image refresh
+     */
     public void setRate(int rate){
         fireRate = rate;
     }
 
+    /**
+     * Sets the current cooldown of the tower
+     */
     public void setCD(int c){
         cooldown = c;
     }

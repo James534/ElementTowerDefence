@@ -66,6 +66,9 @@ public class HealthBar extends Actor
         setLocation (x, y-15);
     }
 
+    /**
+     * Changes the maxHp of the bar
+     */
     public void changeMaxHp (int maxHp, int currentHp){
         this.maxHp     = maxHp;
         this.currentHp = currentHp;

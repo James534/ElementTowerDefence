@@ -1,6 +1,6 @@
 import greenfoot.*;
 /**
- * The class to hold all the data for mobs and towers
+ * The class to hold various data
  * 
  * @author James Lu
  * @version 0.01
@@ -23,8 +23,8 @@ public class Data
     private boolean isBoss;
     private boolean isFlying;
 
-    /** ---------------------------- Creep Data ------------------------------**/
     /** -------------------------- Other Random Stuff ------------------------**/
+    /** The elemental damage chart*/
     public static final float[][] elementDamage = 
         //2 supper effective, 1 normal, 0.75 not really effective, 0.5 not effective
         //            defender                    //attacker
@@ -74,7 +74,6 @@ public class Data
         populate();
     }
 
-    /** ---------------------------- Creep Data Methods ----------------------**/
     /** ---------------------------- Mob Data Methods ------------------------**/
     private void updateData(){
         this.type       = mob.type;
@@ -90,6 +89,9 @@ public class Data
         this.isFlying   = mob.flying;
     }
 
+    /**
+     * Updates this class with the next level enemy stats
+     */
     public void nextLevel(){
         mob = q.dequeue();
         updateData();
@@ -190,38 +192,65 @@ public class Data
     }
 
     /** ------------------------------- methods that return data -------------------------------*/
+    /**
+     * Returns the type of the current enemy
+     */
     public int getType(){
         return type;
     }
 
+    /**
+     * Returns the type of the next wave enemy
+     */
     public int getNextType(){
         return nextType;
     }
 
+    /**
+     * Returns the spawn rate of the current enemy
+     */
     public int getSpawnRate(){
         return spawnRate;
     }
 
+    /**
+     * Returns the max amount of the current enemy that will spawn
+     */
     public int getMaxSpawn(){
         return maxSpawn;
     }
 
+    /**
+     * Returns the max hp of the current enemy
+     */
     public int getHp(){
         return hp;
     }
 
+    /**
+     * Returns the armor of the current enemy
+     */
     public int getArmor(){
         return armor;
     }
 
+    /**
+     * Returns the speed of the current enemy
+     */
     public float getSpeed(){
         return speed;
     }
 
+    /**
+     * Returns true if the currenent emeny is a boss
+     */
     public boolean ifBoss(){
         return isBoss;
     }
 
+    /**
+     * Returns true if the currenent enemy is flying
+     */
     public boolean ifFlying(){
         return isFlying;
     }

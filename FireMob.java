@@ -3,7 +3,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * The class for the mobs of fire element
  * 
- * 
  * @James Lu
  * @0.01
  */

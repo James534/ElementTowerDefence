@@ -3,4 +3,5 @@ comment0.params=
 comment0.target=Element()
 comment1.params=i
 comment1.target=void\ setId(int)
+comment1.text=\r\n\ Sets\ the\ id\ of\ the\ element\ <br>\r\n\ 0\ is\ the\ current\ wave\ <br>\r\n\ 1\ is\ the\ next\ wave\ <br>\r\n\ 2\ is\ the\ monster/tower's\ element\r\n
 numComments=2

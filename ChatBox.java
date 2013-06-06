@@ -2,7 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 import java.awt.Font;
 /**
- * the chat box, or more commonly, the warning box that shows up
+ * the chat box, or more commonly, the warning box that shows up <br>
  *  when you do something illegal in the game
  * 
  * @author James Lu
