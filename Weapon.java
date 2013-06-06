@@ -16,6 +16,7 @@ public abstract class Weapon extends Actor
     protected Enemy target; 
     protected Map m;
     protected String element, type, name; 
+    protected int[] debuffList;
     protected Weapon(int speed, int power,int aoe, int elementId, Enemy target ,String element,String type)
     {
         this.speed = speed;
@@ -28,7 +29,7 @@ public abstract class Weapon extends Actor
         this.type = type; 
         String name = "Weapon/" + element + type + ".png";
         this.setImage(name);  
-        
+
     }
 
     /**
@@ -39,7 +40,7 @@ public abstract class Weapon extends Actor
         if (target!= null && m.checkEnemy(target) == true){
             turnTowards(target.getX(), target.getY()); 
         }
-        
+
     }
 
     /**
@@ -63,6 +64,9 @@ public abstract class Weapon extends Actor
 
     }
 
+    /**
+     * Returns whether the tower is active in the game or not
+     */
     public boolean getActive()
     {
         return active; 
@@ -77,10 +81,17 @@ public abstract class Weapon extends Actor
         List<Enemy> hit = getObjectsInRange(11,Enemy.class);
         if ( hit.size() != 0 && hit.get(0) == target)
         {
-            Enemy e = hit.get(0);
+            if (debuffList != null  ){
+                for (int i = 0; i < this.debuffList.length; i++){
 
+                    target.addDebuff(debuffList[i], 1, elementId, power);
+                    //add this to the weapon class
+
+                }
+            }
             target.damage(power, elementId); 
-            active = false ; //removes the object in the world
+            active = false ; //removes the object in the world]
+
         }
         if(m.withinField(this.getX(), this.getY()) == false )
         {
@@ -89,4 +100,10 @@ public abstract class Weapon extends Actor
 
     }
 
+    /**
+     * add the debuff list from towers to the weapon shot itself, apple it, when it hits
+     */
+    public void addDebuff(int []dl , int level ){
+        debuffList = dl; 
+    }
 }

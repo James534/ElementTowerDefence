@@ -46,6 +46,10 @@ public class Data
             //stun   lightning, freeze, burn,   earth
             {   11,     100,    100,    100,    100}
         };
+        
+        public static final double[] debuffChance = {
+            0.05f, 0.1f, 0.15f, 0.07f, 0.09f
+        };
 
     public static final GreenfootImage[] stun = {
             new GreenfootImage ("Debuff/stun/1.png"), new GreenfootImage ("Debuff/stun/2.png"),

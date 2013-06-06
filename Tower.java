@@ -148,7 +148,7 @@ public abstract class Tower extends Actor
     private void launch(){
         if (targetedMob.getTargetHp() >= 0){
 
-            fireDebuff();
+          
             if (type.equals("pierce"))
             {//piercing strike
                 basicAttack = new Laser(speed, power,1,element,targetedMob,elementString);  
@@ -163,6 +163,8 @@ public abstract class Tower extends Actor
                 basicAttack = new Normal(speed, power,1, element, targetedMob, elementString);  
                 targetedMob.targetDmg (power, element);
             }
+            
+            fireDebuff();
             map.s.play (element);
             map.addObject (basicAttack,this.getX(), this.getY());
             counter = 0 ; 
@@ -172,12 +174,18 @@ public abstract class Tower extends Actor
     private void fireDebuff() 
     {
         int[] debuffList = getDebuffs(); 
+        ArrayList <Integer> numDebuffs = new ArrayList<Integer>();
         for (int i = 0; i < debuffList.length; i++){
-            if (Math.random()<= 0.5){
-                targetedMob.addDebuff(debuffList[i], 1, element, power);
+            if (Math.random() <= Data.debuffChance[debuffList[i] ] ){
+                numDebuffs.add (debuffList[i]);
                 //add this to the weapon class
             }
         }
+        int[] fDL = new int [numDebuffs.size()];
+        for (int i = 0; i < fDL.length; i++){
+            fDL[i] = numDebuffs.get (i);
+        }
+        basicAttack.addDebuff(fDL, 1 );
     }
 
     /**

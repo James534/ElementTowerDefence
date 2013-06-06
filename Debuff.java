@@ -16,6 +16,7 @@ public class Debuff
     private int rate;           //rate of the dot
     private float slow;         //slow of the debuff, precentage
     private float armorRedu;    //armor reduction
+    private float chance;
     private String name;
     public Debuff(int id, int lv, Enemy e)
     {
@@ -163,5 +164,10 @@ public class Debuff
     public String getName()
     {
         return name; 
+    }
+    
+    public float getChance()
+    {
+         return chance;
     }
 }

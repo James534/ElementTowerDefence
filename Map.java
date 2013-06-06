@@ -10,8 +10,8 @@ import java.lang.NullPointerException;
  * class controls the entire game
  * 
  * 
- * @(Terence Lai & James Luuuuu
- * @0.20
+ * @author (Terence Lai & James Lu)
+ * @version 1.00
  * 
  * ok now this is a test from the pc to the mac
  *

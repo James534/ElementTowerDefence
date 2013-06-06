@@ -15,7 +15,7 @@ public class FireTower extends Tower
         attackRate = 12; // rate at which it attak
         range = 300; // maxiumum range of the tower 
         speed = 10;// speed of the projectile
-        power = 20; 
+        power = 2; 
         counter = attackRate;
 
         element = 3;
