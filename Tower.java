@@ -256,8 +256,8 @@ public abstract class Tower extends Actor
     {
         if (level < 3)
         {
-            power+= Math.round(power*.05f);
-            range+= Math.round(range*.05f);
+            power = power + Math.round(power * .5f);
+            range = range + Math.round(range * .5f);
 
             if (attackRate >  0){
                 attackRate-=3;
@@ -269,7 +269,7 @@ public abstract class Tower extends Actor
             if (level == 1)
             {
                 changeWeapon("pierce");
-                power = (int)(power*0.1);
+                //power = (int)Math.round(power*0.1f);
             }
             else if (level == 2)
             {

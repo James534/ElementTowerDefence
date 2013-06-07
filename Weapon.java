@@ -78,7 +78,7 @@ public abstract class Weapon extends Actor
     private void checkHit() 
     {
         // Enemy e = (Enemy) getOneIntersectingObject(Enemy.class);
-        List<Enemy> hit = getObjectsInRange(11,Enemy.class);
+        List<Enemy> hit = getObjectsInRange(15,Enemy.class);
         if ( hit.size() != 0 && hit.get(0) == target)
         {
             if (debuffList != null  ){

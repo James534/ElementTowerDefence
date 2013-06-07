@@ -11,6 +11,7 @@ public class Sound
     private String moneyName;
     private GreenfootSound clicked;
     private int volume;
+    private GreenfootSound bgmTracks;
 
     private int counter;
     public Sound()
@@ -28,6 +29,7 @@ public class Sound
 
         clicked = new GreenfootSound ("sounds/clicked.wav");
 
+        // bgmTracks =  new GreenFootSound() ;
         playOnce(); 
     }
 
@@ -84,4 +86,14 @@ public class Sound
     public void setVolume(int v){
         volume = v;
     }
+
+    /**
+     * Plays the bgm tracks. based on the ID of the song
+     */
+    public void playbgm(int Id) 
+    {
+        bgmTracks.play(); 
+    }
+
+   
 }

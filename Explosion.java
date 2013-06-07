@@ -16,7 +16,7 @@ public class Explosion extends Effects
         bg.setColor (Color.RED);
         bg.fillOval(0, 0, aoe, aoe);
 
-        trans = 255;
+        trans = 190;
         show = true;
         this.setImage (blank);
     }

@@ -127,7 +127,7 @@ public class Map extends World{
         }
         else if (initCounter == 3){
             //tower defence stuff
-            money           = 2000000;
+            money           = 100;
             income          = 0;
             lives           = 20;
             level           = 1;
@@ -221,6 +221,7 @@ public class Map extends World{
                 time++;
             }
             /**Terence's Stuff**/
+            
             checkInput(mouse); 
             if (mouse != null){
                 trackButtons(mouse);
@@ -232,6 +233,7 @@ public class Map extends World{
             initCounter++;
             intalize();
             loadScreen.update();
+            
         }
         else{
             //if the user presses a when they are on the start screen, start the actual game

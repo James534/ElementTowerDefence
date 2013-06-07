@@ -31,6 +31,14 @@ public class Laser extends Weapon
         Enemy e = (Enemy) getOneIntersectingObject(Enemy.class);
         if (e!= null)
         {
+            if (debuffList != null  ){
+                for (int i = 0; i < this.debuffList.length; i++){
+
+                    e.addDebuff(debuffList[i], 1, elementId, power);
+                    //add this to the weapon class
+
+                }
+            }
             e.damage(power, 1);
         }
         if(m.withinField(this.getX(), this.getY()) == false )
