@@ -208,9 +208,9 @@ public class Map extends World{
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act(){
-        MouseInfo mouse = Greenfoot.getMouseInfo();
         //if it gone past the start menu
         if (start){
+            MouseInfo mouse = Greenfoot.getMouseInfo();
             uiAct();        
             s.run();
             //if the level started, increase the time and prepare the spawn
@@ -236,7 +236,8 @@ public class Map extends World{
         else{
             //if the user presses a when they are on the start screen, start the actual game
             //temp fix, add buttons later
-            if (Greenfoot.isKeyDown (" ")){
+            if (startScreen.gameStart()){
+                removeObjects (getObjects (SSButtons.class));
                 removeObject (startScreen);
                 loadScreen = new LoadScreen(6);
                 addObject (loadScreen, 512, 384);
@@ -804,16 +805,11 @@ public class Map extends World{
 
         startInitialize (false);
 
-        /*setPaintOrder (StartScreen.class, HoverMenu.class, ChatBox.class, WaveProgress.class,
-        Button.class, DummyImage.class, Ui.class,
-        Explosion.class, HealthBar.class, PointerArrow.class, Weapon.class, DebuffVisu.class,
-        Tower.class, Range.class, Enemy.class,
-        Tile.class);    */
-        setPaintOrder (Weapon.class, StartScreen.class, HoverMenu.class, ChatBox.class, WaveProgress.class,
-            Button.class, DummyImage.class, Ui.class,
-            Explosion.class, HealthBar.class, PointerArrow.class, DebuffVisu.class,
+        setPaintOrder (SSButtons.class, StartScreen.class, HoverMenu.class, ChatBox.class, 
+            WaveProgress.class, Button.class, DummyImage.class, Ui.class,
+            Explosion.class, HealthBar.class, PointerArrow.class, Weapon.class, DebuffVisu.class,
             Tower.class, Range.class, Enemy.class,
-            Tile.class);  
+            Tile.class);   
     }
 
     /**
