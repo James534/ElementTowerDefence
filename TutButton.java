@@ -12,5 +12,6 @@ public class TutButton extends SSButtons
         bg[0] = new GreenfootImage ("Buttons/tut1.png");
         bg[1] = new GreenfootImage ("Buttons/tut2.png");
         bg[2] = new GreenfootImage ("Buttons/tut3.png");
+        this.setImage (bg[0]);
     }
 }

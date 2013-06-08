@@ -198,6 +198,7 @@ public class Map extends World{
             init = false;
             start = true;
             removeObject (loadScreen);
+            s.stopMenu();
 
             ui.setWaveData (0, 1);
         }

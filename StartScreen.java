@@ -19,6 +19,8 @@ public class StartScreen extends Actor
 
     private StartButton startButton;
     private TutButton   tutButton;
+    private ArrowButton nextButton;
+    private ArrowButton prevButton;
 
     private boolean restart;        //whether this screen displays the normal or restart screen
     private boolean gameStart;      //if the user starts the game
@@ -36,32 +38,31 @@ public class StartScreen extends Actor
 
         startButton     = new StartButton();
         tutButton       = new TutButton();
+        nextButton      = new ArrowButton(true);
+        prevButton      = new ArrowButton(false);
 
         gameStart    = false;   
         this.restart = restart;
 
         stage       = 0;
         tutPicNum   = 0;
-
-        refresh(restart);
     }
 
     protected void addedToWorld(World world){
         map = (Map) world;
+        refresh(restart);
     }
 
     public void act(){
         if (!restart){                              //if its not restarting
             checkInput (stage);
-            setImage (stage);
+            map.s.playMenu();
         }else{
-
+            if (Greenfoot.isKeyDown ("r")){
+                restart = false;
+            }
         }
         refresh(restart);     
-    }
-
-    private void setImage (int s){
-
     }
 
     private void checkInput (int s){
@@ -75,16 +76,19 @@ public class StartScreen extends Actor
                     Greenfoot.stop();
                 }else if (tempString.equals ("t")){
                     stage = 1;
+                    startButton.clicked (true);
                     map.removeObjects (map.getObjects (SSButtons.class));
                 }
             }
             else if (s == 1){               //the tutorial screen
                 if       (tempString.equals ("left")){
+                    prevButton.clicked (true);
                     tutPicNum--;
                     if (tutPicNum < 0){
                         tutPicNum = 0;}
                     Greenfoot.delay (5);
                 }else if (tempString.equals ("right")){
+                    nextButton.clicked (true);
                     tutPicNum++;
                     if (tutPicNum >= tutPics.length){
                         tutPicNum = tutPics.length-1;}
@@ -108,11 +112,24 @@ public class StartScreen extends Actor
                 if (a instanceof SSButtons){        //if the user clicks a button
                     SSButtons b = (SSButtons) a;
                     b.clicked (true);               //change the button to clicked
+                    map.s.playClicked();
                     if (b instanceof StartButton){  //if the button clicked is startbutton
                         gameStart = true;
                     }else if (b instanceof TutButton){
                         stage = 1;
                         map.removeObjects (map.getObjects (SSButtons.class));
+                    }else if (b instanceof ArrowButton){
+                        ArrowButton ab = (ArrowButton) b;
+                        if (ab.isNext()){                   //if its a next button
+                            tutPicNum++;
+                            if (tutPicNum >= tutPics.length){
+                                tutPicNum = tutPics.length-1;}
+                        }
+                        else{                               //if its a previous button
+                            tutPicNum--;
+                            if (tutPicNum < 0){
+                                tutPicNum = 0;}
+                        }
                     }
                 }
             }
@@ -131,6 +148,9 @@ public class StartScreen extends Actor
                 }
             }else if (stage ==  1){
                 bg.drawImage (tutPics[tutPicNum], 0, 0);
+
+                map.addObject (nextButton, 940, 300);
+                map.addObject (prevButton, 84, 300);
             }
         }
         else{
@@ -143,7 +163,7 @@ public class StartScreen extends Actor
 
             bg.setFont      (startButtonFont);
             bg.setColor     (Color.WHITE);
-            bg.drawString   ("Press space to restart"  , 350, 400);
+            bg.drawString   ("Press r to restart"  , 350, 400);
             bg.drawString   ("or press esc to exit", 340, 500);
         }
         this.setImage (bg);

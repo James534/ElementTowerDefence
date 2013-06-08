@@ -9,15 +9,15 @@ public class Sound
 {
     private String[] attack;
     private String moneyName;
-    private GreenfootSound clicked;
-    private int volume;
-    private GreenfootSound bgmTracks;
+    private String clicked;
 
+    private GreenfootSound menu;
+
+    private int volume;
     private int[] delay;
     public Sound()
     {
-        moneyName   = "sounds/buy.wav";
-        volume      = 50;
+        volume      = 80;
 
         delay = new int[5];
         delay[0] = 0;
@@ -33,10 +33,13 @@ public class Sound
         attack[2] = "sounds/earthAttack.wav"; 
         attack[3] = "sounds/waterAttack.wav"; 
 
-        clicked = new GreenfootSound ("sounds/clicked.wav");
+        moneyName   = "sounds/buy.wav";
+        clicked = "sounds/clicked.wav";
 
-        // bgmTracks =  new GreenFootSound() ;
+        menu    = new GreenfootSound ("sounds/menu.mp3");
+
         playOnce(); 
+        setVolume(volume);
     }
 
     public void run(){
@@ -77,8 +80,9 @@ public class Sound
      * Play the click sound
      */
     public void playClicked(){
-        clicked.setVolume (volume);
-        clicked.play();
+        GreenfootSound click = new GreenfootSound (clicked);
+        click.setVolume (volume);
+        click.play();
     }
 
     private void playOnce()
@@ -99,6 +103,9 @@ public class Sound
      */
     public void setVolume(int v){
         volume = v;
+
+        // sets the volume to every sound
+        menu    .setVolume (volume - volume/3*2);
     }
 
     /**
@@ -106,7 +113,22 @@ public class Sound
      */
     public void playbgm(int Id) 
     {
-        bgmTracks.play(); 
+
     }
 
+    /**
+     * Plays the menu music on loop
+     */
+    public void playMenu(){
+        menu.playLoop();
+    }
+
+    /**
+     * Stops playing the menu music
+     */
+    public void stopMenu(){
+        if (menu.isPlaying()){
+            menu.stop();
+        }
+    }
 }
