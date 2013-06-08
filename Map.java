@@ -101,8 +101,6 @@ public class Map extends World{
      */
     private void intalize (){
         if (initCounter == 1){
-            Greenfoot.setSpeed (50);
-
             //x and y values
             startX = 0; startY = 0;
             endX1 = 10; endY1 = 12;
@@ -201,7 +199,7 @@ public class Map extends World{
             start = true;
             removeObject (loadScreen);
 
-            ui.setWaveData (1, 2);
+            ui.setWaveData (0, 1);
         }
     }
 
@@ -221,7 +219,7 @@ public class Map extends World{
                 time++;
             }
             /**Terence's Stuff**/
-            
+
             checkInput(mouse); 
             if (mouse != null){
                 trackButtons(mouse);
@@ -233,7 +231,7 @@ public class Map extends World{
             initCounter++;
             intalize();
             loadScreen.update();
-            
+
         }
         else{
             //if the user presses a when they are on the start screen, start the actual game
@@ -802,13 +800,20 @@ public class Map extends World{
     public Map(){    
         super(1024, 768, 1); 
 
+        Greenfoot.setSpeed (50);
+
         startInitialize (false);
 
-        setPaintOrder (StartScreen.class, HoverMenu.class, ChatBox.class, WaveProgress.class,
+        /*setPaintOrder (StartScreen.class, HoverMenu.class, ChatBox.class, WaveProgress.class,
+        Button.class, DummyImage.class, Ui.class,
+        Explosion.class, HealthBar.class, PointerArrow.class, Weapon.class, DebuffVisu.class,
+        Tower.class, Range.class, Enemy.class,
+        Tile.class);    */
+        setPaintOrder (Weapon.class, StartScreen.class, HoverMenu.class, ChatBox.class, WaveProgress.class,
             Button.class, DummyImage.class, Ui.class,
-            Effects.class, HealthBar.class, PointerArrow.class, Weapon.class, 
+            Explosion.class, HealthBar.class, PointerArrow.class, DebuffVisu.class,
             Tower.class, Range.class, Enemy.class,
-            Tile.class);        
+            Tile.class);  
     }
 
     /**

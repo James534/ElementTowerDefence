@@ -13,12 +13,18 @@ public class Sound
     private int volume;
     private GreenfootSound bgmTracks;
 
-    private int counter;
+    private int[] delay;
     public Sound()
     {
         moneyName   = "sounds/buy.wav";
         volume      = 50;
-        counter     = 0;
+
+        delay = new int[5];
+        delay[0] = 0;
+        delay[1] = 0;
+        delay[2] = 0;
+        delay[3] = 0;
+        delay[4] = 0;
 
         attack      = new String[4];
 
@@ -34,7 +40,11 @@ public class Sound
     }
 
     public void run(){
-        counter++;
+        delay[0]++;
+        delay[1]++;
+        delay[2]++;
+        delay[3]++;
+        delay[4]++;
     }
 
     /**
@@ -42,8 +52,12 @@ public class Sound
      */
     public void play(int Id)
     {
-        if (counter > 2){
-            counter = 0;
+        if (delay[Id] > 2){
+            if (Id == 2 && delay[2] < 4){       //if its an earth, the delay is longer
+                return;                         //stops the lag from playing too much sound files
+            }
+
+            delay[Id] = 0;
             GreenfootSound s = new GreenfootSound (attack[Id-1]);
             s.setVolume (volume);
             s.play();
@@ -95,5 +109,4 @@ public class Sound
         bgmTracks.play(); 
     }
 
-   
 }

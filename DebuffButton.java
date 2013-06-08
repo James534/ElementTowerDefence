@@ -16,7 +16,7 @@ public class DebuffButton extends UIButton
     private int level;
     private int cost;
     private String name;
-    
+
     public DebuffButton (int id){
         if (id == 0){                   //stun
             bg[0] = new GreenfootImage ("Debuff/stunned.png");
@@ -50,6 +50,13 @@ public class DebuffButton extends UIButton
         this.id = id;
         level = 1;
         cost = 50;
+    }
+
+    public void act(){
+        super.act();
+        if (bought){
+            setImage (bg[2]);
+        }
     }
 
     /**
