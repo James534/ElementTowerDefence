@@ -36,6 +36,7 @@ public class Ui extends Actor
     private int gold;
     private int income;
     private int lives;
+    private int level;
     private String wave;
     private String next;
 
@@ -105,6 +106,7 @@ public class Ui extends Actor
         id = 0;
         lives   = 20;
         gold    = 100;
+        level   = 1;
         wave    = "Air";
         next    = "Water";
 
@@ -205,12 +207,14 @@ public class Ui extends Actor
      * Sets the wave data of the current and next wave <br>
      * The paramaters are int ids of the current and next wave
      */
-    public void setWaveData(int current, int Next){
+    public void setWaveData(int current, int Next, int lv){
         waveElement[0].setId (current);
         waveElement[1].setId (Next);
 
         map.addObject (waveElement[0], 150, 650);
         map.addObject (waveElement[1], 150, 700);
+
+        level = lv;
 
         refresh();
     }
@@ -268,6 +272,11 @@ public class Ui extends Actor
         tempString = "+ " + Integer.toString (income);
         tempX = 190 - tempString.length() * 5;
         bg.drawString (tempString, tempX, 75);
+
+        //level
+        tempString = level + "";
+        bg.setColor (descColor);
+        bg.drawString (tempString, 80, 125);
 
         if        (id == 0){
 

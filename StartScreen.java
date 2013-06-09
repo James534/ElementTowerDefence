@@ -21,9 +21,11 @@ public class StartScreen extends Actor
     private TutButton   tutButton;
     private ArrowButton nextButton;
     private ArrowButton prevButton;
+    private BackButton  backButton;
 
     private boolean restart;        //whether this screen displays the normal or restart screen
     private boolean gameStart;      //if the user starts the game
+    private boolean win;            //if the user won the game
     private int stage;              //which stage the screen is on
     private int tutPicNum;          //which tuorial pic the user is on
     public StartScreen(boolean restart){        
@@ -31,18 +33,20 @@ public class StartScreen extends Actor
         startButtonFont = new Font ("Verdana", 0, 35);
 
         bg              = new GreenfootImage (1024, 768);
-        tutPics         = new GreenfootImage[5];
+        tutPics         = new GreenfootImage[20];
         for (int i = 0; i < tutPics.length; i++){
-            tutPics[i] = new GreenfootImage ("Tutorial/tut" + (i+1) + ".png");
+            tutPics[i] = new GreenfootImage ("Tutorial/" + (i+1) + ".png");
         }
 
         startButton     = new StartButton();
         tutButton       = new TutButton();
         nextButton      = new ArrowButton(true);
         prevButton      = new ArrowButton(false);
+        backButton      = new BackButton();
 
         gameStart    = false;   
         this.restart = restart;
+        win = false;
 
         stage       = 0;
         tutPicNum   = 0;
@@ -72,29 +76,35 @@ public class StartScreen extends Actor
             if (s == 0){                    //the main start screen
                 if       (tempString.equals ("space")){
                     gameStart = true;
+                    map.s.playClicked();
                 }else if (tempString.equals ("escape")){
                     Greenfoot.stop();
                 }else if (tempString.equals ("t")){
                     stage = 1;
                     startButton.clicked (true);
+                    map.s.playClicked();
                     map.removeObjects (map.getObjects (SSButtons.class));
                 }
             }
             else if (s == 1){               //the tutorial screen
                 if       (tempString.equals ("left")){
                     prevButton.clicked (true);
+                    map.s.playClicked();
                     tutPicNum--;
                     if (tutPicNum < 0){
                         tutPicNum = 0;}
                     Greenfoot.delay (5);
                 }else if (tempString.equals ("right")){
                     nextButton.clicked (true);
+                    map.s.playClicked();
                     tutPicNum++;
                     if (tutPicNum >= tutPics.length){
                         tutPicNum = tutPics.length-1;}
                     Greenfoot.delay(5);
-                }else if (tempString.equals ("escape")){
+                }else if (tempString.equals ("escape") || tempString.equals ("b")){
                     stage = 0;
+                    map.s.playClicked();
+                    map.removeObjects (map.getObjects (SSButtons.class));
                 }
             }
         }
@@ -130,6 +140,9 @@ public class StartScreen extends Actor
                             if (tutPicNum < 0){
                                 tutPicNum = 0;}
                         }
+                    }else if (b instanceof BackButton){
+                        stage = 0;
+                        map.removeObjects (map.getObjects (SSButtons.class));
                     }
                 }
             }
@@ -151,6 +164,7 @@ public class StartScreen extends Actor
 
                 map.addObject (nextButton, 940, 300);
                 map.addObject (prevButton, 84, 300);
+                map.addObject (backButton, 940, 50);
             }
         }
         else{
@@ -171,5 +185,9 @@ public class StartScreen extends Actor
 
     public boolean gameStart(){
         return gameStart;
+    }
+
+    public void setWin (boolean w){
+        win = w;
     }
 }

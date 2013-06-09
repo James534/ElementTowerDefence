@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.awt.Color;
-import java.lang.NullPointerException;
 
 /**
  * Element Tower Defence <br>
@@ -72,6 +71,7 @@ public class Map extends World{
     private PointerArrow pa;
     private TowerButton towerButton;
     private CreepButton creepButton;
+    private StartWave startWave;
     private HoverInfo prevButton;
 
     /** the hover menu that pops up*/
@@ -159,6 +159,7 @@ public class Map extends World{
             pa = new PointerArrow();
             towerButton = new TowerButton();
             creepButton = new CreepButton();
+            startWave   = new StartWave();
             buttonDelay = 0; 
             //generates the map
             generate();      
@@ -178,6 +179,7 @@ public class Map extends World{
             addObject (wp, 120, 675);
             addObject (towerButton, 262, 538);
             addObject (creepButton, 762, 538);
+            addObject (startWave,   120, 735);
         }
         else if (initCounter == 6){
             /** Terence's stuff**/
@@ -200,14 +202,10 @@ public class Map extends World{
             removeObject (loadScreen);
             s.stopMenu();
 
-            ui.setWaveData (0, 1);
+            ui.setWaveData (0, 1, level);
         }
     }
 
-    /**
-     * Act - do whatever the Tower wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act(){
         //if it gone past the start menu
         if (start){
@@ -283,7 +281,8 @@ public class Map extends World{
     }
 
     /**
-     * Method that checks what did the user click on.  or what buttons are pressed.
+     * Method that checks what did the user click on.   <br>
+     * or what buttons are pressed. <br>
      * all user interaction is does in this method
      */
     private void checkInput(MouseInfo mouse){
@@ -402,21 +401,25 @@ public class Map extends World{
                         }
                     }
                 }
+                else if (selected instanceof StartWave){
+                    startWave.clicked (true);
+                    if (levelStart == false){
+                        cancelBuild(); 
+                        levelStart = true;
+                        setLevelSpawn();
+                    }
+                }
             }
         }
         //short cut keys that do not use the mouse
 
         //if the user presses s, start the level
         //temp spawning        
-        if (Greenfoot.isKeyDown ("space") && levelStart == false){
+        if (Greenfoot.isKeyDown ("n") && levelStart == false){
+            startWave.clicked(true);
             cancelBuild(); 
             levelStart = true;
-            try {
-                setLevelSpawn();
-            }
-            catch (NullPointerException e){
-                winGame(); 
-            }
+            setLevelSpawn();
         }else if (Greenfoot.isKeyDown("escape")){
             cancelBuild(); 
         }else if (Greenfoot.isKeyDown("=")){
@@ -648,7 +651,7 @@ public class Map extends World{
     }
 
     /**
-     * Method for following the mouse when placing on field and placing the object. 
+     * Method for following the mouse when placing on field and placing the object. <br> 
      * WHEN PLACE == TRUE
      * */
     public void trackMouse(MouseInfo mouse){        
@@ -711,10 +714,10 @@ public class Map extends World{
     }
 
     /**
-     * used to delete the pointer arrow
-     * called after the mob its pointing to dies
-     * or 
-     * when the user cancels the tower selection
+     * used to delete the pointer arrow <br>
+     * called after the mob its pointing to dies <br>
+     * or  <br>
+     * when the user cancels the tower selection <br>
      */
     public void resetDefaultUi(){
         if (getObjects (PointerArrow.class) != null){
@@ -726,7 +729,8 @@ public class Map extends World{
     }
 
     /**
-     * Creates a tower and adds it to the world. detects what tower to place based on its place holder
+     * Creates a tower and adds it to the world. <br>
+     * detects what tower to place based on its place holder
      */
     private void createTower(int realX, int realY, int x, int y,boolean shiftClick){
         Tower t = new FireTower(); //just a preset tower, should be replaced soon, since a generic tower is abstract 
@@ -776,7 +780,8 @@ public class Map extends World{
     }
 
     /**
-     * changes to the money either through buying or selling. positive numbers increase money while negative numbers decrease money.
+     * changes to the money either through buying or selling. <br>
+     * positive numbers increase money while negative numbers decrease money.
      */
     public void changeMoney(int t){
         money+=t;
@@ -804,7 +809,7 @@ public class Map extends World{
 
         Greenfoot.setSpeed (50);
 
-        startInitialize (false);
+        startInitialize (false, false);
 
         setPaintOrder (SSButtons.class, StartScreen.class, HoverMenu.class, ChatBox.class, 
             WaveProgress.class, Button.class, DummyImage.class, Ui.class,
@@ -856,7 +861,7 @@ public class Map extends World{
     }
 
     /**
-     * resets the ui
+     * resets the ui <br>
      * call after change any values
      */
     public void resetUi (){
@@ -864,11 +869,12 @@ public class Map extends World{
     }
 
     /**
-     * initializes the start menu
+     * initializes the start menu <br>
      * called when reseting the game
      */
-    private void startInitialize (boolean restart){        
-        startScreen = new StartScreen (restart);        
+    private void startInitialize (boolean restart, boolean won){        
+        startScreen = new StartScreen (restart);       
+        startScreen.setWin (won);
         addObject (startScreen, 512, 384);
         start = false;
         init = false;
@@ -876,7 +882,7 @@ public class Map extends World{
     }
 
     /**
-     * lose a life
+     * lose a life <br>
      * called after a mob exits the map
      */
     public void loseLife(){
@@ -885,7 +891,7 @@ public class Map extends World{
             removeObjects (getObjects(null));       //removes all the objects on the screen
 
             //starts the game agian
-            startInitialize (true);
+            startInitialize (true, false);
         }
         lives--;
         resetUi();
@@ -893,7 +899,7 @@ public class Map extends World{
     }
 
     /**
-     * called after a mob dies
+     * called after a mob dies <br>
      * deletes it from the world, and removes it from the arraylist of mobs
      */
     public void mobDie (Enemy mob, boolean exitWorld){
@@ -921,10 +927,14 @@ public class Map extends World{
 
         if (maxSpawnCount <= spawnCount && mobs.size() == 0){
             levelStart = false;
-            ui.setWaveData (0, nextElement);
             spawnCount = 0;
             time = 0;
             level++;
+            if (level == 51){
+                winGame(); 
+                return;
+            }
+            ui.setWaveData (0, nextElement, level);
 
             List <Tower> tempTower = getObjects (Tower.class);
             for (Tower t: tempTower){
@@ -935,11 +945,10 @@ public class Map extends World{
     }
 
     /**
-     * sets what element the current wave is
+     * sets what element the current wave is <br>
      * also sets the special type of enemy (boss, flying, etc)
      */
     private void setLevelSpawn(){
-
         data.nextLevel();
         bossLevel       = data.ifBoss();    //checking if its a boss level, every 10 levels        
         currentElement  = data.getType();   //1 is air, 2 is water, 3 is fire, 0 is earth
@@ -949,7 +958,7 @@ public class Map extends World{
         int tempSpawn   = mobsToSpawn.size();       //the number of mobs the user sent
 
         /** insert here code to tell user the new round started */
-        ui.setWaveData (currentElement, nextElement);
+        ui.setWaveData (currentElement, nextElement, level);
 
         money += income;
         ui.setGeneralData (lives, money, income);
@@ -1153,6 +1162,6 @@ public class Map extends World{
 
     private void winGame()
     {
+        startInitialize (true, true);
     }
-
 }
