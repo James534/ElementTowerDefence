@@ -16,7 +16,7 @@ public class Element extends DummyImage
         bg = new GreenfootImage ("UI/a.png");
 
         element = new GreenfootImage[5];
-        element[0] = new GreenfootImage (10,10);
+        element[0] = new GreenfootImage (1,1);
         element[1] = new GreenfootImage ("UI/a.png");
         element[2] = new GreenfootImage ("UI/w.png");
         element[3] = new GreenfootImage ("UI/f.png");
@@ -27,13 +27,23 @@ public class Element extends DummyImage
     }
 
     /**
-     * Sets the id of the element <br>
-     * 0 is the current wave <br>
-     * 1 is the next wave <br>
-     * 2 is the monster/tower's element
+     * Sets the element <br>
+     * 0 is nothing <br>
+     * 1 is air <br>
+     * 2 is water <br>
+     * 3 is fire <br>
+     * 4 is earth
      */
     public void setId (int i){
         id = i;
         bg = element[id];
+    }
+    
+    /**
+     * Returns the id of this element image <br>
+     * Returns the numerical value of the current displayed element
+     */
+    public int getId(){
+        return id;
     }
 }

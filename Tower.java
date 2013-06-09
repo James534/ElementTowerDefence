@@ -41,6 +41,7 @@ public abstract class Tower extends Actor
     //the number of debuffs this tower has bought
     protected LinkedList<Debuff>debuffs;
     protected int               cost;         //the cost of the tower
+    protected int               currentCost;    //how much money the user has spent into this tower
     protected Tower()
     {
         name = "";
@@ -62,6 +63,7 @@ public abstract class Tower extends Actor
      */
     protected void addedToWorld(World world){
         map = (Map) world;
+        currentCost = cost;
     }
 
     /**
@@ -148,7 +150,6 @@ public abstract class Tower extends Actor
     private void launch(){
         if (targetedMob.getTargetHp() >= 0){
 
-          
             if (type.equals("pierce"))
             {//piercing strike
                 basicAttack = new Laser(speed, power,1,element,targetedMob,elementString);  
@@ -163,7 +164,7 @@ public abstract class Tower extends Actor
                 basicAttack = new Normal(speed, power,1, element, targetedMob, elementString);  
                 targetedMob.targetDmg (power, element);
             }
-            
+
             fireDebuff();
             map.s.play (element);
             map.addObject (basicAttack,this.getX(), this.getY());
@@ -193,7 +194,7 @@ public abstract class Tower extends Actor
      */
     public void sell()
     {
-        map.changeMoney(Math.round(cost*0.75f)) ;//add money 75% of them money back.
+        map.changeMoney(Math.round(currentCost*0.75f)) ;//add money 75% of them money back.
     }
 
     /**
@@ -278,6 +279,7 @@ public abstract class Tower extends Actor
             }
 
             cost = upgradeCost[level];
+            currentCost += upgradeCost[level-1];
             level++;
             this.setImage (fileName + (level) + ".png");
             counter = attackRate;
@@ -400,6 +402,7 @@ public abstract class Tower extends Actor
     public int getCost(){
         return cost;
     }
+
     /**
      * returns the current level of the tower
      */
@@ -407,5 +410,12 @@ public abstract class Tower extends Actor
     {
         return level;
     }
-  
+
+    /**
+     * Returns how much money the user spent on this tower <br>
+     * Used when the user sells the tower
+     */
+    public int getCurrentCost(){
+        return currentCost;
+    }
 }

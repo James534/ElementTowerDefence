@@ -54,6 +54,8 @@ public class Map extends World{
     private int spawnCount;
     private int maxSpawnCount;
     private int spawnRate;
+    private int numCreeps;
+    private int numMobs;
 
     private int money;
     private int income;
@@ -146,7 +148,9 @@ public class Map extends World{
             runSpeedDelay[1] = 30;
             runSpeedDelay[2] = 100;
             runSpeedDelay[3] = 250;
-            runSpeedDelay[4] = 700;     
+            runSpeedDelay[4] = 700;  
+            numCreeps = 0;
+            numMobs = data.getCurrentMaxSpawn();
         }
         else if (initCounter == 4){
             //ui
@@ -180,6 +184,10 @@ public class Map extends World{
             addObject (towerButton, 262, 538);
             addObject (creepButton, 762, 538);
             addObject (startWave,   120, 735);
+
+            //add and remove hover menu to give it a world reference
+            addObject (hm, 0, 0);
+            removeObject (hm);
         }
         else if (initCounter == 6){
             /** Terence's stuff**/
@@ -217,8 +225,8 @@ public class Map extends World{
                 prepareSpawn();
                 time++;
             }
-            /**Terence's Stuff**/
 
+            /**Terence's Stuff**/
             checkInput(mouse); 
             if (mouse != null){
                 trackButtons(mouse);
@@ -230,7 +238,6 @@ public class Map extends World{
             initCounter++;
             intalize();
             loadScreen.update();
-
         }
         else{
             //if the user presses a when they are on the start screen, start the actual game
@@ -356,6 +363,7 @@ public class Map extends World{
                         resetUi();
                         mobsToSpawn.add (button.getCreep());
                         cb.setMessage ("sending 1 creep", 2);
+                        numCreeps++;
                     }
                     else{
                         cb.setMessage ("YOU DO NOT HAVE ENOUGH MONEY", 1);
@@ -641,6 +649,7 @@ public class Map extends World{
                     resetUi();
                     mobsToSpawn.add (button.getCreep());
                     cb.setMessage ("sending 1 creep", 2);
+                    numCreeps++;
                 }
                 else{
                     cb.setMessage ("YOU DO NOT HAVE ENOUGH MONEY", 1);
@@ -690,8 +699,6 @@ public class Map extends World{
      * cancels build mode and deletes the placeholder tower
      */
     private void cancelBuild(){
-        //REFUND THE MONEY WHEN YOU CANCEL BUILD 
-
         if (placeHolder != null){           //cancels the building of a tower
             removeObject(placeHolder);
 
@@ -772,7 +779,6 @@ public class Map extends World{
             else{
                 cb.setMessage ("YOU REQUIRE MORE MINERALS", 1);
             }
-
         }
         else{
             cb.setMessage ("YOU CANT BUILD THERE", 1);
@@ -934,6 +940,8 @@ public class Map extends World{
                 winGame(); 
                 return;
             }
+            numMobs = data.getCurrentMaxSpawn();
+            numCreeps = 0;
             ui.setWaveData (0, nextElement, level);
 
             List <Tower> tempTower = getObjects (Tower.class);
@@ -955,9 +963,8 @@ public class Map extends World{
         nextElement     = data.getNextType();
         maxSpawnCount   = data.getMaxSpawn();
         spawnRate       = data.getSpawnRate();
-        int tempSpawn   = mobsToSpawn.size();       //the number of mobs the user sent
+        numCreeps       = mobsToSpawn.size();       //the number of mobs the user sent
 
-        /** insert here code to tell user the new round started */
         ui.setWaveData (currentElement, nextElement, level);
 
         money += income;
@@ -987,7 +994,7 @@ public class Map extends World{
         }
 
         //adds the numbers of mobs to spawn to the max spawn count
-        maxSpawnCount += tempSpawn;
+        maxSpawnCount += numCreeps;
 
         List <Tower> tempTower = getObjects (Tower.class);
         for (Tower t: tempTower){
@@ -1158,6 +1165,27 @@ public class Map extends World{
     public Tower getSelectedTower()
     {
         return selectedTower; 
+    }
+
+    /**
+     * Returns how many creeps the user has sent
+     */
+    public int getNumCreeps(){
+        return numCreeps;
+    }
+
+    /**
+     * Returns how much total enemies are in the current wave
+     */
+    public int getNumEnemy(){
+        return numMobs + numCreeps;
+    }
+
+    /**
+     * Returns how many mobs are curralive
+     */
+    public int getAliveMobNumber(){
+        return mobs.size();
     }
 
     private void winGame()

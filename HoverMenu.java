@@ -55,19 +55,22 @@ public class HoverMenu extends Actor
         bg.drawString (desc[0], 20, 50);
         bg.setFont (descFont);
         bg.drawString (desc[1], 20, 110);
-        bg.drawString (desc[2], 20, 130);
-        bg.drawString (desc[3], 20, 150);
-        bg.drawString (desc[4], 20, 170);
-        bg.drawString (desc[5], 20, 190);
+        bg.drawString (desc[2], 20, 140);
+        bg.drawString (desc[3], 20, 170);
+        bg.drawString (desc[4], 20, 200);
+        bg.drawString (desc[5], 20, 230);
 
         this.setImage (bg);
     }
+
     /**
      * Gives the class access to map methods when added to world
      */
     protected void addedToWorld(World world)
     {
-        map = (Map) world;
+        if (map == null){
+            map = (Map) world;
+        }
     }
 
     /**
@@ -115,18 +118,41 @@ public class HoverMenu extends Actor
 
         }
         else if (a instanceof SellButton){
-            desc[1] = "Sells current tower";
+            desc[0] = "Sells tower";
+            Tower t = map.getSelectedTower(); 
+            if (t != null){
+                desc[1] = "Value: " + Math.round (t.getCurrentCost()*0.75f);
+            }
         }
         else if (a instanceof UpgradeButton) {
             Tower t = map.getSelectedTower(); 
             if (t != null)
-            {    desc[1] = "CurrentLevel: " +Integer.toString(t.getCurrentLevel())  ;
+            {   desc[1] = "CurrentLevel: " +Integer.toString(t.getCurrentLevel())  ;
                 desc[2] = "Cost: " + Integer.toString(t.getUpgradeCost()) ; 
             }
             desc[3] = "Power +5%";
             desc[4]  ="Range + 5%"; 
         }
-
+        else if (a instanceof Element){
+            Element e = (Element) a;
+            int tempId = e.getId();
+            if (tempId != 0){
+                tempId = tempId -1;
+                desc[0] = Data.elementName[tempId];
+                desc[1] = "Damage Multiplication:";
+                desc[2] = "Vs Air:   " + Data.elementDamage[tempId][0] + "x";
+                desc[3] = "Vs Water: " + Data.elementDamage[tempId][1] + "x";
+                desc[4] = "Vs Fire:  " + Data.elementDamage[tempId][2] + "x";
+                desc[5] = "Vs Earth: " + Data.elementDamage[tempId][3] + "x";
+            }
+        }
+        else if (a instanceof WaveProgress){
+            desc[0] = "Wave Progress";
+            desc[1] = "";
+            desc[2] = "Enemies Left: " + map.getAliveMobNumber();
+            desc[3] = "Creeps Sent: " + map.getNumCreeps();
+            desc[4] = "Total Enemies:" + map.getNumEnemy();
+        }
         refresh();
     }
 

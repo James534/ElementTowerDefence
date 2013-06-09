@@ -34,6 +34,10 @@ public class Data
             {1,     0.5f,   0.75f,  2},           //fire
             {2,     1,      0.5f,   0.75f}        //earth
         };
+    public static final String[] elementName = 
+        {
+            "Air", "Water", "Fire", "Earth"
+        };
 
     public static final GreenfootImage[] debuffs = 
         {
@@ -46,8 +50,8 @@ public class Data
             //stun   lightning, freeze, burn,   earth
             {   11,     100,    100,    100,    100}
         };
-        
-        public static final double[] debuffChance = {
+
+    public static final double[] debuffChance = {
             0.05f, 0.1f, 0.15f, 0.07f, 0.09f
         };
 
@@ -257,6 +261,20 @@ public class Data
      */
     public boolean ifFlying(){
         return isFlying;
+    }
+
+    /**
+     * Returns the max number of enemies in the next wave
+     */
+    public int getNextWaveSpawnCount(){
+        return q.first.next.maxSpawn;
+    }
+    
+    /**
+     * Returns the current max spawn count without dequing
+     */
+    public int getCurrentMaxSpawn(){
+        return q.first.maxSpawn;
     }
 
     /**================================= Data Structure Classes ==================================**/
