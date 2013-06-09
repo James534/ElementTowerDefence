@@ -37,7 +37,7 @@ public class HoverMenu extends Actor
         titleColor = new Color (255, 255, 255);
         descColor  = new Color (255, 255, 255);
 
-        desc = new String[6];
+        desc = new String[8];
         for (int i = 0; i< desc.length; i++){
             desc[i] = "";
         }
@@ -59,6 +59,8 @@ public class HoverMenu extends Actor
         bg.drawString (desc[3], 20, 170);
         bg.drawString (desc[4], 20, 200);
         bg.drawString (desc[5], 20, 230);
+        bg.drawString (desc[6], 20, 260);
+        bg.drawString (desc[7], 20, 290);
 
         this.setImage (bg);
     }
@@ -100,7 +102,7 @@ public class HoverMenu extends Actor
             desc[0] = h.getName(); 
             desc[1] = "Costs: "            + Integer.toString(d.getCost());
             desc[2] = "Damage Over time: " + Float.toString(h.getDOT()) ;
-            desc[3] = "Slow: "            + Float.toString(h.getSlow());
+            desc[3] = "Slow: "            + Float.toString(h.getSlow()) + "%";
             desc[4] = "Armor reduction " + Float.toString(h.getRedu());
 
         }
@@ -139,11 +141,11 @@ public class HoverMenu extends Actor
             if (tempId != 0){
                 tempId = tempId -1;
                 desc[0] = Data.elementName[tempId];
-                desc[1] = "Damage Multiplication:";
-                desc[2] = "Vs Air:   " + Data.elementDamage[tempId][0] + "x";
-                desc[3] = "Vs Water: " + Data.elementDamage[tempId][1] + "x";
-                desc[4] = "Vs Fire:  " + Data.elementDamage[tempId][2] + "x";
-                desc[5] = "Vs Earth: " + Data.elementDamage[tempId][3] + "x";
+                desc[1] = "Damage Multiplication Vs:";
+                desc[2] = "Air:   " + Data.elementDamage[tempId][0] + "x";
+                desc[3] = "Water: " + Data.elementDamage[tempId][1] + "x";
+                desc[4] = "Fire:  " + Data.elementDamage[tempId][2] + "x";
+                desc[5] = "Earth: " + Data.elementDamage[tempId][3] + "x";
             }
         }
         else if (a instanceof WaveProgress){
@@ -152,6 +154,27 @@ public class HoverMenu extends Actor
             desc[2] = "Enemies Left: " + map.getAliveMobNumber();
             desc[3] = "Creeps Sent: " + map.getNumCreeps();
             desc[4] = "Total Enemies:" + map.getNumEnemy();
+        }
+        else if (a instanceof Reload){
+            Reload r = (Reload) a;
+            desc[0] = r.getStringId();
+            if (r.getId() == 0){              //bullet
+                desc[1] = "A regular Bullet";
+            }else if (r.getId() == 1){        //laser
+                desc[1] = "A pentrating Laser";
+            }else{                          //shell
+                desc[1] = "An Area of Effect Artillery blast";
+            }
+            desc[2] = "";
+            Tower t = map.getSelectedTower(); 
+            if (t != null){
+                int tempId = t.getElement();
+                desc[3] = "Damage Vs:";
+                desc[4] = "Air:   " + Data.elementDamage[0][tempId-1] + "x";
+                desc[5] = "Water: " + Data.elementDamage[1][tempId-1] + "x";
+                desc[6] = "Fire:  " + Data.elementDamage[2][tempId-1] + "x";
+                desc[7] = "Earth: " + Data.elementDamage[3][tempId-1] + "x";
+            }
         }
         refresh();
     }

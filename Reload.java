@@ -68,4 +68,25 @@ public class Reload extends DummyImage
     public void setCD(int c){
         cooldown = c;
     }
+
+    /**
+     * Returns the integer id of this reload picture <br>
+     * Which weapon it is currently displaying
+     */
+    public int getId(){
+        return id;
+    }
+
+    /**
+     * Returns the string name of the current displayed picture
+     */
+    public String getStringId(){
+        if (id == 0){
+            return "Bullet";
+        }else if (id == 1){
+            return "Laser";
+        }else{
+            return "Artillery";
+        }
+    }
 }
