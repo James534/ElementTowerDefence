@@ -8,7 +8,8 @@ import greenfoot.*;
 public class Sound
 {
     private String[] attack;
-    private String moneyName;
+    private String loseMoneyName;
+    private String gainMoneyName;
     private String clicked;
 
     private GreenfootSound menu;
@@ -33,8 +34,9 @@ public class Sound
         attack[2] = "sounds/earthAttack.wav"; 
         attack[3] = "sounds/waterAttack.wav"; 
 
-        moneyName   = "sounds/buy.wav";
-        clicked = "sounds/clicked.wav";
+        loseMoneyName   = "sounds/buy.wav";
+        gainMoneyName   = "sounds/coins.wav";
+        clicked         = "sounds/clicked.wav";
 
         menu    = new GreenfootSound ("sounds/menu.mp3");
 
@@ -68,10 +70,19 @@ public class Sound
     } 
 
     /**
-     * Play the sound when the user buys or sells a tower
+     * Play the sound when the user loses gold
      */
-    public void playMoney(){
-        GreenfootSound money = new GreenfootSound (moneyName);
+    public void playLoseMoney(){
+        GreenfootSound money = new GreenfootSound (loseMoneyName);
+        money.setVolume (volume);
+        money.play();
+    }
+
+    /**
+     * Plays the money sound when the user gains gold
+     */
+    public void playGainMoney(){
+        GreenfootSound money = new GreenfootSound (gainMoneyName);
         money.setVolume (volume);
         money.play();
     }
@@ -87,9 +98,8 @@ public class Sound
 
     private void playOnce()
     {
-        GreenfootSound money = new GreenfootSound(moneyName);
-
-        money.setVolume(0);
+        GreenfootSound money = new GreenfootSound(loseMoneyName);
+        money = new GreenfootSound(gainMoneyName);
         //money.play();
         for (int i = 0; i < attack.length; i++){
             GreenfootSound s = new GreenfootSound (attack[i]);

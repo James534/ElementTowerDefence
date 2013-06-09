@@ -64,6 +64,9 @@ public class StartScreen extends Actor
         }else{
             if (Greenfoot.isKeyDown ("r")){
                 restart = false;
+                if (win){
+                    win = false;
+                }
             }
         }
         refresh(restart);     
@@ -151,7 +154,21 @@ public class StartScreen extends Actor
 
     private void refresh(boolean restart){
         bg.clear();
-        if (!restart){
+        if (win){            
+            bg.setColor (Color.BLACK);
+            bg.fill();
+
+            bg.setFont      (new Font ("Times New Roman", 1, 70));
+            bg.setColor     (Color.WHITE);
+            bg.drawString   ("Congratulations", 300, 200);
+            bg.drawString   ("You have beat the game!"  , 180, 300);
+
+            bg.setFont      (startButtonFont);
+            bg.setColor     (Color.WHITE);
+            bg.drawString   ("Press r to restart"  , 350, 500);
+            bg.drawString   ("or press esc to exit", 340, 570);
+        }
+        else if (!restart){
             if (stage == 0){
                 bg.setColor (bgColor);
                 bg.fill();
@@ -183,11 +200,20 @@ public class StartScreen extends Actor
         this.setImage (bg);
     }
 
+    /**
+     * Returns true if the game has started
+     */
     public boolean gameStart(){
         return gameStart;
     }
 
+    /**
+     * Sets true if the user won the game
+     */
     public void setWin (boolean w){
         win = w;
+        if (w){
+            restart = true;
+        }
     }
 }

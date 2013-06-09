@@ -129,7 +129,7 @@ public class Map extends World{
             //tower defence stuff
             money           = 100;
             income          = 0;
-            lives           = 20;
+            lives           = 200000;
             level           = 1;
             time            = 0;
             spawnCount      = 0;
@@ -500,6 +500,15 @@ public class Map extends World{
                 }
             }
         }
+        else if (Greenfoot.isKeyDown("S") && selectedTower != null){
+            map[selectedTower.getGridY()] [selectedTower.getGridX()].setWalkable(true);
+            map[selectedTower.getGridY()] [selectedTower.getGridX()].setPlaceable(true);
+            selectedTower.sell();
+            removeObject (selectedTower);
+            towers.remove(selectedTower); 
+            setPath();
+            cancelBuild();
+        }
 
         /**     grid controls for building towers **/
         if (ui.getId() == 1){
@@ -793,7 +802,9 @@ public class Map extends World{
         money+=t;
         resetUi();
         if (t < 0){
-            s.playMoney(); 
+            s.playLoseMoney(); 
+        }else{
+            s.playGainMoney();
         }
     }
 
@@ -1190,6 +1201,8 @@ public class Map extends World{
 
     private void winGame()
     {
+        start = false;
+        removeObjects (getObjects (null));
         startInitialize (true, true);
     }
 }
