@@ -128,12 +128,13 @@ public class HoverMenu extends Actor
         }
         else if (a instanceof UpgradeButton) {
             Tower t = map.getSelectedTower(); 
+            desc[0] = "Upgrades Tower";
             if (t != null)
             {   desc[1] = "CurrentLevel: " +Integer.toString(t.getCurrentLevel())  ;
                 desc[2] = "Cost: " + Integer.toString(t.getUpgradeCost()) ; 
             }
-            desc[3] = "Power +5%";
-            desc[4]  ="Range + 5%"; 
+            desc[3] = "Power + 20%";
+            desc[4]  ="Range + 20%"; 
         }
         else if (a instanceof Element){
             Element e = (Element) a;

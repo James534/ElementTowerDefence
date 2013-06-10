@@ -76,8 +76,6 @@ public class Data
     public static final GreenfootImage[] stone = {
             new GreenfootImage ("Debuff/stone/1.png"), new GreenfootImage ("Debuff/stone/1.png")
         };
-        
- 
 
     public Data(){
         q = new mobQueue();
@@ -126,7 +124,7 @@ public class Data
                     maxSpawn    = 12;
 
                     hp          = i * 20;
-                    armor       = i/10 + 1;
+                    armor       = i;
                     speed       = 2;
                 }
                 else if (currentElement == 2){      //water
@@ -136,7 +134,7 @@ public class Data
                     maxSpawn    = 7;
 
                     hp          = i * 20;
-                    armor       = i;
+                    armor       = i / 3 * 4;
                     speed       = 1.7f;
                 }
                 else if (currentElement == 3){      //fire
@@ -146,7 +144,7 @@ public class Data
                     maxSpawn    = 20;
 
                     hp          = i * 10;
-                    armor       = i/10 + 2;
+                    armor       = i / 2;
                     speed       = 2.4f;
                 }
                 else if (currentElement == 0){      //earth
@@ -156,10 +154,10 @@ public class Data
                     maxSpawn    = 10;
 
                     hp          = i * 30;
-                    armor       = i + 1;
+                    armor       = i * 2;
                     speed       = 1;
                 }
-                hp = Math.round(hp * i * 0.2f);
+                hp = Math.round(hp * i * 0.3f);
             }
             else{                                   //if its a boss
                 if      (currentElement == 1){      //air boss
@@ -198,7 +196,6 @@ public class Data
                 maxSpawn    = 1;
                 hp =Math.round( hp * 0.5f*i + 800) ;
             }
-            
 
             q.enqueue (type, nextType, spawnRate, maxSpawn, hp, armor, speed, isBoss, isFlying);
         }
@@ -274,14 +271,13 @@ public class Data
     public int getNextWaveSpawnCount(){
         return q.first.next.maxSpawn;
     }
-    
+
     /**
      * Returns the current max spawn count without dequing
      */
     public int getCurrentMaxSpawn(){
         return q.first.maxSpawn;
     }
-
 
     /**================================= Data Structure Classes ==================================**/
     public class mobQueue{
@@ -353,6 +349,6 @@ public class Data
             this.isBoss     = isBoss;
             this.flying     = flying;
         }
-        
+
     }
 }

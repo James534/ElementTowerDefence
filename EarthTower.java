@@ -12,7 +12,7 @@ public class EarthTower extends Tower
     {
         fileName = "Towers/e";
         setImage("Towers/e1.png");
-        attackRate = 5; // rate at which it attak
+        attackRate = 20; // rate at which it attak
         range = 500; // maxiumum range of the tower 
         speed = 15;// speed of the projectile
         power = 2;
@@ -24,6 +24,8 @@ public class EarthTower extends Tower
         name = "Earth Tower";
         cost = 10;
 
-        desc.add ("Earth Tower Description");
+        desc.add ("A long range tower");
+        desc.add ("Low damage,");
+        desc.add ("Medium attack rate");
     }
 }

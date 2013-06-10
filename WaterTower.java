@@ -4,7 +4,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Creates a water Tower, and changes the characteristics of a generic <br>
  * tower when constructed. All actions are done within the superclass.
  * 
- * 
  * @author (Terence) 
  */
 public class WaterTower extends Tower
@@ -15,7 +14,7 @@ public class WaterTower extends Tower
         setImage("Towers/w1.png");
 
         attackRate = 10;
-        range = 50;
+        range = 100;
         speed = 6;
         power = 3; 
         counter = attackRate;
@@ -26,7 +25,7 @@ public class WaterTower extends Tower
         name = "Water Tower";
         cost = 10;
 
-        desc.add ("Insert Description Here");
-        desc.add ("A description of the Tower");
+        desc.add ("A fast firing tower");
+        desc.add ("Low range and damage");
     }
 }

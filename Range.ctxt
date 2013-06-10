@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.params=radius
 comment0.target=Range(int)
-comment0.text=\n\ draws\ the\ maximum\ range\ of\ the\ tower\n
+comment0.text=\r\n\ draws\ the\ maximum\ range\ of\ the\ tower\r\n
 comment1.params=
 comment1.target=void\ refresh()
 numComments=2

@@ -13,6 +13,8 @@ public class Sound
     private String clicked;
 
     private GreenfootSound menu;
+    private GreenfootSound ambient;
+    private GreenfootSound boss;
 
     private int volume;
     private int[] delay;
@@ -39,6 +41,8 @@ public class Sound
         clicked         = "sounds/clicked.wav";
 
         menu    = new GreenfootSound ("sounds/menu.mp3");
+        ambient = new GreenfootSound ("sounds/ambient.mp3");
+        boss    = new GreenfootSound ("sounds/boss.mp3");
 
         playOnce(); 
         setVolume(volume);
@@ -116,14 +120,8 @@ public class Sound
 
         // sets the volume to every sound
         menu    .setVolume (volume - volume/3*2);
-    }
-
-    /**
-     * Plays the bgm tracks. based on the ID of the song
-     */
-    public void playbgm(int Id) 
-    {
-
+        ambient .setVolume (volume - volume/3*2);
+        boss    .setVolume (volume - volume/3*2);
     }
 
     /**
@@ -139,6 +137,38 @@ public class Sound
     public void stopMenu(){
         if (menu.isPlaying()){
             menu.stop();
+        }
+    }
+
+    /**
+     * Plays the ambient music
+     */
+    public void playAmbient(){
+        ambient.playLoop();
+    }
+
+    /**
+     * Stops playing the ambient music
+     */
+    public void stopAmbient(){
+        if (ambient.isPlaying()){
+            ambient.stop();
+        }
+    }
+
+    /**
+     * Plays the boss music
+     */
+    public void playBoss(){
+        boss.play();
+    }
+
+    /**
+     * Stops playing the boss music
+     */
+    public void stopBoss(){
+        if (boss.isPlaying()){
+            boss.stop();
         }
     }
 }

@@ -209,7 +209,8 @@ public class Map extends World{
             start = true;
             removeObject (loadScreen);
             s.stopMenu();
-
+            s.playAmbient();
+            startScreen = null;
             ui.setWaveData (0, 1, level);
         }
     }
@@ -942,6 +943,14 @@ public class Map extends World{
             }
         }
 
+        if (level % 10 == 0){
+            s.stopAmbient();
+            s.playBoss();
+        }else{
+            s.stopBoss();
+            s.playAmbient();
+        }
+
         if (maxSpawnCount <= spawnCount && mobs.size() == 0){
             levelStart = false;
             spawnCount = 0;
@@ -1205,5 +1214,5 @@ public class Map extends World{
         removeObjects (getObjects (null));
         startInitialize (true, true);
     }
- 
+
 }

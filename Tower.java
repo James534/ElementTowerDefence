@@ -257,8 +257,8 @@ public abstract class Tower extends Actor
     {
         if (level < 3)
         {
-            power = power + Math.round(power * .5f);
-            range = range + Math.round(range * .5f);
+            power = power + Math.round(power * .2f);
+            range = range + Math.round(range * .2f);
 
             if (attackRate >  0){
                 attackRate-=3;

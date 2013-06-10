@@ -16,6 +16,7 @@ public class StartScreen extends Actor
     private Data data; 
 
     private GreenfootImage bg;
+    private GreenfootImage splash;
     private GreenfootImage[] tutPics;
 
     private StartButton startButton;
@@ -36,6 +37,7 @@ public class StartScreen extends Actor
         startButtonFont = new Font ("Verdana", 0, 35);
 
         bg              = new GreenfootImage (1024, 768);
+        splash          = new GreenfootImage ("splash.png");
         tutPics         = new GreenfootImage[20];
         for (int i = 0; i < tutPics.length; i++){
             tutPics[i] = new GreenfootImage ("Tutorial/" + (i+1) + ".png");
@@ -156,7 +158,6 @@ public class StartScreen extends Actor
     }
 
     private void refresh(boolean restart){
-        bg.clear();
         if (win){            
             bg.setColor (Color.BLACK);
             bg.fill();
@@ -173,14 +174,13 @@ public class StartScreen extends Actor
         }
         else if (!restart){
             if (stage == 0){
-                bg.setColor (bgColor);
-                bg.fill();
+                bg = splash;
                 if (map != null){
                     map.addObject (startButton, 512, 500);
                     map.addObject (tutButton, 512, 600);
                 }
             }else if (stage ==  1){
-                bg.drawImage (tutPics[tutPicNum], 0, 0);
+                bg = tutPics[tutPicNum];
 
                 map.addObject (nextButton, 940, 300);
                 map.addObject (prevButton, 84, 300);
