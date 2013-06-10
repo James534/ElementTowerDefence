@@ -1205,4 +1205,5 @@ public class Map extends World{
         removeObjects (getObjects (null));
         startInitialize (true, true);
     }
+ 
 }

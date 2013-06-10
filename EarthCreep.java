@@ -12,16 +12,16 @@ public class EarthCreep extends Creep
         if (id > 0 && id < 4){
             if (id == 1){
                 maxHp           = 50;
-                armor           = 2;
-                speed           = 3f;
-            }else if (id == 2){
-                maxHp           = 250;
                 armor           = 10;
                 speed           = 3f;
-            }else if (id == 3){
+            }else if (id == 2){
                 maxHp           = 500;
-                armor           = 20;
-                speed           = 3f;
+                armor           = 15;
+                speed           = 3.2f;
+            }else if (id == 3){
+                maxHp           = 1500;
+                armor           = 25;
+                speed           = 4f;
             }
             bg = new GreenfootImage ("Enemy/earth"+id+".png");
             type            = 4;        

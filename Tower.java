@@ -267,15 +267,16 @@ public abstract class Tower extends Actor
                 }
             }
 
-            if (level == 1)
+            if (level == 2)
             {
                 changeWeapon("pierce");
                 //power = (int)Math.round(power*0.1f);
+                attackRate = 40;
             }
-            else if (level == 2)
+            else if (level == 1)
             {
                 changeWeapon("artillery");
-                attackRate= 100;
+                attackRate= 80;
             }
 
             cost = upgradeCost[level];

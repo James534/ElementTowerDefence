@@ -13,6 +13,7 @@ public class StartScreen extends Actor
     private Map map;
     private Color bgColor;
     private Font startButtonFont;
+    private Data data; 
 
     private GreenfootImage bg;
     private GreenfootImage[] tutPics;
@@ -28,6 +29,8 @@ public class StartScreen extends Actor
     private boolean win;            //if the user won the game
     private int stage;              //which stage the screen is on
     private int tutPicNum;          //which tuorial pic the user is on
+
+    public GreenfootImage[] tutpics;
     public StartScreen(boolean restart){        
         bgColor         = new Color (0,50,120);
         startButtonFont = new Font ("Verdana", 0, 35);

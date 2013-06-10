@@ -76,6 +76,8 @@ public class Data
     public static final GreenfootImage[] stone = {
             new GreenfootImage ("Debuff/stone/1.png"), new GreenfootImage ("Debuff/stone/1.png")
         };
+        
+ 
 
     public Data(){
         q = new mobQueue();
@@ -145,7 +147,7 @@ public class Data
 
                     hp          = i * 10;
                     armor       = i/10 + 2;
-                    speed       = 3;
+                    speed       = 2.4f;
                 }
                 else if (currentElement == 0){      //earth
                     type        = 4;
@@ -157,6 +159,7 @@ public class Data
                     armor       = i + 1;
                     speed       = 1;
                 }
+                hp = Math.round(hp * i * 0.2f);
             }
             else{                                   //if its a boss
                 if      (currentElement == 1){      //air boss
@@ -181,7 +184,7 @@ public class Data
 
                     hp      = i    * 20;
                     armor   = i/10 + 2;
-                    speed   = 5;
+                    speed   = 2.5f;
                 }
                 else if (currentElement == 0){      //earth boss
                     type    = 4;
@@ -193,7 +196,9 @@ public class Data
                 }
                 spawnRate   = 5;
                 maxSpawn    = 1;
+                hp =Math.round( hp * 0.5f*i + 800) ;
             }
+            
 
             q.enqueue (type, nextType, spawnRate, maxSpawn, hp, armor, speed, isBoss, isFlying);
         }
@@ -277,6 +282,7 @@ public class Data
         return q.first.maxSpawn;
     }
 
+
     /**================================= Data Structure Classes ==================================**/
     public class mobQueue{
         private mobNode first;
@@ -347,5 +353,6 @@ public class Data
             this.isBoss     = isBoss;
             this.flying     = flying;
         }
+        
     }
 }

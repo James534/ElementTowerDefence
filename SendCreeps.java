@@ -107,7 +107,11 @@ public class SendCreeps extends Button implements HoverInfo
      * Returns how much income this creep gives
      */
     public int getIncome(){
-        return creep.getMaxHp()/10;
+        int temp = creep.getMaxHp()/50;
+        if (temp == 0){
+            return 1;
+        }
+        return temp;
     }
 
     /**

@@ -14,10 +14,10 @@ public class WaterTower extends Tower
         fileName = "Towers/w";
         setImage("Towers/w1.png");
 
-        attackRate = 5;
+        attackRate = 10;
         range = 50;
-        speed = 4;
-        power = 1; 
+        speed = 6;
+        power = 3; 
         counter = attackRate;
 
         element = 2;
