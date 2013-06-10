@@ -18,8 +18,8 @@ public class Reload extends DummyImage
         bg = new GreenfootImage ("UI/cd.png");
         weapons = new GreenfootImage[3];
         weapons[0] = new GreenfootImage ("UI/bullet.png");
-        weapons[1] = new GreenfootImage ("UI/laser.png");
-        weapons[2] = new GreenfootImage ("UI/shell.png");
+        weapons[1] = new GreenfootImage ("UI/shell.png");
+        weapons[2] = new GreenfootImage ("UI/laser.png");
 
         cd = new GreenfootImage ("UI/cd.png");
         id = 0;
@@ -48,8 +48,8 @@ public class Reload extends DummyImage
     /**
      * Sets the id of image <br>
      * 0 is bullet <br>
-     * 1 is laser <br>
-     * 2 is artilary
+     * 1 is artilary <br>
+     * 2 is laser
      */
     public void setId(int i){
         id = i;
@@ -84,9 +84,9 @@ public class Reload extends DummyImage
         if (id == 0){
             return "Bullet";
         }else if (id == 1){
-            return "Laser";
-        }else{
             return "Artillery";
+        }else{
+            return "Laser";
         }
     }
 }

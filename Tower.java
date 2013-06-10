@@ -419,4 +419,14 @@ public abstract class Tower extends Actor
     public int getCurrentCost(){
         return currentCost;
     }
+
+    public String getNextType(){
+        if (level == 1){
+            return "Artillery";
+        }else if (level == 2){
+            return "Laser";
+        }else{
+            return "";
+        }
+    }
 }

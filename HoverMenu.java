@@ -104,7 +104,6 @@ public class HoverMenu extends Actor
             desc[2] = "Damage Over time: " + Float.toString(h.getDOT()) ;
             desc[3] = "Slow: "            + Float.toString(h.getSlow()) + "%";
             desc[4] = "Armor reduction " + Float.toString(h.getRedu());
-
         }
         else if (a instanceof BuildTowers){
             BuildTowers b = (BuildTowers) a; 
@@ -113,11 +112,8 @@ public class HoverMenu extends Actor
             desc[0] =  t.getName(); 
             desc[1] = "Damage: "      + Integer.toString(t.getDmg()); 
             desc[2] = "Attack Rate: " + Integer.toString(t.getAttackSpeed()); 
-            desc[3] = "Range: "      + Integer.toString(t.getRange()); 
+            desc[3] = "Range: "       + Integer.toString(t.getRange()); 
             desc[4] = "Cost: "        + Integer.toString(t.getCost()) ;
-
-            //add prices into the hoverable
-
         }
         else if (a instanceof SellButton){
             desc[0] = "Sells tower";
@@ -128,13 +124,15 @@ public class HoverMenu extends Actor
         }
         else if (a instanceof UpgradeButton) {
             Tower t = map.getSelectedTower(); 
-            desc[0] = "Upgrades Tower";
+            desc[0] = "Upgrade Tower";
             if (t != null)
             {   desc[1] = "CurrentLevel: " +Integer.toString(t.getCurrentLevel())  ;
                 desc[2] = "Cost: " + Integer.toString(t.getUpgradeCost()) ; 
             }
-            desc[3] = "Power + 20%";
-            desc[4]  ="Range + 20%"; 
+            desc[3] = "";
+            desc[4] = "Weapon: " + t.getNextType();
+            desc[5] = "Power + 20%";
+            desc[6] = "Range + 20%"; 
         }
         else if (a instanceof Element){
             Element e = (Element) a;
