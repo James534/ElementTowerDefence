@@ -42,7 +42,7 @@ public class StartScreen extends Actor
         bg              = new GreenfootImage (1024, 768);
         draw            = new GreenfootImage (1024, 768);
         splash          = new GreenfootImage ("splash.png");
-        tutPics         = new GreenfootImage[22];
+        tutPics         = new GreenfootImage[23];
         for (int i = 0; i < tutPics.length; i++){
             tutPics[i] = new GreenfootImage ("Tutorial/" + (i+1) + ".png");
         }
