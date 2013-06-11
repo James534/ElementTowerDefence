@@ -15,15 +15,18 @@ public class StartScreen extends Actor
     private Font startButtonFont;
     private Data data; 
 
-    private GreenfootImage bg;
-    private GreenfootImage splash;
-    private GreenfootImage[] tutPics;
+    private GreenfootImage      bg;
+    private GreenfootImage      draw;
+    private GreenfootImage[]    tutPics;
+    private final GreenfootImage splash;
+    private final GreenfootImage creditsPic;
 
     private StartButton startButton;
     private TutButton   tutButton;
     private ArrowButton nextButton;
     private ArrowButton prevButton;
     private BackButton  backButton;
+    private Credits     credits;
 
     private boolean restart;        //whether this screen displays the normal or restart screen
     private boolean gameStart;      //if the user starts the game
@@ -32,26 +35,29 @@ public class StartScreen extends Actor
     private int tutPicNum;          //which tuorial pic the user is on
 
     public GreenfootImage[] tutpics;
-    public StartScreen(boolean restart){        
+    public StartScreen(){        
         bgColor         = new Color (0,50,120);
         startButtonFont = new Font ("Verdana", 0, 35);
 
         bg              = new GreenfootImage (1024, 768);
+        draw            = new GreenfootImage (1024, 768);
         splash          = new GreenfootImage ("splash.png");
-        tutPics         = new GreenfootImage[20];
+        tutPics         = new GreenfootImage[22];
         for (int i = 0; i < tutPics.length; i++){
             tutPics[i] = new GreenfootImage ("Tutorial/" + (i+1) + ".png");
         }
+        creditsPic      = new GreenfootImage ("credits.png");
 
         startButton     = new StartButton();
         tutButton       = new TutButton();
         nextButton      = new ArrowButton(true);
         prevButton      = new ArrowButton(false);
         backButton      = new BackButton();
+        credits         = new Credits();
 
         gameStart    = false;   
-        this.restart = restart;
-        win = false;
+        restart      = false;
+        win          = false;
 
         stage       = 0;
         tutPicNum   = 0;
@@ -59,7 +65,7 @@ public class StartScreen extends Actor
 
     protected void addedToWorld(World world){
         map = (Map) world;
-        refresh(restart);
+        refresh();
     }
 
     public void act(){
@@ -69,12 +75,16 @@ public class StartScreen extends Actor
         }else{
             if (Greenfoot.isKeyDown ("r")){
                 restart = false;
+                gameStart = false;
                 if (win){
                     win = false;
                 }
+            }else if (Greenfoot.isKeyDown ("escape")){
+                map.s.stop();
+                Greenfoot.stop();
             }
         }
-        refresh(restart);     
+        refresh();     
     }
 
     private void checkInput (int s){
@@ -90,6 +100,11 @@ public class StartScreen extends Actor
                 }else if (tempString.equals ("t")){
                     stage = 1;
                     startButton.clicked (true);
+                    map.s.playClicked();
+                    map.removeObjects (map.getObjects (SSButtons.class));
+                }else if (tempString.equals ("c")){
+                    stage = -1;
+                    credits.clicked (true);
                     map.s.playClicked();
                     map.removeObjects (map.getObjects (SSButtons.class));
                 }
@@ -110,6 +125,13 @@ public class StartScreen extends Actor
                         tutPicNum = tutPics.length-1;}
                     Greenfoot.delay(5);
                 }else if (tempString.equals ("escape") || tempString.equals ("b")){
+                    stage = 0;
+                    map.s.playClicked();
+                    map.removeObjects (map.getObjects (SSButtons.class));
+                }
+            }
+            else if (s == -1){          //the credits screen
+                if (tempString.equals ("escape") || tempString.equals ("b")){
                     stage = 0;
                     map.s.playClicked();
                     map.removeObjects (map.getObjects (SSButtons.class));
@@ -151,33 +173,38 @@ public class StartScreen extends Actor
                     }else if (b instanceof BackButton){
                         stage = 0;
                         map.removeObjects (map.getObjects (SSButtons.class));
+                    }else if (b instanceof Credits){
+                        stage = -1;
+                        map.removeObjects (map.getObjects (SSButtons.class));
                     }
                 }
             }
         }
     }
 
-    private void refresh(boolean restart){
-        if (win){            
-            bg.setColor (Color.BLACK);
-            bg.fill();
+    private void refresh(){
+        if (win){      
+            bg = draw;
+            draw.setColor (Color.BLACK);
+            draw.fill();
 
-            bg.setFont      (new Font ("Times New Roman", 1, 70));
-            bg.setColor     (Color.WHITE);
-            bg.drawString   ("Congratulations", 300, 200);
-            bg.drawString   ("You have beat the game!"  , 180, 300);
+            draw.setFont      (new Font ("Times New Roman", 1, 70));
+            draw.setColor     (Color.WHITE);
+            draw.drawString   ("Congratulations", 270, 200);
+            draw.drawString   ("You have beat the game!"  , 140, 300);
 
-            bg.setFont      (startButtonFont);
-            bg.setColor     (Color.WHITE);
-            bg.drawString   ("Press r to restart"  , 350, 500);
-            bg.drawString   ("or press esc to exit", 340, 570);
+            draw.setFont      (startButtonFont);
+            draw.setColor     (Color.WHITE);
+            draw.drawString   ("Press r to restart"  , 350, 500);
+            draw.drawString   ("or press esc to exit", 335, 570);
         }
         else if (!restart){
             if (stage == 0){
                 bg = splash;
                 if (map != null){
-                    map.addObject (startButton, 512, 500);
-                    map.addObject (tutButton, 512, 600);
+                    map.addObject (startButton  , 512, 500);
+                    map.addObject (tutButton    , 512, 600);
+                    map.addObject (credits      , 970, 750);
                 }
             }else if (stage ==  1){
                 bg = tutPics[tutPicNum];
@@ -186,19 +213,25 @@ public class StartScreen extends Actor
                 map.addObject (prevButton, 84, 300);
                 map.addObject (backButton, 940, 50);
             }
+            else if (stage == -1){
+                bg = creditsPic;
+
+                map.addObject (backButton, 940, 50);
+            }
         }
         else{
-            bg.setColor (Color.BLACK);
-            bg.fill();
+            bg = draw;
+            draw.setColor (Color.BLACK);
+            draw.fill();
 
-            bg.setFont      (new Font ("Times New Roman", 1, 70));
-            bg.setColor     (Color.WHITE);
-            bg.drawString   ("GAME OVER", 300, 200);
+            draw.setFont      (new Font ("Times New Roman", 1, 70));
+            draw.setColor     (Color.WHITE);
+            draw.drawString   ("GAME OVER", 300, 200);
 
-            bg.setFont      (startButtonFont);
-            bg.setColor     (Color.WHITE);
-            bg.drawString   ("Press r to restart"  , 350, 400);
-            bg.drawString   ("or press esc to exit", 340, 500);
+            draw.setFont      (startButtonFont);
+            draw.setColor     (Color.WHITE);
+            draw.drawString   ("Press r to restart"  , 350, 400);
+            draw.drawString   ("or press esc to exit", 335, 500);
         }
         this.setImage (bg);
     }
@@ -217,6 +250,17 @@ public class StartScreen extends Actor
         win = w;
         if (w){
             restart = true;
+        }
+        stage = 0;
+        gameStart = false;
+    }
+
+    public void setRestart (boolean r){
+        restart = r;
+        stage = 0;
+        gameStart = false;
+        if (restart){
+
         }
     }
 }

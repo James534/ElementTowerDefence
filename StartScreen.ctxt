@@ -1,18 +1,20 @@
 #BlueJ class context
-comment0.params=restart
-comment0.target=StartScreen(boolean)
+comment0.params=
+comment0.target=StartScreen()
 comment1.params=world
 comment1.target=void\ addedToWorld(greenfoot.World)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=s
 comment3.target=void\ checkInput(int)
-comment4.params=restart
-comment4.target=void\ refresh(boolean)
+comment4.params=
+comment4.target=void\ refresh()
 comment5.params=
 comment5.target=boolean\ gameStart()
 comment5.text=\r\n\ Returns\ true\ if\ the\ game\ has\ started\r\n
 comment6.params=w
 comment6.target=void\ setWin(boolean)
 comment6.text=\r\n\ Sets\ true\ if\ the\ user\ won\ the\ game\r\n
-numComments=7
+comment7.params=r
+comment7.target=void\ setRestart(boolean)
+numComments=8

@@ -171,4 +171,13 @@ public class Sound
             boss.stop();
         }
     }
+
+    /**
+     * Stops all current music
+     */
+    public void stop(){
+        menu.stop();
+        ambient.stop();
+        boss.stop();
+    }
 }

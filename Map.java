@@ -129,7 +129,7 @@ public class Map extends World{
             //tower defence stuff
             money           = 100;
             income          = 0;
-            lives           = 200000;
+            lives           = 20;
             level           = 1;
             time            = 0;
             spawnCount      = 0;
@@ -210,8 +210,8 @@ public class Map extends World{
             removeObject (loadScreen);
             s.stopMenu();
             s.playAmbient();
-            startScreen = null;
             ui.setWaveData (0, 1, level);
+            Greenfoot.setSpeed (50);
         }
     }
 
@@ -826,7 +826,7 @@ public class Map extends World{
         super(1024, 768, 1); 
 
         Greenfoot.setSpeed (50);
-
+        startScreen = new StartScreen();
         startInitialize (false, false);
 
         setPaintOrder (SSButtons.class, StartScreen.class, HoverMenu.class, ChatBox.class, 
@@ -891,7 +891,7 @@ public class Map extends World{
      * called when reseting the game
      */
     private void startInitialize (boolean restart, boolean won){        
-        startScreen = new StartScreen (restart);       
+        startScreen.setRestart (restart); 
         startScreen.setWin (won);
         addObject (startScreen, 512, 384);
         start = false;
