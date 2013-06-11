@@ -203,7 +203,7 @@ public class Pathfind
         }
     }
 
-    public class Node{
+    private class Node{
         private int x, y;
         private boolean walkable;
         private boolean end;

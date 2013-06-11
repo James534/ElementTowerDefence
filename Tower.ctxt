@@ -76,6 +76,7 @@ comment31.target=int\ getCurrentCost()
 comment31.text=\r\n\ Returns\ how\ much\ money\ the\ user\ spent\ on\ this\ tower\ <br>\r\n\ Used\ when\ the\ user\ sells\ the\ tower\r\n
 comment32.params=
 comment32.target=java.lang.String\ getNextType()
+comment32.text=\r\n\ Returns\ the\ weapon\ string\ of\ the\ next\ upgrade\r\n
 comment4.params=x
 comment4.target=void\ setGridX(int)
 comment4.text=\r\n\ Allows\ the\ world\ to\ pass\ the\ grid\ coordinates\ to\ the\ object\ as\ a\ refrence\r\n

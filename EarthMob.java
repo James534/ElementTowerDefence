@@ -1,11 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * The class for the earth type enemies
+ * The class for the earth type enemies <br>
  * they have high hp and armor but low speed
  * 
- * @James Lu
- * @0.01
+ * @author James Lu
+ * @version 1.0
  */
 public class EarthMob extends Enemy
 {

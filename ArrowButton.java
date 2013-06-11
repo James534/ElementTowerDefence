@@ -25,6 +25,9 @@ public class ArrowButton extends SSButtons
         this.setImage (bg[0]);
     }
 
+    /**
+     * Returns true if this is the right arrow
+     */
     public boolean isNext(){
         return next;
     }

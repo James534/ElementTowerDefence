@@ -2,9 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * The class for the mobs of fire element
+ * they move very fast, but are easily killed
  * 
- * @James Lu
- * @0.01
+ * @author James Lu
+ * @version 0.01
  */
 public class FireMob extends Enemy
 {

@@ -1,22 +1,17 @@
 import greenfoot.*;
-/**
- * 
- * The laser Weaopon available as an upgrade from tower.<br>
+/** 
+ * The laser Weaopon available as the last upgrade from tower.<br>
  * overides the superclass checkhit method <br>
+ * 
  * @author (Terence Lai) 
  */
 public class Laser extends Weapon
 {
-
     public Laser(int speed, int power,int aoe, int eleId, Enemy target, String element)
     {
         super( speed,  power, aoe, eleId, target, element,"Lazer"); //calls the super classes constructtor, nothign changed
     }
 
-      /**
-     * Act - do whatever the Tower wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act()
     {
         move (speed);

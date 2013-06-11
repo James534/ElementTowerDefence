@@ -244,7 +244,8 @@ public class StartScreen extends Actor
     }
 
     /**
-     * Sets true if the user won the game
+     * Sets true if the user won the game <br>
+     * If so, brings the user back to this screen and show that they have won the game
      */
     public void setWin (boolean w){
         win = w;
@@ -255,12 +256,13 @@ public class StartScreen extends Actor
         gameStart = false;
     }
 
+    /**
+     * Sets true if the game needs to restart <br>
+     * It brings the user back to this screen
+     */
     public void setRestart (boolean r){
         restart = r;
         stage = 0;
         gameStart = false;
-        if (restart){
-
-        }
     }
 }

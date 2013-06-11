@@ -27,8 +27,4 @@ public class AirTower extends Tower
         desc.add ("lightweight tower");
         desc.add ("Average range and power");
     }
-
-    private void upgradeImg(){
-
-    }
 }

@@ -352,7 +352,7 @@ public class Map extends World{
                             cb.setMessage ("Tower is fully upgraded", 1);
                         }
                     }else{
-                        cb.setMessage ("You Require More Money", 1);
+                        cb.setMessage ("You need more money", 1);
                     }
                 }
                 else if (selected instanceof SendCreeps){
@@ -363,11 +363,11 @@ public class Map extends World{
                         changeMoney (-button.getCost());
                         resetUi();
                         mobsToSpawn.add (button.getCreep());
-                        cb.setMessage ("sending 1 creep", 2);
+                        cb.setMessage ("Sending 1 creep", 2);
                         numCreeps++;
                     }
                     else{
-                        cb.setMessage ("YOU DO NOT HAVE ENOUGH MONEY", 1);
+                        cb.setMessage ("You need more money", 1);
                     }
                 }
                 else if (selected instanceof BuildTowers && selectedTower == null){
@@ -388,12 +388,12 @@ public class Map extends World{
                             addObject (r, 10000, 10000); 
                             addObject (placeHolder, 10000, 10000);
                         }else{
-                            cb.setMessage ("YOU REQUIRE MORE MONEY", 1);
+                            cb.setMessage ("You need more money", 1);
                         }
                     }
                     else{
                         placeHolder = null;             
-                        cb.setMessage ("You Cant Build During a Wave", 1);
+                        cb.setMessage ("You cant build during a wave", 1);
                     }
                 }
                 else if (selected instanceof DebuffButton){
@@ -406,7 +406,7 @@ public class Map extends World{
                             cb.setMessage ("Bought " + d.getName(), 2);
                         }
                         else{
-                            cb.setMessage ("You Require More Money", 1);
+                            cb.setMessage ("You need more money", 1);
                         }
                     }
                 }
@@ -494,10 +494,10 @@ public class Map extends World{
                         buttonDelay =  0;
                         refreshUi = true;
                     } else{
-                        cb.setMessage ("Tower is Fully Upgraded", 1);
+                        cb.setMessage ("Tower is fully upgraded", 1);
                     }
                 }else{
-                    cb.setMessage ("You Require More Money", 1);
+                    cb.setMessage ("You need more money", 1);
                 }
             }
         }
@@ -585,12 +585,12 @@ public class Map extends World{
                         addObject (r, 10000, 10000); 
                         addObject (placeHolder, 10000, 10000);
                     }else{
-                        cb.setMessage ("YOU REQUIRE MORE MONEY", 1);
+                        cb.setMessage ("You need more money", 1);
                     }
                 }
                 else{
                     placeHolder = null;             
-                    cb.setMessage ("You Cant Build During a Wave", 1);      
+                    cb.setMessage ("You cant build during a wave", 1);      
                 }
             }
         }
@@ -658,11 +658,11 @@ public class Map extends World{
                     changeMoney (-button.getCost());
                     resetUi();
                     mobsToSpawn.add (button.getCreep());
-                    cb.setMessage ("sending 1 creep", 2);
+                    cb.setMessage ("Sending 1 creep", 2);
                     numCreeps++;
                 }
                 else{
-                    cb.setMessage ("YOU DO NOT HAVE ENOUGH MONEY", 1);
+                    cb.setMessage ("You need more money", 1);
                 }
             }
         }
@@ -787,11 +787,11 @@ public class Map extends World{
                 t.setActive(false);
             }
             else{
-                cb.setMessage ("YOU REQUIRE MORE MINERALS", 1);
+                cb.setMessage ("You need more money", 1);
             }
         }
         else{
-            cb.setMessage ("YOU CANT BUILD THERE", 1);
+            cb.setMessage ("You cannot build there", 1);
         }
     }
 

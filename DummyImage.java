@@ -32,6 +32,9 @@ public class DummyImage extends Actor implements HoverInfo
         this.setImage (bg);        
     }
 
+    /**
+     * Sets the coorinates of the hovermenu
+     */
     protected int[] setCo(){
         int[] coordinates = new int[2];
         int tempX = this.getX();

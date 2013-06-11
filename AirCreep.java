@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class AirCreep extends Creep
 {
+    /**
+     * The int id is the level of the creep (1/2/3)
+     */
     public AirCreep(int id){
         if (id > 0 && id < 4){
             if (id == 1){

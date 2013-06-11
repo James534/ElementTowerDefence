@@ -82,7 +82,6 @@ public class Data
         populate();
     }
 
-    /** ---------------------------- Mob Data Methods ------------------------**/
     private void updateData(){
         this.type       = mob.type;
         this.nextType   = mob.nextType;
@@ -279,8 +278,8 @@ public class Data
         return q.first.maxSpawn;
     }
 
-    /**================================= Data Structure Classes ==================================**/
-    public class mobQueue{
+    /**================================= Data Structure Class ==================================**/
+    private class mobQueue{
         private mobNode first;
         private mobNode last;
         private int length;
@@ -290,10 +289,17 @@ public class Data
             length  = 0;
         }
 
+        /**
+         * Returns true if the queue is empty
+         */
         public boolean isEmpty(){
             return length == 0;
         }
 
+        /**
+         * Enques a level's worth of information <br>
+         * Each level's mob stats is stored here
+         */
         public void enqueue(int type, int nextType, int spawnRate, int maxSpawn, 
         int hp, int armor, float speed, boolean isBoss, boolean flying){
             mobNode temp = new mobNode (type, nextType, spawnRate, maxSpawn, hp, armor, speed, isBoss, flying);
@@ -302,12 +308,19 @@ public class Data
             length++;
         }
 
+        /**
+         * Only called once; for the first time to initalize the queue <br>
+         * The stats of the first level is stored in here
+         */
         public void enqueueFirst(int type, int nextType, int spawnRate, int maxSpawn, 
         int hp, int armor, float speed, boolean isBoss, boolean flying){
             first = new mobNode (type, nextType, spawnRate, maxSpawn, hp, armor, speed, isBoss, flying);
             last  = first;
         }
 
+        /**
+         * Returns a mobNode that stores the data of the current wave
+         */
         public mobNode dequeue(){
             if (length != 0){
                 mobNode temp = first;
@@ -336,6 +349,10 @@ public class Data
             next = null;
         }
 
+        /**
+         * Creates a new mobNode with the passed on parameters <br>
+         * It holds the data for each wave
+         */
         public mobNode(int type, int nextType, int spawnRate, int maxSpawn, 
         int hp, int armor, float speed, boolean isBoss, boolean flying){
             this();
@@ -349,6 +366,5 @@ public class Data
             this.isBoss     = isBoss;
             this.flying     = flying;
         }
-
     }
 }

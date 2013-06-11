@@ -100,7 +100,7 @@ public class BuildTowers extends Button implements HoverInfo
     }
 
     /**
-     * Returns the tower that this button builds
+     * Returns the tower this button builds
      */
     public Tower getTower(){
         int ID = (id-1) / 3;

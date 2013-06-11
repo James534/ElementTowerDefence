@@ -1,8 +1,7 @@
 import greenfoot.*; 
 import java.util.List;
 /**
- * 
- * The Artillery weapon available as the last upgrade of tower. <br>
+ * The Artillery weapon available as the second upgrade of tower. <br>
  * 
  * @author (Terence Lai)
  */
@@ -15,10 +14,6 @@ public class Artillery extends Weapon
         super( speed,  power, aoe, eleId, target, element ,"Shell"); //calls the super classes constructtor, nothign changed
     }
 
-    /**
-     * Act - do whatever the Tower wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act()
     {
         if (active) // move the weapon when active, called from the superclass
@@ -71,6 +66,5 @@ public class Artillery extends Weapon
         {
             active = false; 
         }
-
     }
 }

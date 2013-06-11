@@ -7,6 +7,7 @@ comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=int[]\ setCo()
+comment3.text=\r\n\ Sets\ the\ coorinates\ of\ the\ hovermenu\r\n
 comment4.params=
 comment4.target=void\ hoverOver()
 comment4.text=\r\n\ Increases\ the\ hover\ counter\ when\ the\ mouse\ hovers\ over\ this\ object\r\n

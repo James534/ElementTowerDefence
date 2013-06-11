@@ -18,6 +18,14 @@ public class DebuffVisu extends Effects
         this.setImage (bg);
     }
 
+    /**
+     * Sets a debuff on this visualizer <br>
+     * 0 is stun <br>
+     * 1 is lightning <br>
+     * 2 is freeze <br>
+     * 3 is burn <br>
+     * 4 is stone
+     */
     public void setDebuff (int id){
         if (id == 0){           //stun
             cache = Data.stun;

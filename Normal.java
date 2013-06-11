@@ -2,7 +2,6 @@ import greenfoot.*;
 /**
  * The basic weapon of each tower. Used for all level 1 towers <br>
  * 
- * 
  * @author Terence Lai
  */
 public class Normal extends Weapon
@@ -14,10 +13,6 @@ public class Normal extends Weapon
         super( speed,  power, aoe, eleId, target, element ,"Bullet"); //calls the super classes constructtor, nothign changed
     }
 
-    /**
-     * Act - do whatever the Tower wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act()
     {
         if (active) // move the weapon when active, called from the superclass

@@ -420,6 +420,9 @@ public abstract class Tower extends Actor
         return currentCost;
     }
 
+    /**
+     * Returns the weapon string of the next upgrade
+     */
     public String getNextType(){
         if (level == 1){
             return "Artillery";

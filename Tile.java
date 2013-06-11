@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Class for individual tiles of the map
  * 
  * @author James Lu
- * @version 0.01
+ * @version 1.0
  */
 public class Tile extends Actor
 {

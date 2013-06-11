@@ -1,12 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * The class for the mobs of air element
- * they move fast, but are squishy
+ * The class for the mobs of air element <br>
+ * they move fast, but are easy to kill
  * 
- * 
- * @James Lu
- * @0.01
+ * @author James Lu
+ * @version 1.0
  */
 public class AirMob extends Enemy
 {

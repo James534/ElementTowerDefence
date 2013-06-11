@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Credits here.
+ * The button the user clicks to enter the credits screen
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author James Lu
+ * @version 1.0
  */
 public class Credits extends SSButtons
 {

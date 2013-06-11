@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class WaterMob here.
+ * The class for the water type enemies <br>
+ * they have the 2nd highest armor and hp, and moves faster than earth mobs
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author James Lu
+ * @version 1.0
  */
 public class WaterMob extends Enemy
 {
