@@ -11,9 +11,6 @@ import java.awt.Color;
  * 
  * @author (Terence Lai & James Lu)
  * @version 1.00
- * 
- * ok now this is a test from the pc to the mac
- *
  */
 public class Map extends World{
     private Tile[][] map;                                 //2d array of tiles
